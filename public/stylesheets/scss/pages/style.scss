@@ -1,0 +1,188 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+
+  body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    height: 100%;
+
+    .main {
+      height: 100%;
+
+      form {
+        height: 100%;
+        opacity: 1;
+        @include transition (.3s);
+
+        .input-info {
+          position: relative;
+          top: calc(50% - 127px);
+
+          .name-input {
+            text-align: center;
+            position: relative;
+            
+            .name-title {
+              font-weight: 300;
+              color: gray;
+              letter-spacing: 3px;
+              padding-bottom: 20px;
+            }
+
+            .name {
+              width: 600px;
+              height: 75px;
+              resize: none;
+              outline: none;
+              border: 1px solid #c8c8c8;
+              font-size: 25px;
+              font-weight: lighter;
+              font-family: roboto, sans-serif;
+              color: gray;
+              letter-spacing: 5px;
+              text-align: center;
+              line-height: 79px;
+              overflow: hidden;
+              @include transition (.2s);
+
+              &:active, &:focus {
+                outline: none;
+                border: 1px solid gray;
+                @include transition (.2s);
+              }
+            }
+
+            #right {
+              border-left: 1px solid #e8e8e8;
+            }
+          }
+
+          .date-input {
+            text-align: center;
+            position: relative;
+            margin-top: 50px;
+            display: none;
+
+            input {
+              height: 75px;
+              width: 500px;
+              outline: none;
+              border: 1px solid #c8c8c8;
+              font-size: 25px;
+              font-weight: lighter;
+              font-family: roboto, sans-serif;
+              color: gray;
+              letter-spacing: 5px;
+              text-align: center;
+              text-transform: uppercase;
+              -webkit-calendar-picker-indicator: none;
+              @include transition (.2s);
+
+              &:active, &:focus {
+                outline: none;
+                border: 1px solid gray;
+                @include transition (.2s);
+              }
+            }
+
+            input::-webkit-calendar-picker-indicator, 
+            input::-webkit-inner-spin-button {
+              display: none;
+            }
+
+            .date-title {
+              font-weight: 300;
+              color: gray;
+              letter-spacing: 3px;
+              padding-bottom: 20px;
+            }
+          }
+
+          .submit {
+            text-decoration: none;
+            text-align: center;
+            background: dodgerblue;
+            width: 160px;
+            display: block;
+            color: white;
+            margin: 0 auto;
+            padding: 18px 0px;
+            margin-top: 85px;
+            opacity: 0;
+            @include cubic (.3s);
+
+            &:hover {
+              background: darken(dodgerblue, 10%);
+              @include transition (.3s);
+            }
+
+            p {
+              letter-spacing: 3px;
+            }
+          }
+        }
+      }
+
+      .img-wrapper {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: #fff;
+
+      }
+
+      #img-generation {
+        display: block;
+        width: 960px;
+        height: 540px;
+        top: calc(50% - 270px);
+        position: relative;
+        margin: 0 auto;
+        // background: url("/images/pic1.jpg");
+        // background-position: 0% 0%;
+        // background-repeat: no-repeat;
+        // background-size: 50% 50%;
+      }
+    }
+
+    #new-img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: none;
+      top: 0px;
+      opacity: 0;
+      display: none;
+    }
+  }
+}
+

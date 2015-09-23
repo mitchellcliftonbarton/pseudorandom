@@ -1,0 +1,217 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+html {
+  height: 100%;
+  overflow: hidden; }
+  html body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    height: 100%; }
+    html body .main {
+      height: 100%; }
+      html body .main form {
+        height: 100%;
+        opacity: 1;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s; }
+        html body .main form .input-info {
+          position: relative;
+          top: calc(50% - 127px); }
+          html body .main form .input-info .name-input {
+            text-align: center;
+            position: relative; }
+            html body .main form .input-info .name-input .name-title {
+              font-weight: 300;
+              color: gray;
+              letter-spacing: 3px;
+              padding-bottom: 20px; }
+            html body .main form .input-info .name-input .name {
+              width: 600px;
+              height: 75px;
+              resize: none;
+              outline: none;
+              border: 1px solid #c8c8c8;
+              font-size: 25px;
+              font-weight: lighter;
+              font-family: roboto, sans-serif;
+              color: gray;
+              letter-spacing: 5px;
+              text-align: center;
+              line-height: 79px;
+              overflow: hidden;
+              -webkit-transition: all 0.2s;
+              -moz-transition: all 0.2s;
+              transition: all 0.2s; }
+              html body .main form .input-info .name-input .name:active, html body .main form .input-info .name-input .name:focus {
+                outline: none;
+                border: 1px solid gray;
+                -webkit-transition: all 0.2s;
+                -moz-transition: all 0.2s;
+                transition: all 0.2s; }
+            html body .main form .input-info .name-input #right {
+              border-left: 1px solid #e8e8e8; }
+          html body .main form .input-info .date-input {
+            text-align: center;
+            position: relative;
+            margin-top: 50px;
+            display: none; }
+            html body .main form .input-info .date-input input {
+              height: 75px;
+              width: 500px;
+              outline: none;
+              border: 1px solid #c8c8c8;
+              font-size: 25px;
+              font-weight: lighter;
+              font-family: roboto, sans-serif;
+              color: gray;
+              letter-spacing: 5px;
+              text-align: center;
+              text-transform: uppercase;
+              -webkit-calendar-picker-indicator: none;
+              -webkit-transition: all 0.2s;
+              -moz-transition: all 0.2s;
+              transition: all 0.2s; }
+              html body .main form .input-info .date-input input:active, html body .main form .input-info .date-input input:focus {
+                outline: none;
+                border: 1px solid gray;
+                -webkit-transition: all 0.2s;
+                -moz-transition: all 0.2s;
+                transition: all 0.2s; }
+            html body .main form .input-info .date-input input::-webkit-calendar-picker-indicator,
+            html body .main form .input-info .date-input input::-webkit-inner-spin-button {
+              display: none; }
+            html body .main form .input-info .date-input .date-title {
+              font-weight: 300;
+              color: gray;
+              letter-spacing: 3px;
+              padding-bottom: 20px; }
+          html body .main form .input-info .submit {
+            text-decoration: none;
+            text-align: center;
+            background: dodgerblue;
+            width: 160px;
+            display: block;
+            color: white;
+            margin: 0 auto;
+            padding: 18px 0px;
+            margin-top: 85px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.43, 0.29, 0.22, 0.96);
+            -webkit-transition: all 0.3s cubic-bezier(0.43, 0.29, 0.22, 0.96);
+            -moz-transition: all 0.3s cubic-bezier(0.43, 0.29, 0.22, 0.96); }
+            html body .main form .input-info .submit:hover {
+              background: #0077ea;
+              -webkit-transition: all 0.3s;
+              -moz-transition: all 0.3s;
+              transition: all 0.3s; }
+            html body .main form .input-info .submit p {
+              letter-spacing: 3px; }
+      html body .main .img-wrapper {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: #fff; }
+      html body .main #img-generation {
+        display: block;
+        width: 960px;
+        height: 540px;
+        top: calc(50% - 270px);
+        position: relative;
+        margin: 0 auto; }
+    html body #new-img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: none;
+      top: 0px;
+      opacity: 0;
+      display: none; }
+
+.imagess {
+  width: 960px;
+  -webkit-box-shadow: 0px 14px 38px rgba(0, 0, 0, 0.18), 0 0 80px 15px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0px 14px 38px rgba(0, 0, 0, 0.18), 0 0 80px 15px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 14px 38px rgba(0, 0, 0, 0.18), 0 0 80px 15px rgba(0, 0, 0, 0.18); }
+
+.item {
+  text-align: center;
+  display: none;
+  position: relative;
+  top: calc(50% - 270px); }
+
+.active {
+  display: block; }
+
+.carousel {
+  height: 100%; }
+
+.carousel-inner {
+  height: 100%; }
+
+.grid-view {
+  overflow: scroll; }
+  .grid-view .grid .row {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    box-lines: multiple;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row; }
+    .grid-view .grid .row .img-contain {
+      -webkit-box-flex: 4;
+      -moz-box-flex: 4;
+      box-flex: 4;
+      -webkit-flex: 4 0 0;
+      -moz-flex: 4 0 0;
+      -ms-flex: 4 0 0;
+      flex: 4 0 0;
+      padding: 25px; }
+      .grid-view .grid .row .img-contain img {
+        width: 100%;
+        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 19px 7px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 19px 7px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 19px 7px rgba(0, 0, 0, 0.2); }

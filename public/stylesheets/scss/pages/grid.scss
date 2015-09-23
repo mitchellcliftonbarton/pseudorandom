@@ -1,0 +1,25 @@
+.grid-view{
+  overflow: scroll;
+  
+  .grid {
+
+    .row { 
+      @include display (flex);
+      @include flex-wrap (wrap);
+      @include flex-direction (row);
+
+      .img-contain {
+        @include flex (4 0 0);
+        padding: 25px;
+
+        img {
+          width: 100%;
+          -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, .20), 0 0 19px 7px rgba(0, 0, 0, .20); 
+          -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, .20), 0 0 19px 7px rgba(0, 0, 0, .20);
+          box-shadow: 0px 0px 0px rgba(0, 0, 0, .20), 0 0 19px 7px rgba(0, 0, 0, .20);
+        }
+      }
+    }
+  }
+}
+
