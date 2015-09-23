@@ -24,7 +24,6 @@ $(document).ready(function() {
       var nameInt = [];
       var nl = name.length;
       
-
       // FOR LOOP
       for (var i = 0; i < nl; i++) { 
         nameInt.push(name.charCodeAt(i));
@@ -34,6 +33,23 @@ $(document).ready(function() {
       var secondLett = nameInt[space + 1];
       var firstLeng = space;
       var secLeng = (nl - space) - 1;
+      var flhund = firstLeng * 100;
+      var slhund = secLeng * 100;
+      var halfFlhund = flhund / 2;
+      var halfSlhund = slhund / 2;
+      var altFl1 = flhund * 0.25;
+      var altSl1 = slhund * 0.25;
+      var altFl2 = flhund * 0.75;
+      var altSl2 = slhund * 0.75;
+
+      window.console.log(flhund);
+      window.console.log(slhund);
+      window.console.log(halfFlhund);
+      window.console.log(halfSlhund);
+      window.console.log(altFl1);
+      window.console.log(altSl1);
+      window.console.log(altFl2);
+      window.console.log(altSl2);
 
     ////////////////////////////////////////////////////////
 
@@ -84,7 +100,55 @@ $(document).ready(function() {
       var randomImages = ["images/pic1.jpg", 
                           "images/pic2.jpg",
                           "images/pic3.jpg",
-                          "images/pic4.jpg"];
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg",
+                          "images/pic3.jpg",
+                          "images/pic4.jpg",
+                          "images/pic1.jpg", 
+                          "images/pic2.jpg"];
 
       var extraImg = ["images/red-stump.jpg",
                       "images/red-stump-2.jpg",
@@ -93,7 +157,51 @@ $(document).ready(function() {
                       "images/stump-3.jpg", 
                       "images/cement.jpg",
                       "images/concrete-2.jpg",
-                      "images/concrete-3.jpg"];
+                      "images/concrete-3.jpg",
+                      "images/red-stump.jpg",
+                      "images/red-stump-2.jpg",
+                      "images/weeds.jpg",
+                      "images/stump-2.jpg",
+                      "images/stump-3.jpg", 
+                      "images/cement.jpg",
+                      "images/concrete-2.jpg",
+                      "images/concrete-3.jpg",
+                      "images/red-stump.jpg",
+                      "images/red-stump-2.jpg",
+                      "images/weeds.jpg",
+                      "images/stump-2.jpg",
+                      "images/stump-3.jpg", 
+                      "images/cement.jpg",
+                      "images/concrete-2.jpg",
+                      "images/concrete-3.jpg",
+                      "images/cement.jpg",
+                      "images/stump-3.jpg",
+                      "images/red-stump.jpg",
+                      "images/red-stump-2.jpg",
+                      "images/weeds.jpg",
+                      "images/stump-2.jpg",
+                      "images/stump-3.jpg", 
+                      "images/cement.jpg",
+                      "images/concrete-2.jpg",
+                      "images/concrete-3.jpg",
+                      "images/red-stump.jpg",
+                      "images/red-stump-2.jpg",
+                      "images/weeds.jpg",
+                      "images/stump-2.jpg",
+                      "images/stump-3.jpg", 
+                      "images/cement.jpg",
+                      "images/concrete-2.jpg",
+                      "images/concrete-3.jpg",
+                      "images/red-stump.jpg",
+                      "images/red-stump-2.jpg",
+                      "images/weeds.jpg",
+                      "images/stump-2.jpg",
+                      "images/stump-3.jpg", 
+                      "images/cement.jpg",
+                      "images/concrete-2.jpg",
+                      "images/concrete-3.jpg",
+                      "images/cement.jpg",
+                      "images/stump-3.jpg"];
 
       var grids = ["images/grid-lg.png",
                    "images/grid-md.png",
@@ -114,7 +222,7 @@ $(document).ready(function() {
 
       // FUNCTIONS
 
-      //F1
+      //F1 - 
 
       function bkg (imgObj, image, x, y) {
 
@@ -125,37 +233,14 @@ $(document).ready(function() {
         imgObj.src = image;
       }
 
-      //F2
-
+      //F2 - first name length = width, last name length = height, add '00' (etc.) on to the end
+      //F2 - color = value of second letter
+      //F2 - x = cw - length of something etc.
       function rectangle (color, x, y, width, height) {
           ctx.fillStyle = color;
           ctx.fillRect(x, y, width, height);
 
       } 
-
-      //F3
-
-      // function square (x, y) {
-
-              
-
-      // }, 
-
-      // //F4
-
-      function customRect (x, y, width, height) {
-
-        if (nameInt[2] > 100) {
-          ctx.fillStyle = colors[0];
-          ctx.fillRect(x, y, width, height);
-        } else {
-          ctx.fillStyle = colors[1];
-          ctx.fillRect(y, x, height, width);
-        }
-
-      } 
-
-      // //F5
 
       function pixels() {
         var imgData = ctx.getImageData(0, 0, 100, 100);
@@ -163,7 +248,7 @@ $(document).ready(function() {
         ctx.putImageData(imgData, 200, 200);
       }
 
-      var fns1 = [bkg, rectangle, customRect, pixels];
+      var fns1 = [bkg, rectangle, pixels];
 
       // CREATE OBJECT TO HOLD DATA
 
@@ -173,7 +258,11 @@ $(document).ready(function() {
         val: nameInt,
         lastN: secondLett,
         firstL: firstLeng,
-        secL: secLeng
+        secL: secLeng,
+        flhund: flhund,
+        slhund: slhund,
+        halfFlhund: halfFlhund,
+        halfSlhund: halfSlhund
       };
 
       window.console.log(finalObj.name);
