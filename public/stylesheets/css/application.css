@@ -119,7 +119,7 @@ html {
             margin: 0 auto;
             padding: 18px 0px;
             margin-top: 85px;
-            opacity: 0;
+            opacity: 1;
             transition: all 0.3s cubic-bezier(0.43, 0.29, 0.22, 0.96);
             -webkit-transition: all 0.3s cubic-bezier(0.43, 0.29, 0.22, 0.96);
             -moz-transition: all 0.3s cubic-bezier(0.43, 0.29, 0.22, 0.96); }
