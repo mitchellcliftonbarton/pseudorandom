@@ -2,20 +2,13 @@ $(document).ready(function() {
 
   // CREATE CANVAS ELEMENTS
 
-  var opacity;
+  
   var nameVarz = [];
 
   var c = document.getElementById('img-generation');
   var ctx = c.getContext('2d');
   var cw = c.width;
   var ch = c.height;
-  var colors = ['rgba(252, 110, 110, ' + opacity + ')',
-                'rgba(40, 231, 93, ' + opacity + ')',
-                'rgba(49, 146, 255, ' + opacity + ')',
-                'rgba(255, 195, 250, ' + opacity + ')',
-                'rgba(28, 23, 103, ' + opacity + ')'];
-
-  window.console.log(colors);
 
   //random images array
   var pic1 = new Image();
@@ -134,13 +127,13 @@ $(document).ready(function() {
                "images/grid-xl.png",
                "images/grid-xxl.png"];
 
-  var composite = ["lighten",
-                   "darken",
-                   "multiply",
-                   "screen",
-                   "xor",
-                   "destination-over",
-                   "overlay"];
+  // var composite = ["source-over",
+  //                  "lighter",
+  //                  "lighten",
+  //                  "darken",
+  //                  "multiply",
+  //                  "screen",
+  //                  "overlay"];
 
 ////////////////////////////////////////////////////////////
 
@@ -178,6 +171,8 @@ $(document).ready(function() {
       var space = nameInt.indexOf(32);
       var firstLett = nameInt[0];
       var secondLett = nameInt[space + 1];
+      var flnum = firstLett - 65;
+      var slnum = secondLett - 65;
       var firstLeng = space;
       var secLeng = (nl - space) - 1;
       var flhund = firstLeng * 100;
@@ -190,6 +185,7 @@ $(document).ready(function() {
       var altSl2 = slhund * 0.75;
       var avg = total / nl;
       var dupe;
+      // var comp = ctx.globalCompositeOperation;
 
     ////////////////////////////////////////////////////////
 
@@ -215,6 +211,15 @@ $(document).ready(function() {
 
       }());
 
+      var opacity;
+      var colors = ['rgba(252, 110, 110, ' + opacity + ')',
+                'rgba(40, 231, 93, ' + opacity + ')',
+                'rgba(49, 146, 255, ' + opacity + ')',
+                'rgba(255, 195, 250, ' + opacity + ')',
+                'rgba(28, 23, 103, ' + opacity + ')'];
+
+      window.console.log(colors);
+
       // Check to see if there are duplicates
 
       (function() {
@@ -231,26 +236,27 @@ $(document).ready(function() {
 
       // variable array
 
-      nameVarz.push(firstLett, secondLett, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe);
+      nameVarz.push(flnum, slnum, firstLett, secondLett, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe);
       
     ///////////////////////////////////////////////////////
 
-      // function thisisit() {
-      //   fns1[0](pic1, extraImg)
-      // }
-      
-      if (nameInt[1] >= 105 && nameInt[1] < 114) {
-        fns1[0](pic1, extraImg[0], 0, 0);
-        if (name.length > 2) {
-          ctx.globalCompositeOperation=composite[1];
-          // fns1[1](colors[nl % colors.length], nameInt[2] * 2, nameInt[3] * 4, cw * 0.75, ch * 0.56);
-        }
+      (function() {
+        bkg(pic1, extraImg[flnum], 0, 0);
+        
+        // // comp=composite[5];
+        layer(pic2, randomImages[flnum], 100, 100, 500, 335);
 
-        if (name.length > 5) {
-          fns1[0](pic2, randomImages[1], 100, 100);
+        setTimeout(function() {
+          changeColor();
+        }, 1000);
+        // comp=composite[5];
+        // cutPaste(pic3, extraImg[slnum], 100, 100, 200, 300, 100, 200, 200, 300);
+        // comp=composite[5];
+        // // cutPasteOrig(200, 200, 250, 350, 200, 300, 250, 350);
 
-        }
-      }
+        // rectangleShad(colors[1], 200, 300, 200, 300);
+        // gradient();
+      }());
 
       
       
@@ -264,6 +270,7 @@ $(document).ready(function() {
         }
 
       window.console.log(nameVarz);
+      window.console.log(nameInt);
 
       setTimeout(function() {
         callback();
@@ -277,12 +284,22 @@ $(document).ready(function() {
     
   // FUNCTIONS
 
-    //F1 - 
+    //F1 
 
     function bkg (imgObj, image, x, y) {
 
       imgObj.onload = function() {
         ctx.drawImage(imgObj, x, y);
+      };
+
+      imgObj.src = image;
+      
+    }
+
+    function layer (imgObj, image, x, y, width, height) {
+
+      imgObj.onload = function() {
+        ctx.drawImage(imgObj, x, y, width, height);
       };
 
       imgObj.src = image;
@@ -297,11 +314,81 @@ $(document).ready(function() {
 
     } 
 
-    function cutPaste() {
+    // function rec () {
+    //     ctx.fillStyle = 'red';
+    //     ctx.fillRect(100, 100, 200, 200);
+
+    // } 
+
+    function clearRect() {
+      ctx.clearRect(20, 20, 100, 100);
+    }
+
+    function strokeRect() {
+      ctx.strokeStyle = "green";
+      ctx.strokeRect(200, 200, 200, 200);
+    }
+
+    // function pattern() {
+    //   var imgData = ctx.getImageData(0, 0, cw, ch);
+    //   var data = imgData.data;
+    //   ctx.createPattern(data);
+    // }
+
+    function changeColor() {
+      var imgData = ctx.getImageData(0, 0, cw, ch);
+      var data = imgData.data;
+      window.console.log(data);
+
+      function invert() {
+        for (var i = 0; i < data.length; i += 4) {
+          data[i]     = 255 - data[i];     // red
+          data[i + 1] = 255 - data[i + 1]; // green
+          data[i + 2] = 255 - data[i + 2]; // blue
+        }
+        ctx.putImageData(imgData, 0, 0);
+      }
+
+      invert();
+    }
+
+    ////how to apply to only one?????
+    function rectangleShad (color, x, y, width, height) {
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = "black";
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, width, height);
+    } 
+
+    function cutPaste(imgObj, image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight) {
+      imgObj.onload = function() {
+        ctx.drawImage(imgObj, sx, sy, swidth, sheight, dx, dy, dwidth, dheight);
+      };
+
+      imgObj.src = image;
+    }
+
+    ////??????????????????
+    function cutPasteOrig(sx, sy, swidth, sheight, dx, dy, dwidth, dheight) {
+      ctx.drawImage(ctx.canvas, sx, sy, swidth, sheight, dx, dy, dwidth, dheight);
+    }
+
+    function gradient() {
+      var grd=ctx.createLinearGradient(0,0,170,0);
+      grd.addColorStop(0,"black");
+      grd.addColorStop(1,"white");
+
+      ctx.fillStyle=grd;
+      ctx.fillRect(20,20,150,100);
 
     }
 
-    function blur() {
+    function overlay(color, width, height) {
+      ctx.fillStyle = color;
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    function transform() {
 
     }
 
@@ -309,10 +396,10 @@ $(document).ready(function() {
       var imgData = ctx.getImageData(0, 0, cw, ch);
       var data = imgData.data;
       window.console.log( data);
-      ctx.putImageData(imgData, -100, 200);
+      ctx.putImageData(imgData, 0, 0);
     }
 
-    var fns1 = [bkg, rectangle, pixels, cutPaste, blur];
+    var fns1 = [bkg, layer, rectangle, clearRect, strokeRect, rectangleShad, pixels, cutPaste, cutPasteOrig, gradient, overlay, transform];
 
     // CREATE OBJECT TO HOLD DATA
 
