@@ -6,6 +6,7 @@ $(document).ready(function() {
   var nameVarz = [];
   var oColor = [];
   var position = [];
+  var negPos = [];
   var nameInt = [];
   var incr = [];
   var color = ['rgb(252, 110, 110)',
@@ -197,9 +198,17 @@ $(document).ready(function() {
                 'rgba(40, 231, 93, ' + opacity + ')',
                 'rgba(49, 146, 255, ' + opacity + ')',
                 'rgba(255, 195, 250, ' + opacity + ')',
-                'rgba(28, 23, 103, ' + opacity + ')'];
+                'rgba(28, 23, 103, ' + opacity + ')',
+                'rgba(255, 0, 0, ' + opacity + ')',
+                'rgba(255, 102, 0, ' + opacity + ')',
+                'rgba(255, 240, 0, ' + opacity + ')',
+                'rgba(96, 214, 196, ' + opacity + ')',
+                'rgba(50, 60, 103, ' + opacity + ')',
+                'rgba(88, 64, 73, ' + opacity + ')',
+                'rgba(206, 180, 190, ' + opacity + ')',
+                'rgba(243, 255, 162, ' + opacity + ')'];
 
-      oColor.push(colors[0], colors[1], colors[2], colors[3], colors[4]);
+      oColor.push(colors[0], colors[1], colors[2], colors[3], colors[4], colors[5], colors[6], colors[7], colors[8], colors[9], colors[10], colors[11], colors[12]);
 
       // Check to see if there are duplicates
 
@@ -219,6 +228,7 @@ $(document).ready(function() {
 
       nameVarz.push(flnum, slnum, firstLett, secondLett, nl, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe, sum);
       position.push(xpos1, ypos1, xpos2, ypos2, xlss1, ylss1, xlss2, ylss2, xmr1, ymr1, xmr2, ymr2);
+      negPos.push(xpos1 * -1, xpos1, ypos1 * -1, ypos1, xpos2 * -1, xpos2, ypos2 * -1, ypos2, xlss1 * -1, xlss1, ylss1 * -1, ylss1, xlss2 * -1, xlss2, ylss2 * -1, ylss2, xmr1 * -1, xmr1, ymr1 * -1, ymr1, xmr2 * -1, xmr2, ymr2 * -1, ymr2);
 
       var incr1 = nameVarz[0] * 0.01;
       var incr2 = nameVarz[0] * 0.1;
@@ -445,43 +455,23 @@ $(document).ready(function() {
       pic3.src = grids[nameVarz[6] % grids.length];
     }
 
-    //F2 - first name length = width, last name length = height, add '00' (etc.) on to the end
-    //F2 - color = value of second letter
-    //F2 - x = cw - length of something etc.
+    ///////// Rectangle Function
+
     function rectangle (array) {
       ctx.fillStyle = color[nameVarz[0] % color.length];
       ctx.fillRect(position[nameInt[0] % position.length], position[nameInt[1] % position.length], position[nameInt[2] % position.length], position[nameInt[3] % position.length]);
       array[++array[0]](array);
-      
-
-      // if (nameVarz[17] <= 700) {
-
-        
-
-      // } else if (nameVarz[17] > 700 && nameVarz[17] <= 850) {
-
-        
-
-      // } else if (nameVarz[17] > 850 && nameVarz[17] <= 1000) {
-
-        
-
-      // } else if (nameVarz[17] > 1000) {
-
-        
-
-      // } else {
-
-        
-
-      // }
 
     } 
+
+    ////////// Clear Rectangle Function
 
     function clearRect(array) {
       ctx.clearRect(position[1], position[2], position[3], position[0]);
       array[++array[0]](array);
     }
+
+    ////////// Stroked Rectangle Function
 
     function strokeRect(array) {
       ctx.strokeStyle = color[nameVarz[2] % color.length];
@@ -489,6 +479,8 @@ $(document).ready(function() {
 
       array[++array[0]](array);
     }
+
+    ///////////// Change Color Function
 
     function changeColor(array) {
       
@@ -521,7 +513,8 @@ $(document).ready(function() {
       }
     }
 
-    ////how to apply to only one?????
+    ////////// Draw a rectangle with a shadow 
+
     function rectangleShad (array) {
         ctx.shadowBlur = 20;
         ctx.shadowColor = color[nameVarz[3] % color.length];
@@ -531,7 +524,8 @@ $(document).ready(function() {
         array[++array[0]](array);
     } 
 
-    //add for loop
+    //////// Cut and Paste from a different image
+
     function cutPaste(array) {
 
       /////find img choice
@@ -549,50 +543,111 @@ $(document).ready(function() {
       }
 
       function paste (p1, p2, p3, p4, p5, p6) {
+        var i;
+        var coord = [position[nameVarz[3] % position.length], 
+                     position[nameVarz[4] % position.length],
+                     position[nameVarz[3] % position.length] * 2,
+                     position[nameVarz[4] % position.length] * 2,
+                     position[nameVarz[3] % position.length] * -1,
+                     position[nameVarz[4] % position.length] * -1,
+                     position[nameVarz[3] % position.length] * -2,
+                     position[nameVarz[4] % position.length] * -2];
+
         pic3.onload = function() {
-          for (var i = 0; i < nameVarz[5]; i++) {
-            ctx.drawImage(pic3, p1, p2, p3, p4, (i * incr[nameVarz[1] % incr.length]) * 0.1, (i * incr[nameVarz[1] % incr.length]) * 0.1, p5, p6);
-            window.console.log('im working');
+
+          var xcor = coord[nameVarz[5] % coord.length];
+          var ycor = coord[nameVarz[6] % coord.length];
+
+          function draw() {
+            ctx.drawImage(pic3, p1, p2, p3, p4, xcor, ycor, p5, p6);
+          }
+
+          draw();
+
+          for (i = 2; i < nameVarz[5]; i++) {
+            ctx.drawImage(pic3, p1, p2, p3, p4, (i * xcor * incr[1]), (i * ycor * incr[1]), p5, p6);
           }
           
           array[++array[0]](array);
         };
       }
 
-      paste(300, 300, 300, 300, 300, 300);
-
-      // pic3.onload = function() {
-      //   for (var i = 0; i < nameVarz[5]; i++) {
-      //     ctx.drawImage(pic3, 100, 100, 200, 200, (i * 250) * 0.1, (i * 250) * 0.1, 200, 200);
-      //   }
-        
-      //   array[++array[0]](array);
-      // };
-
-
+      paste(position[nameVarz[2] % position.length], position[nameVarz[2] % position.length], position[nameVarz[2] % position.length], position[nameVarz[2] % position.length], position[nameVarz[2] % position.length], position[nameVarz[2] % position.length]);
 
       pic3.src = imgChoice;
     }
 
-    ////?????????????????? add for loop
+    ////////// Cut and Paste from canvas
+
     function cutPasteOrig(array) {
-      ctx.drawImage(ctx.canvas, 100, 100, 200, 200, 250, 250, 200, 200);
-      array[++array[0]](array);
+      function paste (p1, p2, p3, p4, p5, p6) {
+        var i;
+        var coord = [position[nameVarz[4] % position.length], 
+                     position[nameVarz[5] % position.length],
+                     position[nameVarz[4] % position.length] * 2,
+                     position[nameVarz[5] % position.length] * 2,
+                     position[nameVarz[4] % position.length] * -1,
+                     position[nameVarz[5] % position.length] * -1,
+                     position[nameVarz[4] % position.length] * -2,
+                     position[nameVarz[5] % position.length] * -2];
+
+        var xcor = coord[nameVarz[6] % coord.length];
+        var ycor = coord[nameVarz[7] % coord.length];
+
+        function draw() {
+          ctx.drawImage(ctx.canvas, p1, p2, p3, p4, xcor, ycor, p5, p6);
+        }
+
+        draw();
+
+        for (i = 2; i < nameVarz[5]; i++) {
+          ctx.drawImage(ctx.canvas, p1, p2, p3, p4, (i * xcor * incr[1]), (i * ycor * incr[1]), p5, p6);
+        }
+        
+        array[++array[0]](array);
+      }
+
+      paste(position[nameVarz[3] % position.length], position[nameVarz[4] % position.length], position[nameVarz[5] % position.length], position[nameVarz[2] % position.length], position[nameVarz[3] % position.length], position[nameVarz[4] % position.length]);
+
     }
 
-    function gradient() {
-      var grd=ctx.createLinearGradient(0,0,170,0);
+    function gradient(array) {
+      var stops = [0,
+                   nameVarz[11],
+                   0,
+                   nameVarz[12],
+                   0];
+      var fades = ["#fff",
+                   color[nameVarz[0] % color.length],
+                   "#fff",
+                   color[nameVarz[1] % color.length]];
+
+      var grd=ctx.createLinearGradient(stops[nameVarz[0] % stops.length], stops[nameVarz[1] % stops.length], stops[nameVarz[3] % stops.length], stops[nameVarz[4] % stops.length]);
       grd.addColorStop(0, color[nameVarz[0] % color.length]);
-      grd.addColorStop(1, "white");
+      grd.addColorStop(1, fades[nameVarz[3] % fades.length]);
 
       ctx.fillStyle=grd;
-      ctx.fillRect(position[1],position[1],150,100);
+      ctx.fillRect(position[nameVarz[7] % position.length], position[nameVarz[7] % position.length], negPos[nameVarz[7] % negPos.length], negPos[nameVarz[8] % negPos.length]);
+      
+      array[++array[0]](array);
 
     }
 
     function overlay() {
-      ctx.fillStyle = color[2];
-      ctx.fillRect(0, 0, cw, ch);
+      var covers = [cw,
+                    ch,
+                    cw / 2,
+                    ch / 2,
+                    cw / 4,
+                    ch / 4,
+                    cw * 0.75,
+                    ch * 0.75,
+                    cw / 5,
+                    ch / 5];
+
+      ctx.fillStyle = oColor[2];
+      ctx.fillRect(covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length]);
+      window.console.log('overlay');
 
     }
 
@@ -614,7 +669,7 @@ $(document).ready(function() {
 
     var fnz1 = [1, bkg, layer, rectangle, gridz, clearRect, gradient];
     var fnz2 = [1, bkg, layer, rectangleShad, rectangle, cutPaste];
-    var fnz3 = [1, bkg, layer, cutPaste, gridz, changeColor, gradient, rectangle, overlay];
+    var fnz3 = [1, bkg, layer, cutPasteOrig, cutPaste, gradient, overlay, changeColor, gradient, rectangle, overlay];
     var fnz4 = [1, bkg, layer, changeColor, rectangle];
     var fnz5 = [1, bkg, layer, cutPasteOrig, rectangle, changeColor];
     
