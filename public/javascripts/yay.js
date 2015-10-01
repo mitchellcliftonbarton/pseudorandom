@@ -4,11 +4,37 @@ $(document).ready(function() {
 
   
   var nameVarz = [];
+  var oColor = [];
+  var position = [];
+  var nameInt = [];
+  var incr = [];
+  var color = ['rgb(252, 110, 110)',
+                'rgb(40, 231, 93)',
+                'rgb(49, 146, 255)',
+                'rgb(255, 195, 250)',
+                'rgb(28, 23, 103)',
+                'rgb(255, 0, 0)',
+                'rgb(255, 102, 0)',
+                'rgb(255, 240, 0)',
+                'rgb(96, 214, 196)',
+                'rgb(50, 60, 103)',
+                'rgb(88, 64, 73)',
+                'rgb(206, 180, 190)',
+                'rgb(243, 255, 162)'];
+
 
   var c = document.getElementById('img-generation');
   var ctx = c.getContext('2d');
   var cw = c.width;
   var ch = c.height;
+  // var width1 = cw * 0.4;
+  // var width2 = cw / 2;
+  // var width3 = cw * 0.75;
+  // var height1 = ch * 0.4;
+  // var height2 = ch / 2;
+  // var height3 = ch * 0.75;
+
+
 
   //random images array
   var pic1 = new Image();
@@ -19,54 +45,28 @@ $(document).ready(function() {
                       "images/pic2.jpg",
                       "images/pic3.jpg",
                       "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg",
-                      "images/pic3.jpg",
-                      "images/pic4.jpg",
-                      "images/pic1.jpg", 
-                      "images/pic2.jpg"];
+                      "images/pic5.jpg", 
+                      "images/pic6.jpg",
+                      "images/pic7.jpg",
+                      "images/pic8.jpg",
+                      "images/pic9.jpg", 
+                      "images/pic10.jpg",
+                      "images/pic11.jpg",
+                      "images/pic12.jpg",
+                      "images/pic13.jpg", 
+                      "images/pic14.jpg",
+                      "images/pic15.jpg",
+                      "images/pic16.jpg",
+                      "images/pic17.jpg", 
+                      "images/pic18.jpg",
+                      "images/pic19.jpg",
+                      "images/pic20.jpg",
+                      "images/pic21.jpg", 
+                      "images/pic22.jpg",
+                      "images/pic23.jpg",
+                      "images/pic24.jpg",
+                      "images/pic25.jpg", 
+                      "images/pic26.jpg"];
 
   var extraImg = ["images/red-stump.jpg",
                   "images/red-stump-2.jpg",
@@ -76,50 +76,19 @@ $(document).ready(function() {
                   "images/cement.jpg",
                   "images/concrete-2.jpg",
                   "images/concrete-3.jpg",
-                  "images/red-stump.jpg",
-                  "images/red-stump-2.jpg",
-                  "images/weeds.jpg",
-                  "images/stump-2.jpg",
-                  "images/stump-3.jpg", 
-                  "images/cement.jpg",
-                  "images/concrete-2.jpg",
-                  "images/concrete-3.jpg",
-                  "images/red-stump.jpg",
-                  "images/red-stump-2.jpg",
-                  "images/weeds.jpg",
-                  "images/stump-2.jpg",
-                  "images/stump-3.jpg", 
-                  "images/cement.jpg",
-                  "images/concrete-2.jpg",
-                  "images/concrete-3.jpg",
-                  "images/cement.jpg",
-                  "images/stump-3.jpg",
-                  "images/red-stump.jpg",
-                  "images/red-stump-2.jpg",
-                  "images/weeds.jpg",
-                  "images/stump-2.jpg",
-                  "images/stump-3.jpg", 
-                  "images/cement.jpg",
-                  "images/concrete-2.jpg",
-                  "images/concrete-3.jpg",
-                  "images/red-stump.jpg",
-                  "images/red-stump-2.jpg",
-                  "images/weeds.jpg",
-                  "images/stump-2.jpg",
-                  "images/stump-3.jpg", 
-                  "images/cement.jpg",
-                  "images/concrete-2.jpg",
-                  "images/concrete-3.jpg",
-                  "images/red-stump.jpg",
-                  "images/red-stump-2.jpg",
-                  "images/weeds.jpg",
-                  "images/stump-2.jpg",
-                  "images/stump-3.jpg", 
-                  "images/cement.jpg",
-                  "images/concrete-2.jpg",
-                  "images/concrete-3.jpg",
-                  "images/cement.jpg",
-                  "images/stump-3.jpg"];
+                  "images/costarica-1.jpg",
+                  "images/costarica-2.jpg",
+                  "images/costarica-3.jpg",
+                  "images/costarica-4.jpg",
+                  "images/crop.jpg",
+                  "images/root.jpg",
+                  "images/seashells.jpg",
+                  "images/timp-1.jpg",
+                  "images/timp-2.jpg",
+                  "images/timp-3.jpg",
+                  "images/timp-4.jpg",
+                  "images/timp-5.jpg",
+                  "images/timp-6.jpg"];
 
   var grids = ["images/grid-lg.png",
                "images/grid-md.png",
@@ -156,7 +125,6 @@ $(document).ready(function() {
       document.getElementById('form').reset();
 
       // CREATE EMPTY ARRAY WITH CONVERTED LETTERS
-      var nameInt = [];
       var nl = name.length;
       var total = 0;
       
@@ -185,6 +153,19 @@ $(document).ready(function() {
       var altSl2 = slhund * 0.75;
       var avg = total / nl;
       var dupe;
+      var xpos1 = 36 * flnum;
+      var xpos2 = 36 * slnum;
+      var ypos1 = 20 * flnum;
+      var ypos2 = 20 * slnum;
+      var sum = flnum + slnum;
+      var xlss1 = xpos1 * 0.75;
+      var xlss2 = xpos2 * 0.75;
+      var ylss1 = ypos1 * 0.75;
+      var ylss2 = ypos2 * 0.75;
+      var xmr1 = xpos1 * 1.25;
+      var xmr2 = xpos2 * 1.25;
+      var ymr1 = ypos1 * 1.25;
+      var ymr2 = ypos2 * 1.25;
       // var comp = ctx.globalCompositeOperation;
 
     ////////////////////////////////////////////////////////
@@ -218,7 +199,7 @@ $(document).ready(function() {
                 'rgba(255, 195, 250, ' + opacity + ')',
                 'rgba(28, 23, 103, ' + opacity + ')'];
 
-      window.console.log(colors);
+      oColor.push(colors[0], colors[1], colors[2], colors[3], colors[4]);
 
       // Check to see if there are duplicates
 
@@ -236,41 +217,95 @@ $(document).ready(function() {
 
       // variable array
 
-      nameVarz.push(flnum, slnum, firstLett, secondLett, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe);
-      
+      nameVarz.push(flnum, slnum, firstLett, secondLett, nl, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe, sum);
+      position.push(xpos1, ypos1, xpos2, ypos2, xlss1, ylss1, xlss2, ylss2, xmr1, ymr1, xmr2, ymr2);
+
+      var incr1 = nameVarz[0] * 0.01;
+      var incr2 = nameVarz[0] * 0.1;
+      var incr3 = nameVarz[0];
+      var incr4 = nameVarz[0] * 10;
+      var incr5 = nameVarz[0] * 100;
+      incr.push(incr1, incr2, incr3, incr4, incr5);
+      window.console.log(incr);
     ///////////////////////////////////////////////////////
 
       (function() {
-        bkg(pic1, extraImg[flnum], 0, 0);
-        
-        // // comp=composite[5];
-        layer(pic2, randomImages[flnum], 100, 100, 500, 335);
-
-        setTimeout(function() {
-          changeColor();
-        }, 1000);
-        // comp=composite[5];
-        // cutPaste(pic3, extraImg[slnum], 100, 100, 200, 300, 100, 200, 200, 300);
-        // comp=composite[5];
-        // // cutPasteOrig(200, 200, 250, 350, 200, 300, 250, 350);
-
-        // rectangleShad(colors[1], 200, 300, 200, 300);
-        // gradient();
-      }());
-
-      
-      
-      // var dataUrl = c.toDataURL("image/jpeg", 1.0);
-      // window.console.log(dataUrl);
-      // localStorage.setItem(name, dataUrl);
-      // $.post("save-image.js", dataUrl);
-
-      if (name.length > 130) {
-          fns1[0](pic3, grids[1], cw * 0.75, ch * 0.85);
+        if (nameVarz[0] < 6 && nameVarz[1] < 6) {
+          caller(steps[0]);
         }
+
+        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
+          caller(steps[1]);
+        }
+
+        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
+          caller(steps[2]);
+        }
+
+        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
+          caller(steps[3]);
+        }
+
+        ////
+
+        if (nameVarz[0] < 6 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
+          caller(steps[4]);
+        }
+
+        if (nameVarz[0] < 6 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
+          caller(nextSteps[0]);
+        }
+
+        if (nameVarz[0] < 6 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
+          caller(nextSteps[1]);
+        }
+
+        ////
+
+        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] < 6) {
+          caller(nextSteps[2]);
+        }
+
+        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
+          caller(nextSteps[3]);
+        }
+
+        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
+          caller(nextSteps[4]);
+        }
+
+        /////
+
+        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] < 6) {
+          caller(steps[0]);
+        }
+
+        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
+          caller(steps[1]);
+        }
+
+        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
+          caller(steps[2]);
+        }
+
+        /////
+
+        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] < 6) {
+          caller(nextSteps[0]);
+        }
+
+        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
+          caller(nextSteps[2]);
+        }
+
+        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
+          caller(nextSteps[2]);
+        }
+      }());
 
       window.console.log(nameVarz);
       window.console.log(nameInt);
+      window.console.log(position);
 
       setTimeout(function() {
         callback();
@@ -283,138 +318,308 @@ $(document).ready(function() {
 //////////////////////////////////////////////////////////////
     
   // FUNCTIONS
+    var imgChoice;
 
-    //F1 
-
-    function bkg (imgObj, image, x, y) {
-
-      imgObj.onload = function() {
-        ctx.drawImage(imgObj, x, y);
-      };
-
-      imgObj.src = image;
-      
+    //////// Initial Function
+    function caller(array) {
+      array[1] (array);
     }
 
-    function layer (imgObj, image, x, y, width, height) {
+    //////// Background Function
 
-      imgObj.onload = function() {
-        ctx.drawImage(imgObj, x, y, width, height);
+    function bkg (array) {
+
+      ///////find img choice
+
+      if (nameVarz[17] >= 1050 && nameVarz[0] >= 13) {
+        imgChoice = randomImages[nameVarz[0] % randomImages.length];
+      } else if (nameVarz[17] <= 1049 && nameVarz[0] <= 12){
+        imgChoice = extraImg[nameVarz[0] % extraImg.length];
+      } else if (nameVarz[17] <= 1049 && nameVarz[0] >= 13){
+        imgChoice = randomImages[nameVarz[1] % randomImages.length];
+      } else if (nameVarz[17] >= 1050 && nameVarz[0] <= 12){
+        imgChoice = extraImg[nameVarz[1] % extraImg.length];
+      } else {
+        imgChoice = extraImg[nameVarz[3] % extraImg.length];
+      }
+
+      pic1.onload = function() {
+        ctx.drawImage(pic1, 0, 0);
+        array[++array[0]](array);
+        
       };
 
-      imgObj.src = image;
+      pic1.src = imgChoice;
+    }
+
+    //////// Layer Function
+
+    function layer (array) {
+
+      var width;
+      var height;
+
+      ///////find img choice
+
+      if (nameVarz[4] >= 11 && nameVarz[0] >= 13) {
+        imgChoice = randomImages[nameVarz[0] % randomImages.length];
+      } else if (nameVarz[4] <= 10 && nameVarz[0] <= 12){
+        imgChoice = extraImg[nameVarz[0] % extraImg.length];
+      } else if (nameVarz[4] <= 10 && nameVarz[0] >= 13){
+        imgChoice = randomImages[nameVarz[1] % randomImages.length];
+      } else if (nameVarz[4] >= 11 && nameVarz[0] <= 12){
+        imgChoice = extraImg[nameVarz[1] % extraImg.length];
+      } else {
+        imgChoice = extraImg[nameVarz[3] % extraImg.length];
+      }
+
+      //////// find width
+
+      if (nameVarz[0] >= 11 && nameVarz[1] >= 13) {
+        width = 250;
+      } else if (nameVarz[0] <= 10 && nameVarz[1] <= 12){
+        width = 500;
+      } else if (nameVarz[0] <= 10 && nameVarz[1] >= 13){
+        width = 750;
+      } else if (nameVarz[0] >= 11 && nameVarz[1] <= 12){
+        width = 1000;
+      } else {
+        width = 900;
+      }
+
+      /////find height
+
+      if (nameVarz[4] >= 11 && nameVarz[1] >= 13) {
+        height = 250;
+      } else if (nameVarz[4] <= 10 && nameVarz[1] <= 12){
+        height = 500;
+      } else if (nameVarz[4] <= 10 && nameVarz[1] >= 13){
+        height = 750;
+      } else if (nameVarz[4] >= 11 && nameVarz[1] <= 12){
+        height = 1000;
+      } else {
+        height = 900;
+      }
+
+      /////function
+
+      function picture (p1, p2) {
+        pic2.onload = function() {
+          ctx.drawImage(pic2, p1, p2, width, height);
+          array[++array[0]](array);
+        };
+
+        pic2.src = imgChoice;
+      }
+
+      /////conditions
+
+      if (nameVarz[5] >= 8 && nameVarz[6] >= 8) {
+
+        picture(position[nameVarz[5] % position.length], position[nameVarz[5] % position.length]);
+      } else if (nameVarz[5] >= 8 && nameVarz[6] <= 8) {
+
+        picture(position[nameVarz[5] % position.length] * -1, position[nameVarz[5] % position.length]);
+      } else if (nameVarz[5] <= 7 && nameVarz[6] <= 7) {
+
+        picture(position[nameVarz[5] % position.length] * -1, position[nameVarz[5] % position.length] * -1);
+      } else if (nameVarz[5] <= 8 && nameVarz[6] >= 8) {
+
+        picture(position[nameVarz[5] % position.length], position[nameVarz[5] % position.length] * -1);
+      } else {
+        //// ADD SOMETHING DIFFERENT HERE
+        rectangle();
+        window.alert.log('i didnt work!!');
+      }
+    }
+
+    //////// Grid Function
+
+    function gridz (array) {
+      pic3.onload = function() {
+        ctx.drawImage(pic3, position[nameVarz[6] % position.length], position[nameVarz[5] % position.length]);
+        array[++array[0]](array);
+        
+      };
+
+      pic3.src = grids[nameVarz[6] % grids.length];
     }
 
     //F2 - first name length = width, last name length = height, add '00' (etc.) on to the end
     //F2 - color = value of second letter
     //F2 - x = cw - length of something etc.
-    function rectangle (color, x, y, width, height) {
-        ctx.fillStyle = color;
-        ctx.fillRect(x, y, width, height);
+    function rectangle (array) {
+      ctx.fillStyle = color[nameVarz[0] % color.length];
+      ctx.fillRect(position[nameInt[0] % position.length], position[nameInt[1] % position.length], position[nameInt[2] % position.length], position[nameInt[3] % position.length]);
+      array[++array[0]](array);
+      
+
+      // if (nameVarz[17] <= 700) {
+
+        
+
+      // } else if (nameVarz[17] > 700 && nameVarz[17] <= 850) {
+
+        
+
+      // } else if (nameVarz[17] > 850 && nameVarz[17] <= 1000) {
+
+        
+
+      // } else if (nameVarz[17] > 1000) {
+
+        
+
+      // } else {
+
+        
+
+      // }
 
     } 
 
-    // function rec () {
-    //     ctx.fillStyle = 'red';
-    //     ctx.fillRect(100, 100, 200, 200);
-
-    // } 
-
-    function clearRect() {
-      ctx.clearRect(20, 20, 100, 100);
+    function clearRect(array) {
+      ctx.clearRect(position[1], position[2], position[3], position[0]);
+      array[++array[0]](array);
     }
 
-    function strokeRect() {
-      ctx.strokeStyle = "green";
-      ctx.strokeRect(200, 200, 200, 200);
+    function strokeRect(array) {
+      ctx.strokeStyle = color[nameVarz[2] % color.length];
+      ctx.strokeRect(position[2], position[3], position[0], position[1]);
+
+      array[++array[0]](array);
     }
 
-    // function pattern() {
-    //   var imgData = ctx.getImageData(0, 0, cw, ch);
-    //   var data = imgData.data;
-    //   ctx.createPattern(data);
-    // }
+    function changeColor(array) {
+      
+      function scheme(p1, p2, p3, p4, p5, p6) {
+        var imgData = ctx.getImageData(p1, p2, p3, p4);
+        var data = imgData.data;
 
-    function changeColor() {
-      var imgData = ctx.getImageData(0, 0, cw, ch);
-      var data = imgData.data;
-      window.console.log(data);
-
-      function invert() {
-        for (var i = 0; i < data.length; i += 4) {
-          data[i]     = 255 - data[i];     // red
-          data[i + 1] = 255 - data[i + 1]; // green
-          data[i + 2] = 255 - data[i + 2]; // blue
+        function invert() {
+          for (var i = 0; i < data.length; i += 4) {
+            data[i]     = 255 - data[i];     // red
+            data[i + 1] = 255 - data[i + 1]; // green
+            data[i + 2] = 255 - data[i + 2]; // blue
+          }
+          ctx.putImageData(imgData, p5, p6);
         }
-        ctx.putImageData(imgData, 0, 0);
+
+        invert();
+
+        array[++array[0]](array);
       }
 
-      invert();
+      if (nameVarz[19] <= 12) {
+        scheme(position[0], position[0], position[nameVarz[1] % position.length], position[nameVarz[1] % position.length], position[nameVarz[0] % position.length], position[nameVarz[0] % position.length]);
+      } else if (nameVarz[19] > 12 && nameVarz[19] <= 24) {
+        scheme(position[0], position[1], position[nameVarz[1] % position.length], position[nameVarz[0] % position.length], position[0], position[0]);
+      } else if (nameVarz[19] > 24 && nameVarz[19] <= 38) {
+        scheme(position[1], position[0], position[nameVarz[0] % position.length], position[nameVarz[1] % position.length], position[nameVarz[0] % position.length], position[nameVarz[1] % position.length]);
+      } else if (nameVarz[19] > 38) {
+        scheme(position[0], position[nameVarz[0] % position.length], position[nameVarz[1] % position.length], position[nameVarz[1] % position.length], position[nameVarz[1] % position.length], position[nameVarz[1] % position.length]);
+      }
     }
 
     ////how to apply to only one?????
-    function rectangleShad (color, x, y, width, height) {
+    function rectangleShad (array) {
         ctx.shadowBlur = 20;
-        ctx.shadowColor = "black";
-        ctx.fillStyle = color;
-        ctx.fillRect(x, y, width, height);
+        ctx.shadowColor = color[nameVarz[3] % color.length];
+        ctx.fillStyle = color[nameVarz[3]];
+        ctx.fillRect(position[nameVarz[2]], position[nameVarz[0]], position[nameVarz[2]], position[nameVarz[1]]);
+
+        array[++array[0]](array);
     } 
 
-    function cutPaste(imgObj, image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight) {
-      imgObj.onload = function() {
-        ctx.drawImage(imgObj, sx, sy, swidth, sheight, dx, dy, dwidth, dheight);
-      };
+    //add for loop
+    function cutPaste(array) {
 
-      imgObj.src = image;
+      /////find img choice
+
+      if (nameVarz[17] <= 700) {
+        imgChoice = randomImages[nameInt[2] % randomImages.length];
+      } else if (nameVarz[17] > 700 && nameVarz[17] <= 850) {
+        imgChoice = extraImg[nameInt[2] % extraImg.length];
+      } else if (nameVarz[17] > 850 && nameVarz[17] <= 1000) {
+        imgChoice = randomImages[nameInt[3] % randomImages.length];
+      } else if (nameVarz[17] > 1000) {
+        imgChoice = extraImg[nameInt[3] % extraImg.length];
+      } else {
+        imgChoice = extraImg[nameInt[0] % extraImg.length];
+      }
+
+      function paste (p1, p2, p3, p4, p5, p6) {
+        pic3.onload = function() {
+          for (var i = 0; i < nameVarz[5]; i++) {
+            ctx.drawImage(pic3, p1, p2, p3, p4, (i * incr[nameVarz[1] % incr.length]) * 0.1, (i * incr[nameVarz[1] % incr.length]) * 0.1, p5, p6);
+            window.console.log('im working');
+          }
+          
+          array[++array[0]](array);
+        };
+      }
+
+      paste(300, 300, 300, 300, 300, 300);
+
+      // pic3.onload = function() {
+      //   for (var i = 0; i < nameVarz[5]; i++) {
+      //     ctx.drawImage(pic3, 100, 100, 200, 200, (i * 250) * 0.1, (i * 250) * 0.1, 200, 200);
+      //   }
+        
+      //   array[++array[0]](array);
+      // };
+
+
+
+      pic3.src = imgChoice;
     }
 
-    ////??????????????????
-    function cutPasteOrig(sx, sy, swidth, sheight, dx, dy, dwidth, dheight) {
-      ctx.drawImage(ctx.canvas, sx, sy, swidth, sheight, dx, dy, dwidth, dheight);
+    ////?????????????????? add for loop
+    function cutPasteOrig(array) {
+      ctx.drawImage(ctx.canvas, 100, 100, 200, 200, 250, 250, 200, 200);
+      array[++array[0]](array);
     }
 
     function gradient() {
       var grd=ctx.createLinearGradient(0,0,170,0);
-      grd.addColorStop(0,"black");
-      grd.addColorStop(1,"white");
+      grd.addColorStop(0, color[nameVarz[0] % color.length]);
+      grd.addColorStop(1, "white");
 
       ctx.fillStyle=grd;
-      ctx.fillRect(20,20,150,100);
+      ctx.fillRect(position[1],position[1],150,100);
 
     }
 
-    function overlay(color, width, height) {
-      ctx.fillStyle = color;
-      ctx.fillRect(0, 0, width, height);
-    }
-
-    function transform() {
+    function overlay() {
+      ctx.fillStyle = color[2];
+      ctx.fillRect(0, 0, cw, ch);
 
     }
+
+    // function transform() {
+
+    // }
 
     function pixels() {   
       var imgData = ctx.getImageData(0, 0, cw, ch);
-      var data = imgData.data;
-      window.console.log( data);
+      // var data = imgData.data;
       ctx.putImageData(imgData, 0, 0);
     }
 
-    var fns1 = [bkg, layer, rectangle, clearRect, strokeRect, rectangleShad, pixels, cutPaste, cutPasteOrig, gradient, overlay, transform];
+    var fns1 = [1, bkg, rectangle, clearRect, layer, gradient];
+    var fns2 = [1, bkg, layer, rectangleShad, gradient, cutPaste];
+    var fns3 = [1, bkg, layer, changeColor, gradient, rectangle];
+    var fns4 = [1, bkg, changeColor, overlay, layer, rectangle, rectangle];
+    var fns5 = [1, bkg, strokeRect, layer, cutPasteOrig, rectangle];
 
-    // CREATE OBJECT TO HOLD DATA
-
-    // var finalObj = {
-    //   name: name,
-    //   nl: nl,
-    //   val: nameInt,
-    //   lastN: secondLett,
-    //   firstL: firstLeng,
-    //   secL: secLeng,
-    //   flhund: flhund,
-    //   slhund: slhund,
-    //   halfFlhund: halfFlhund,
-    //   halfSlhund: halfSlhund
-    // };
+    var fnz1 = [1, bkg, layer, rectangle, gridz, clearRect, gradient];
+    var fnz2 = [1, bkg, layer, rectangleShad, rectangle, cutPaste];
+    var fnz3 = [1, bkg, layer, cutPaste, gridz, changeColor, gradient, rectangle, overlay];
+    var fnz4 = [1, bkg, layer, changeColor, rectangle];
+    var fnz5 = [1, bkg, layer, cutPasteOrig, rectangle, changeColor];
+    
+    var steps = [fns1, fns2, fns3, fns4, fns5];
+    var nextSteps = [fnz1, fnz2, fnz3, fnz4, fnz5];
 
 /////////////////////////////////////////////////////////////////
 
@@ -427,6 +632,10 @@ $(document).ready(function() {
     $('.form_body').css('opacity', '0');
     $('.form_body').css('opacity', '0');
     pseudoRandom(pixels);
+    var dataUrl = c.toDataURL("image/jpeg", 1.0);
+    window.console.log(dataUrl);
+    // localStorage.setItem(name, dataUrl);
+    // $.post("localhost:3001", dataUrl);
     setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
   });
 
