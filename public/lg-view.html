@@ -10,27 +10,50 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="javascripts/carousel.js"></script>
+
+  <script>
+    $(document).ready( function() {
+
+      window.setInterval(reloadAllImages, 30000);
+      function reloadAllImages() {
+        $.get('http://localhost:3000/getImagePaths', function(images) {
+
+          // delete everything in .carousel
+          $('.carousel').empty();
+
+          for(image in images) {
+            // images[image] is the next image
+            // Create all image divs here for each item in images
+          }
+
+          $('.carousel').carousel({
+            interval: 3000,
+            pause: false
+          });
+
+        })
+
+      }
+      reloadAllImages();
+    })
+
+  </script>
 </head>
 <body> 
     
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
+      <!-- <div class="carousel-inner" role="listbox">
         <div class="item active">
           <img src="images/pic1.jpg" alt="pic1" class="imagess">
         </div>
         <div class="item">
           <img src="images/pic2.jpg" alt="pic2" class="imagess">
         </div>
-      </div>
+      </div> -->
 
       
     </div>
 </body>
-<script type="text/javascript">
-  $('.carousel').carousel({
-    interval: 1000
-  });
-</script>
 </html>

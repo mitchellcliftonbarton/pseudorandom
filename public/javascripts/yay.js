@@ -6,9 +6,15 @@ $(document).ready(function() {
   var nameVarz = [];
   var oColor = [];
   var position = [];
+  var positionX = [];
+  var positionY = [];
   var negPos = [];
   var nameInt = [];
   var incr = [];
+  var name;
+  var space;
+  var firstLett;
+  var secondLett;
   var color = ['rgb(252, 110, 110)',
                 'rgb(40, 231, 93)',
                 'rgb(49, 146, 255)',
@@ -28,6 +34,7 @@ $(document).ready(function() {
   var ctx = c.getContext('2d');
   var cw = c.width;
   var ch = c.height;
+  var comp = ctx.globalCompositeOperation;
   // var width1 = cw * 0.4;
   // var width2 = cw / 2;
   // var width3 = cw * 0.75;
@@ -97,13 +104,13 @@ $(document).ready(function() {
                "images/grid-xl.png",
                "images/grid-xxl.png"];
 
-  // var composite = ["source-over",
-  //                  "lighter",
-  //                  "lighten",
-  //                  "darken",
-  //                  "multiply",
-  //                  "screen",
-  //                  "overlay"];
+  var composite = ["source-over",
+                   "lighter",
+                   "lighten",
+                   "darken",
+                   "multiply",
+                   "screen",
+                   "overlay"];
 
 ////////////////////////////////////////////////////////////
 
@@ -114,7 +121,7 @@ $(document).ready(function() {
       // PRELIMINARY STEPS
 
       // GET VALUES OF NAME 
-      var name = document.getElementById('fullname').value;
+      name = document.getElementById('fullname').value;
 
       // ALERT IF NOTHING IS ENTERED
       if (name.length < 2) {
@@ -137,9 +144,9 @@ $(document).ready(function() {
 
       //VARIABLES
 
-      var space = nameInt.indexOf(32);
-      var firstLett = nameInt[0];
-      var secondLett = nameInt[space + 1];
+      space = nameInt.indexOf(32);
+      firstLett = nameInt[0];
+      secondLett = nameInt[space + 1];
       var flnum = firstLett - 65;
       var slnum = secondLett - 65;
       var firstLeng = space;
@@ -167,7 +174,7 @@ $(document).ready(function() {
       var xmr2 = xpos2 * 1.25;
       var ymr1 = ypos1 * 1.25;
       var ymr2 = ypos2 * 1.25;
-      // var comp = ctx.globalCompositeOperation;
+      
 
     ////////////////////////////////////////////////////////
 
@@ -227,6 +234,8 @@ $(document).ready(function() {
       // variable array
 
       nameVarz.push(flnum, slnum, firstLett, secondLett, nl, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe, sum);
+      positionX.push(xpos1, xpos2, xlss1, xlss2, xmr1, xmr2);
+      positionY.push(ypos1, ypos2, ylss1, ylss2, ymr1, ymr2);
       position.push(xpos1, ypos1, xpos2, ypos2, xlss1, ylss1, xlss2, ylss2, xmr1, ymr1, xmr2, ymr2);
       negPos.push(xpos1 * -1, xpos1, ypos1 * -1, ypos1, xpos2 * -1, xpos2, ypos2 * -1, ypos2, xlss1 * -1, xlss1, ylss1 * -1, ylss1, xlss2 * -1, xlss2, ylss2 * -1, ylss2, xmr1 * -1, xmr1, ymr1 * -1, ymr1, xmr2 * -1, xmr2, ymr2 * -1, ymr2);
 
@@ -236,90 +245,26 @@ $(document).ready(function() {
       var incr4 = nameVarz[0] * 10;
       var incr5 = nameVarz[0] * 100;
       incr.push(incr1, incr2, incr3, incr4, incr5);
-      window.console.log(incr);
+      // window.console.log(incr);
     ///////////////////////////////////////////////////////
 
       (function() {
-        if (nameVarz[0] < 6 && nameVarz[1] < 6) {
-          caller(steps[0]);
-        }
+        caller(steps[nameVarz[17] % steps.length]);
+        setTimeout(function() {
+          caller(nextSteps[nameVarz[2] % nextSteps.length]);
+        }, 1000);
 
-        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
-          caller(steps[1]);
-        }
-
-        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
-          caller(steps[2]);
-        }
-
-        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
-          caller(steps[3]);
-        }
-
-        ////
-
-        if (nameVarz[0] < 6 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
-          caller(steps[4]);
-        }
-
-        if (nameVarz[0] < 6 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
-          caller(nextSteps[0]);
-        }
-
-        if (nameVarz[0] < 6 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
-          caller(nextSteps[1]);
-        }
-
-        ////
-
-        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] < 6) {
-          caller(nextSteps[2]);
-        }
-
-        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
-          caller(nextSteps[3]);
-        }
-
-        if (nameVarz[0] >= 6 && nameVarz[0] <= 12 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
-          caller(nextSteps[4]);
-        }
-
-        /////
-
-        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] < 6) {
-          caller(steps[0]);
-        }
-
-        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
-          caller(steps[1]);
-        }
-
-        if (nameVarz[0] >= 13 && nameVarz[0] <= 19 && nameVarz[1] >= 20 && nameVarz[1] <= 26) {
-          caller(steps[2]);
-        }
-
-        /////
-
-        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] < 6) {
-          caller(nextSteps[0]);
-        }
-
-        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] >= 6 && nameVarz[1] <= 12) {
-          caller(nextSteps[2]);
-        }
-
-        if (nameVarz[0] >= 20 && nameVarz[0] <= 26 && nameVarz[1] >= 13 && nameVarz[1] <= 19) {
-          caller(nextSteps[2]);
-        }
+        setTimeout(function() {
+          caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
+        }, 1200);
       }());
 
       window.console.log(nameVarz);
       window.console.log(nameInt);
-      window.console.log(position);
 
       setTimeout(function() {
         callback();
-      }, 1000);
+      }, 6000);
 
 
     
@@ -334,6 +279,10 @@ $(document).ready(function() {
     function caller(array) {
       array[1] (array);
     }
+
+    // function caller2(array) {
+    //   array[1] (array);
+    // }
 
     //////// Background Function
 
@@ -364,90 +313,72 @@ $(document).ready(function() {
 
     //////// Layer Function
 
-    function layer (array) {
+    function layer (array, r1, r2, r3, r4, r5) {
 
-      var width;
-      var height;
+      var widthCh = [250,
+                   500,
+                   750,
+                   1000,
+                   900];
 
-      ///////find img choice
+      var heightCh = [250,
+                     500,
+                     750,
+                     1000,
+                     900];
 
-      if (nameVarz[4] >= 11 && nameVarz[0] >= 13) {
-        imgChoice = randomImages[nameVarz[0] % randomImages.length];
-      } else if (nameVarz[4] <= 10 && nameVarz[0] <= 12){
-        imgChoice = extraImg[nameVarz[0] % extraImg.length];
-      } else if (nameVarz[4] <= 10 && nameVarz[0] >= 13){
-        imgChoice = randomImages[nameVarz[1] % randomImages.length];
-      } else if (nameVarz[4] >= 11 && nameVarz[0] <= 12){
-        imgChoice = extraImg[nameVarz[1] % extraImg.length];
-      } else {
-        imgChoice = extraImg[nameVarz[3] % extraImg.length];
-      }
-
-      //////// find width
-
-      if (nameVarz[0] >= 11 && nameVarz[1] >= 13) {
-        width = 250;
-      } else if (nameVarz[0] <= 10 && nameVarz[1] <= 12){
-        width = 500;
-      } else if (nameVarz[0] <= 10 && nameVarz[1] >= 13){
-        width = 750;
-      } else if (nameVarz[0] >= 11 && nameVarz[1] <= 12){
-        width = 1000;
-      } else {
-        width = 900;
-      }
-
-      /////find height
-
-      if (nameVarz[4] >= 11 && nameVarz[1] >= 13) {
-        height = 250;
-      } else if (nameVarz[4] <= 10 && nameVarz[1] <= 12){
-        height = 500;
-      } else if (nameVarz[4] <= 10 && nameVarz[1] >= 13){
-        height = 750;
-      } else if (nameVarz[4] >= 11 && nameVarz[1] <= 12){
-        height = 1000;
-      } else {
-        height = 900;
-      }
+      var img = extraImg[nameVarz[r1] % extraImg.length];
+      var width = widthCh[nameInt[r2] % widthCh.length];
+      var height = heightCh[nameInt[r3] % widthCh.length];
 
       /////function
 
       function picture (p1, p2) {
         pic2.onload = function() {
+          var blend = composite[nameVarz[r4] % composite.length];
+          comp = blend;
           ctx.drawImage(pic2, p1, p2, width, height);
           array[++array[0]](array);
         };
 
-        pic2.src = imgChoice;
+        pic2.src = img;
       }
 
       /////conditions
-
       if (nameVarz[5] >= 8 && nameVarz[6] >= 8) {
-
-        picture(position[nameVarz[5] % position.length], position[nameVarz[5] % position.length]);
+        picture(positionX[nameVarz[r5] % positionX.length], positionY[nameVarz[r5] % positionY.length]);
       } else if (nameVarz[5] >= 8 && nameVarz[6] <= 8) {
-
-        picture(position[nameVarz[5] % position.length] * -1, position[nameVarz[5] % position.length]);
+        picture(positionX[nameVarz[r5] % positionX.length] * -1, positionY[nameVarz[r5] % positionY.length]);
       } else if (nameVarz[5] <= 7 && nameVarz[6] <= 7) {
-
-        picture(position[nameVarz[5] % position.length] * -1, position[nameVarz[5] % position.length] * -1);
+        picture(positionX[nameVarz[r5] % positionX.length] * -1, positionY[nameVarz[r5] % positionY.length] * -1);
       } else if (nameVarz[5] <= 8 && nameVarz[6] >= 8) {
-
-        picture(position[nameVarz[5] % position.length], position[nameVarz[5] % position.length] * -1);
+        picture(positionX[nameVarz[r5] % positionX.length], positionY[nameVarz[r5] % positionY.length] * -1);
       } else {
         //// ADD SOMETHING DIFFERENT HERE
         rectangle();
-        window.alert.log('i didnt work!!');
+        window.alert('i didnt work!!');
       }
+    }
+
+    function layer1 (array) {
+      layer(array, 4, 3, 4, 0, 5);
+    }
+
+    function layer2 (array) {
+      layer(array, 3, 2, 1, 4, 2);
+    }
+
+    function layer3 (array) {
+      layer(array, 2, 5, 3, 5, 2);
     }
 
     //////// Grid Function
 
-    function gridz (array) {
+    function gridz (array, p1, p2, p3) {
       pic3.onload = function() {
-        ctx.drawImage(pic3, position[nameVarz[6] % position.length], position[nameVarz[5] % position.length]);
+        var blend = composite[nameInt[p1] % composite.length];
+        comp = blend;
+        ctx.drawImage(pic3, positionX[nameVarz[p2] % positionX.length], positionY[nameVarz[p3] % positionY.length]);
         array[++array[0]](array);
         
       };
@@ -455,39 +386,85 @@ $(document).ready(function() {
       pic3.src = grids[nameVarz[6] % grids.length];
     }
 
+    function gridz1(array) {
+      gridz(array, 1, 6, 5);
+    }
+
+    function gridz2(array) {
+      gridz(array, 0, 5, 4);
+    }
+
+    function gridz3(array) {
+      gridz(array, 2, 2, 3);
+    }
+
+
+
     ///////// Rectangle Function
 
-    function rectangle (array) {
-      ctx.fillStyle = color[nameVarz[0] % color.length];
-      ctx.fillRect(position[nameInt[0] % position.length], position[nameInt[1] % position.length], position[nameInt[2] % position.length], position[nameInt[3] % position.length]);
+    function rectangle (array, p1, p2, p3, p4, p5, p6) {
+      var blend = composite[nameVarz[p1] % composite.length];
+      comp = blend;
+      window.console.log(blend);
+      ctx.fillStyle = color[p2];
+      ctx.fillRect(position[nameInt[p3] % position.length], position[nameInt[p4] % position.length], position[nameInt[p5] % position.length], position[nameInt[p6] % position.length]);
       array[++array[0]](array);
 
+    } 
+
+    function rectangle1(array) {
+      rectangle(array, 1, nameVarz[0] % color.length, 0, 1, 2, 3);
+    } 
+
+    function rectangle2(array) {
+      rectangle(array, 2, nameInt[space + 2], 1, 2, 3, 2);
+    } 
+
+    function rectangle3(array) {
+      rectangle(array, 3, nameInt[space - 2], 2, 1, 2, 4);
     } 
 
     ////////// Clear Rectangle Function
 
     function clearRect(array) {
+      var blend = composite[nameVarz[2] % composite.length];
+      comp = blend;
       ctx.clearRect(position[1], position[2], position[3], position[0]);
       array[++array[0]](array);
     }
 
     ////////// Stroked Rectangle Function
 
-    function strokeRect(array) {
-      ctx.strokeStyle = color[nameVarz[2] % color.length];
-      ctx.strokeRect(position[2], position[3], position[0], position[1]);
+    function strokeRect(array, p1, p2, p3, p4, p5, p6) {
+      var blend = composite[nameInt[p1] % composite.length];
+      comp = blend;
+      ctx.strokeStyle = color[nameVarz[p2] % color.length];
+      ctx.strokeRect(position[p3], position[p4], position[p5], position[p6]);
 
       array[++array[0]](array);
+    }
+
+    function strokeRect1(array) {
+      strokeRect(array, 4, 2, 2, 3, 0, 1);
+    }
+
+    function strokeRect2(array) {
+      strokeRect(array, 3, 4, 1, 4, 1, 2);
+    }
+
+    function strokeRect3(array) {
+      strokeRect(array, 5, 3, 3, 2, 2, 3);
     }
 
     ///////////// Change Color Function
 
     function changeColor(array) {
+
       
       function scheme(p1, p2, p3, p4, p5, p6) {
         var imgData = ctx.getImageData(p1, p2, p3, p4);
         var data = imgData.data;
-
+        
         function invert() {
           for (var i = 0; i < data.length; i += 4) {
             data[i]     = 255 - data[i];     // red
@@ -498,8 +475,8 @@ $(document).ready(function() {
         }
 
         invert();
-
         array[++array[0]](array);
+
       }
 
       if (nameVarz[19] <= 12) {
@@ -515,18 +492,35 @@ $(document).ready(function() {
 
     ////////// Draw a rectangle with a shadow 
 
-    function rectangleShad (array) {
+    function rectangleShad (array, p1, p2, p3, p4, p5, p6, p7) {
+        var blend = composite[nameVarz[p1] % composite.length];
+        comp = blend;
         ctx.shadowBlur = 20;
-        ctx.shadowColor = color[nameVarz[3] % color.length];
-        ctx.fillStyle = color[nameVarz[3]];
-        ctx.fillRect(position[nameVarz[2]], position[nameVarz[0]], position[nameVarz[2]], position[nameVarz[1]]);
+        ctx.shadowColor = color[nameVarz[p2] % color.length];
+        ctx.fillStyle = color[nameVarz[p3] % color.length];
+        ctx.fillRect(position[nameVarz[p4] % position.length], position[nameVarz[p5] % position.length], position[nameVarz[p6] % position.length], position[nameVarz[p7] % position.length]);
 
         array[++array[0]](array);
     } 
 
+    function rectangleShad1(array) {
+      rectangleShad(array, 17, 3, 3, 2, 0, 2, 1);
+    }
+
+    function rectangleShad2(array) {
+      rectangleShad(array, 16, 5, 2, 1, 0, 3, 3);
+    }
+
+    function rectangleShad3(array) {
+      rectangleShad(array, 15, 5, 4, 5, 1, 3, 5);
+    }
+
     //////// Cut and Paste from a different image
 
     function cutPaste(array) {
+
+      var blend = composite[nameVarz[15] % composite.length];
+      comp = blend;
 
       /////find img choice
 
@@ -607,33 +601,52 @@ $(document).ready(function() {
         array[++array[0]](array);
       }
 
+      var blend = composite[nameVarz[2] % composite.length];
+      comp = blend;
       paste(position[nameVarz[3] % position.length], position[nameVarz[4] % position.length], position[nameVarz[5] % position.length], position[nameVarz[2] % position.length], position[nameVarz[3] % position.length], position[nameVarz[4] % position.length]);
 
     }
 
-    function gradient(array) {
+    function gradient(array, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15) {
       var stops = [0,
-                   nameVarz[11],
+                   nameVarz[p1],
                    0,
-                   nameVarz[12],
+                   nameVarz[p2],
                    0];
       var fades = ["#fff",
-                   color[nameVarz[0] % color.length],
+                   color[nameVarz[p3] % color.length],
                    "#fff",
-                   color[nameVarz[1] % color.length]];
+                   color[nameVarz[p4] % color.length]];
 
-      var grd=ctx.createLinearGradient(stops[nameVarz[0] % stops.length], stops[nameVarz[1] % stops.length], stops[nameVarz[3] % stops.length], stops[nameVarz[4] % stops.length]);
-      grd.addColorStop(0, color[nameVarz[0] % color.length]);
-      grd.addColorStop(1, fades[nameVarz[3] % fades.length]);
+      var blend = composite[nameVarz[p5] % composite.length];
+      comp = blend;
+
+      var grd=ctx.createLinearGradient(stops[nameVarz[p6] % stops.length], stops[nameVarz[p7] % stops.length], stops[nameVarz[p8] % stops.length], stops[nameVarz[p9] % stops.length]);
+      grd.addColorStop(0, color[nameVarz[p10] % color.length]);
+      grd.addColorStop(1, fades[nameVarz[p11] % fades.length]);
 
       ctx.fillStyle=grd;
-      ctx.fillRect(position[nameVarz[7] % position.length], position[nameVarz[7] % position.length], negPos[nameVarz[7] % negPos.length], negPos[nameVarz[8] % negPos.length]);
+      ctx.fillRect(position[nameVarz[p12] % position.length], position[nameVarz[p13] % position.length], negPos[nameVarz[p14] % negPos.length], negPos[nameVarz[p15] % negPos.length]);
       
       array[++array[0]](array);
 
     }
 
+    function gradient1(array) {
+      gradient(array, 11, 12, 0, 1, 1, 0, 1, 3, 4, 0, 3, 7, 7, 7, 8);
+    }
+
+    function gradient2(array) {
+      gradient(array, 11, 14, 0, 1, 0, 1, 2, 1, 5, 1, 2, 5, 6, 8, 7);
+    }
+
+    function gradient3(array) {
+      gradient(array, 10, 13, 1, 0, 1, 2, 1, 5, 3, 1, 6, 5, 2, 1, 3);
+    }
+
     function overlay() {
+      var blend = composite[nameVarz[2] % composite.length];
+      comp = blend;
       var covers = [cw,
                     ch,
                     cw / 2,
@@ -647,38 +660,96 @@ $(document).ready(function() {
 
       ctx.fillStyle = oColor[2];
       ctx.fillRect(covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length]);
-      window.console.log('overlay');
+      // window.console.log('overlay');
 
     }
 
-    // function transform() {
+    var fns1 = [1, bkg, layer1];
+    var fns2 = [1, bkg, layer2, overlay, changeColor, ];
+    var fns3 = [1, bkg, layer3, changeColor, ];
 
+    var fns4 = [1, bkg, rectangle1];
+    var fns5 = [1, bkg, overlay, changeColor, rectangle2];
+    var fns6 = [1, bkg, changeColor, rectangle3];
+
+    var fns7 = [1, bkg, changeColor, overlay, rectangleShad1];
+    var fns8 = [1, bkg, rectangleShad2];
+    var fns9 = [1, bkg, rectangleShad3, changeColor, ];
+
+    var fns10 = [1, bkg, gradient1, overlay, changeColor, ];
+    var fns11 = [1, bkg, changeColor, gradient2];
+    var fns12 = [1, bkg, gradient3];
+
+    ////////////
+
+    var fnz1 = [1, layer1, rectangle1, changeColor, cutPaste, gradient1];
+    var fnz2 = [1, layer2, rectangle2, cutPasteOrig, gradient3];
+    var fnz3 = [1, layer3, changeColor, rectangle3, cutPaste, gradient2];
+
+    var fnz4 = [1, layer1, overlay, changeColor, rectangleShad1, cutPasteOrig, gradient2];
+    var fnz5 = [1, layer2, changeColor, rectangleShad3, cutPaste, gradient1];
+    var fnz6 = [1, layer3, changeColor, overlay, rectangleShad2, overlay, cutPasteOrig, gradient3];
+
+    var fnz7 = [1, rectangleShad1, gradient3, layer3, cutPasteOrig];
+    var fnz8 = [1, rectangleShad3, gradient2, layer2, cutPaste];
+    var fnz9 = [1, rectangleShad2, overlay, gradient1, layer1, cutPaste];
+
+    var fnz10 = [1, gradient2, layer2, rectangle1, changeColor, cutPasteOrig];
+    var fnz11 = [1, gradient3, overlay, layer3, rectangle2, changeColor, cutPaste];
+    var fnz12 = [1, gradient1, changeColor, layer1, rectangle3, cutPasteOrig];
+
+    ///////////
+
+    var funz1 = [1, gridz1, strokeRect2, changeColor, overlay, cutPaste, gradient1];
+    var funz2 = [1, gridz2, strokeRect1, overlay, changeColor, cutPasteOrig, gradient3];
+    var funz3 = [1, gridz3, overlay, strokeRect3, changeColor, cutPaste, gradient2];
+
+    var funz4 = [1, clearRect, layer1, gridz1, cutPasteOrig, strokeRect1];
+    var funz5 = [1, clearRect, layer2, gridz3, cutPaste, strokeRect2];
+    var funz6 = [1, clearRect, layer3, gridz2, overlay, cutPasteOrig, strokeRect3];
+
+    var funz7 = [1, rectangleShad1, overlay, changeColor, gradient3, gridz2, cutPasteOrig];
+    var funz8 = [1, rectangleShad3, gradient2, overlay, changeColor, gridz1, cutPaste];
+    var funz9 = [1, rectangleShad2, gradient1, gridz3, changeColor, cutPaste];
+
+    var funz10 = [1, gradient2, clearRect, rectangle1, changeColor, gridz3];
+    var funz11 = [1, gradient3, changeColor, clearRect, overlay, rectangle2, gridz2];
+    var funz12 = [1, changeColor, gradient1, overlay, clearRect, rectangle3, gridz1];
+
+    //////////
+    
+    var steps = [fns1, fns2, fns3, fns4, fns5, fns6, fns7, fns8, fns9, fns10, fns11, fns12];
+    var nextSteps = [fnz1, fnz2, fnz3, fnz4, fnz5, fnz6, fnz7, fnz8, fnz9, fnz10, fnz11, fnz12];
+    var nextSteps2 = [funz1, funz2, funz3, funz4, funz5, funz6, funz7, funz8, funz9, funz10, funz11, funz12];
+
+    // function funct1(array) {
+    //   caller(nextSteps[nameVarz[17] % nextSteps.length]);
+    //   array[++array[0]](array);
     // }
 
-    function pixels() {   
-      var imgData = ctx.getImageData(0, 0, cw, ch);
-      // var data = imgData.data;
-      ctx.putImageData(imgData, 0, 0);
-    }
+    // function funct2(array) {
+    //   caller(steps[nameVarz[2] % steps.length]);
+    //   array[++array[0]](array);
+    // }
 
-    var fns1 = [1, bkg, rectangle, clearRect, layer, gradient];
-    var fns2 = [1, bkg, layer, rectangleShad, gradient, cutPaste];
-    var fns3 = [1, bkg, layer, changeColor, gradient, rectangle];
-    var fns4 = [1, bkg, changeColor, overlay, layer, rectangle, rectangle];
-    var fns5 = [1, bkg, strokeRect, layer, cutPasteOrig, rectangle];
+    // function funct3(array) {
+    //   caller(steps[nameVarz[1] % steps.length]);
+    //   array[++array[0]](array);
+    // }
 
-    var fnz1 = [1, bkg, layer, rectangle, gridz, clearRect, gradient];
-    var fnz2 = [1, bkg, layer, rectangleShad, rectangle, cutPaste];
-    var fnz3 = [1, bkg, layer, cutPasteOrig, cutPaste, gradient, overlay, changeColor, gradient, rectangle, overlay];
-    var fnz4 = [1, bkg, layer, changeColor, rectangle];
-    var fnz5 = [1, bkg, layer, cutPasteOrig, rectangle, changeColor];
-    
-    var steps = [fns1, fns2, fns3, fns4, fns5];
-    var nextSteps = [fnz1, fnz2, fnz3, fnz4, fnz5];
+    // var finalFunct1 = [funct1, funct2, funct3];
+    // var finalFunct2 = [funct1, funct2, funct3];
+
+    // var ending = [finalFunct1, finalFunct2];
 
 /////////////////////////////////////////////////////////////////
 
-    
+    function saveImage() {
+      var picData = c.toDataURL("image/jpeg", 1.0);
+      var dataUrl = name.replace(/\s+/g, '') + picData;
+      // window.console.log(dataUrl);
+      $.post("http://localhost:3000/save", dataUrl);
+    }
 
   $('.submit').click(function() {
     event.preventDefault();
@@ -686,11 +757,7 @@ $(document).ready(function() {
     // $('#new-img').css('display', 'block');
     $('.form_body').css('opacity', '0');
     $('.form_body').css('opacity', '0');
-    pseudoRandom(pixels);
-    var dataUrl = c.toDataURL("image/jpeg", 1.0);
-    window.console.log(dataUrl);
-    // localStorage.setItem(name, dataUrl);
-    // $.post("localhost:3001", dataUrl);
+    pseudoRandom(saveImage);
     setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
   });
 

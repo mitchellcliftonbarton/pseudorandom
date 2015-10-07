@@ -1,1 +1,1 @@
-function handleRequest(e,t){}var http=require("http");const PORT=3001;var server=http.createServer(handleRequest);server.listen(PORT,function(){console.log("server listening",PORT)});
+var express=require("express"),app=express();app.get("/",function(e,n){n.sendfile("index.html")});var server=app.listen(4e3,function(){});app.get("/",function(e,n,p){console.log("frontend")});

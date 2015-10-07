@@ -43,7 +43,7 @@ html {
 
         .input-info {
           position: relative;
-          top: calc(50% - 127px);
+          top: calc(50% - 170px);
 
           .name-input {
             text-align: center;
@@ -53,7 +53,10 @@ html {
               font-weight: 300;
               color: gray;
               letter-spacing: 3px;
-              padding-bottom: 20px;
+              padding-bottom: 60px;
+              width: 360px;
+              margin: 0 auto;
+              line-height: 30px;
             }
 
             .name {

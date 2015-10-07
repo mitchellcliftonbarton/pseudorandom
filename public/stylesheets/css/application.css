@@ -40,7 +40,7 @@ html {
         transition: all 0.3s; }
         html body .main form .input-info {
           position: relative;
-          top: calc(50% - 127px); }
+          top: calc(50% - 170px); }
           html body .main form .input-info .name-input {
             text-align: center;
             position: relative; }
@@ -48,7 +48,10 @@ html {
               font-weight: 300;
               color: gray;
               letter-spacing: 3px;
-              padding-bottom: 20px; }
+              padding-bottom: 60px;
+              width: 360px;
+              margin: 0 auto;
+              line-height: 30px; }
             html body .main form .input-info .name-input .name {
               width: 600px;
               height: 75px;
@@ -212,6 +215,6 @@ html {
       padding: 25px; }
       .grid-view .grid .row .img-contain img {
         width: 100%;
-        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 19px 7px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 19px 7px rgba(0, 0, 0, 0.2);
-        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2), 0 0 19px 7px rgba(0, 0, 0, 0.2); }
+        -webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), 0 0 30px 5px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), 0 0 30px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1), 0 0 30px 5px rgba(0, 0, 0, 0.1); }

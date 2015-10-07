@@ -1,1 +1,1 @@
-var express=require("express"),app=express();app.get("/",function(e,n){n.sendFile("index.html",{root:path.join(_dirname,"public")})});var server=app.listen(4e3,function(){});app.get("/",function(e,n,p){console.log("frontend")});
+var express=require("express"),app=express();app.get("/",function(e,n){n.send("hey")});var server=app.listen(4e3,function(){});app.get("/frontend",function(e,n,p){console.log("frontend")});
