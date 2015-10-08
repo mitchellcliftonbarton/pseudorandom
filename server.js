@@ -18,9 +18,15 @@ app.get('/loop', function(req, res, next) {
   res.sendFile('lg-view.html', { root: path.join(__dirname, 'public') });
   
 });
-app.get('/getImagePaths', function(req, res, next) {
-  var allImagePaths = fs.readDir('public/new-images');
-  res.send(JSON.stringify(allImagePaths));
+app.get('/images', function(req, res, next) {
+  fs.readdir('public/new-images', function(err, files) {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log(files);
+    res.send(JSON.stringify(files));
+  });
 });
 
 app.post('/save', function(req, res, next) {

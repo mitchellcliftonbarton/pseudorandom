@@ -12,12 +12,12 @@
   <script type="text/javascript" src="javascripts/carousel.js"></script>
 
   <script>
-    $(document).ready( function() {
+    $(document).ready(function() {
 
       window.setInterval(reloadAllImages, 30000);
       function reloadAllImages() {
-        $.get('http://localhost:3000/getImagePaths', function(images) {
-
+        $.get('http://localhost:3000/images', function(images) {
+          
           // delete everything in .carousel
           $('.carousel').empty();
 
