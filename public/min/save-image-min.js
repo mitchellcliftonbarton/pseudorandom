@@ -1,0 +1,1 @@
+function handleRequest(e,n){}var http=require("http");const PORT=3002;var server=http.createServer(handleRequest);server.listen(PORT,function(){console.log("server listening",PORT)}),server.get("front-end",function(e,n,o){console.log("frontend")}),server.post("save-image",function(e,n,o){console.log("saving image "),console.log(e)});
