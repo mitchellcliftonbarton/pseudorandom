@@ -768,14 +768,12 @@ $(document).ready(function() {
     function saveImage() {
       var picData = c.toDataURL("image/jpeg", 1.0);
       var dataUrl = name.replace(/\s+/g, '') + picData;
-      var newData = dataUrl.indexOf('data');
-      var newerData = dataUrl.substring(newData);
-      // window.console.log(newerData + 'im new');
-      window.console.log(dataUrl);
+      var varzStr = nameVarz.toString();
+      window.console.log(varzStr);
       // window.console.log(dataUrl);
       $.post("http://localhost:3000/save", dataUrl);
       // $.post("http://localhost:3000/data-save", dataUrl);
-      $.post("http://localhost:3000/data-save", newerData);
+      $.post("http://localhost:3000/data-save", varzStr);
       // $.post("http://localhost:3000/data-save", nameVarz);
 
       

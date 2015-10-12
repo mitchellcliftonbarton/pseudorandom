@@ -18,12 +18,6 @@ app.get('/loop', function(req, res, next) {
   res.sendFile('lg-view.html', { root: path.join(__dirname, 'public') });
   
 });
-
-app.get('/data-view', function(req, res, next) {
-  res.sendFile('data-display.html', { root: path.join(__dirname, 'public') });
-  
-});
-
 app.get('/images', function(req, res, next) {
   fs.readdir('public/new-images', function(err, files) {
     if (err) {
@@ -40,7 +34,6 @@ app.post('/save', function(req, res, next) {
 
   req.on('data', function(data) {
     body += data;
-    console.log('yay wut!');
   });
 
   req.on('end', function (){
@@ -58,22 +51,6 @@ app.post('/save', function(req, res, next) {
 
   res.send("Done");
   
-});
-
-var dataStore = [];
-
-app.post('/data-save', function(req, res, next) {
-
-  req.on('data', function(data) {
-    dataStore.push(data);
-  });
-
-  res.send('finished' + dataStore);
-});
-
-app.get('/data-save', function(req, res, next) {
-  console.log(dataStore + 'i love storing');
-  res.send(dataStore);
 });
 
 var server = app.listen(3000, function () {

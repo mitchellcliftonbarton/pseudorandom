@@ -17,7 +17,6 @@
       window.setInterval(reloadAllImages, 300000);
       function reloadAllImages() {
         $.get('http://localhost:3000/images', function(images) {
-          // window.console.log(images + 'yayayayaya');
           // var imageListPre = [];
           // imageListPre = images.split(',');
           var imageList = [];
@@ -25,7 +24,7 @@
           // // delete everything in .carousel
           $('.carousel-inner').empty();
 
-          for (var i = 1; i < images.length; i++) {
+          for (var i = 2; i < images.length; i++) {
 
             // var source = images[i].replace(/"/g, '');
             var nSource = 'new-images/' + images[i];
@@ -34,9 +33,6 @@
           }
 
           var contain = document.getElementById('carousel-div');
-          $.get('http://localhost:3000/data-save', function(data) {
-            window.console.log(data + ' what you wanted was granted');
-          });
 
           for(image in imageList) {
             // window.console.log(images[image]);
@@ -48,11 +44,6 @@
             newImg.src = imageList[image];
             newImgDiv.appendChild(newImg).className = "imagess";
 
-            var imgData = document.createElement('p');
-            var imgText = document.createTextNode('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEBAQEBAQEBAQEBAQEB…t5Nu7bd223dtu7Pnh3bd16tjHOMHP45+tf1fSpx5ErdLfk3+Z/H0lo31Svdb6X/wCD95//2Q==');
-            imgData.appendChild(imgText);
-            newImgDiv.appendChild(imgData).className ="data-display";
-
             // images[image] is the next image
             // Create all image divs here for each item in images
           }
@@ -60,7 +51,7 @@
           $('.item:first').addClass('active');
 
           $('.carousel').carousel({
-            interval: 1700,
+            interval: 1000,
             pause: false
           });
 
