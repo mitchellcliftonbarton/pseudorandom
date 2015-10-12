@@ -1,6 +1,12 @@
 $(document).ready(function() {
 
   // CREATE CANVAS ELEMENTS
+  ///Questions 
+  // done! 1. array system/ timing of caller functions on click
+  // done! 2. timing of saving the images/displaying the image once the data has been sent to the server
+  
+  // 4. problems with displaying data on data-view page
+  // done! 5. animation on loading p
 
   
   var nameVarz = [];
@@ -124,13 +130,6 @@ $(document).ready(function() {
       name = document.getElementById('fullname').value;
 
       // ALERT IF NOTHING IS ENTERED
-      if (name.length < 2) {
-        window.alert('Please enter a valid name longer than 1 letter');
-        return;
-      } 
-
-      // RESET FORM WHEN SUBMITTED
-      document.getElementById('form').reset();
 
       // CREATE EMPTY ARRAY WITH CONVERTED LETTERS
       var nl = name.length;
@@ -249,14 +248,21 @@ $(document).ready(function() {
     ///////////////////////////////////////////////////////
 
       (function() {
-        caller(steps[nameVarz[17] % steps.length]);
-        setTimeout(function() {
-          caller(nextSteps[nameVarz[2] % nextSteps.length]);
-        }, 1000);
+        var index1 = parseInt( nameVarz[17] % steps.length );
+        var index2 = parseInt( nameVarz[1] % nextSteps.length );
+        var index3 = parseInt( nameVarz[0] % nextSteps2.length );
+        var allFns = steps[index1].concat(nextSteps[index2]).concat(nextSteps2[index3]);
+        
+        caller(allFns);
+        // caller(nextSteps[nameVarz[2] % nextSteps.length]);
+        // caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
+        // setTimeout(function() {
+        //   caller(nextSteps[nameVarz[2] % nextSteps.length]);
+        // }, 1000);
 
-        setTimeout(function() {
-          caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
-        }, 1200);
+        // setTimeout(function() {
+        //   caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
+        // }, 1200);
       }());
 
       window.console.log(nameVarz);
@@ -277,7 +283,12 @@ $(document).ready(function() {
 
     //////// Initial Function
     function caller(array) {
-      array[1] (array);
+      if(array[0] === array.length-1) {
+        return;
+      }
+        
+
+      array[++array[0]](array);
     }
 
     // function caller2(array) {
@@ -304,8 +315,7 @@ $(document).ready(function() {
 
       pic1.onload = function() {
         ctx.drawImage(pic1, 0, 0);
-        array[++array[0]](array);
-        
+        caller(array);
       };
 
       pic1.src = imgChoice;
@@ -338,7 +348,7 @@ $(document).ready(function() {
           var blend = composite[nameVarz[r4] % composite.length];
           comp = blend;
           ctx.drawImage(pic2, p1, p2, width, height);
-          array[++array[0]](array);
+          caller(array);
         };
 
         pic2.src = img;
@@ -379,7 +389,7 @@ $(document).ready(function() {
         var blend = composite[nameInt[p1] % composite.length];
         comp = blend;
         ctx.drawImage(pic3, positionX[nameVarz[p2] % positionX.length], positionY[nameVarz[p3] % positionY.length]);
-        array[++array[0]](array);
+        caller(array);
         
       };
 
@@ -408,7 +418,7 @@ $(document).ready(function() {
       window.console.log(blend);
       ctx.fillStyle = color[p2];
       ctx.fillRect(position[nameInt[p3] % position.length], position[nameInt[p4] % position.length], position[nameInt[p5] % position.length], position[nameInt[p6] % position.length]);
-      array[++array[0]](array);
+      caller(array);
 
     } 
 
@@ -430,7 +440,7 @@ $(document).ready(function() {
       var blend = composite[nameVarz[2] % composite.length];
       comp = blend;
       ctx.clearRect(position[1], position[2], position[3], position[0]);
-      array[++array[0]](array);
+      caller(array);
     }
 
     ////////// Stroked Rectangle Function
@@ -441,7 +451,7 @@ $(document).ready(function() {
       ctx.strokeStyle = color[nameVarz[p2] % color.length];
       ctx.strokeRect(position[p3], position[p4], position[p5], position[p6]);
 
-      array[++array[0]](array);
+      caller(array);
     }
 
     function strokeRect1(array) {
@@ -475,7 +485,7 @@ $(document).ready(function() {
         }
 
         invert();
-        array[++array[0]](array);
+        caller(array);
 
       }
 
@@ -500,7 +510,7 @@ $(document).ready(function() {
         ctx.fillStyle = color[nameVarz[p3] % color.length];
         ctx.fillRect(position[nameVarz[p4] % position.length], position[nameVarz[p5] % position.length], position[nameVarz[p6] % position.length], position[nameVarz[p7] % position.length]);
 
-        array[++array[0]](array);
+        caller(array);
     } 
 
     function rectangleShad1(array) {
@@ -562,7 +572,7 @@ $(document).ready(function() {
             ctx.drawImage(pic3, p1, p2, p3, p4, (i * xcor * incr[1]), (i * ycor * incr[1]), p5, p6);
           }
           
-          array[++array[0]](array);
+          caller(array);
         };
       }
 
@@ -598,7 +608,7 @@ $(document).ready(function() {
           ctx.drawImage(ctx.canvas, p1, p2, p3, p4, (i * xcor * incr[1]), (i * ycor * incr[1]), p5, p6);
         }
         
-        array[++array[0]](array);
+        caller(array);
       }
 
       var blend = composite[nameVarz[2] % composite.length];
@@ -628,7 +638,7 @@ $(document).ready(function() {
       ctx.fillStyle=grd;
       ctx.fillRect(position[nameVarz[p12] % position.length], position[nameVarz[p13] % position.length], negPos[nameVarz[p14] % negPos.length], negPos[nameVarz[p15] % negPos.length]);
       
-      array[++array[0]](array);
+      caller(array);
 
     }
 
@@ -644,7 +654,7 @@ $(document).ready(function() {
       gradient(array, 10, 13, 1, 0, 1, 2, 1, 5, 3, 1, 6, 5, 2, 1, 3);
     }
 
-    function overlay() {
+    function overlay(array) {
       var blend = composite[nameVarz[2] % composite.length];
       comp = blend;
       var covers = [cw,
@@ -661,60 +671,61 @@ $(document).ready(function() {
       ctx.fillStyle = oColor[2];
       ctx.fillRect(covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length], covers[nameVarz[17] % covers.length]);
       // window.console.log('overlay');
+      caller(array);
 
     }
 
-    var fns1 = [1, bkg, layer1];
-    var fns2 = [1, bkg, layer2, overlay, changeColor, ];
-    var fns3 = [1, bkg, layer3, changeColor, ];
+    var fns1 = [0, bkg, layer1];
+    var fns2 = [0, bkg, layer2, overlay, changeColor, ];
+    var fns3 = [0, bkg, layer3, changeColor, ];
 
-    var fns4 = [1, bkg, rectangle1];
-    var fns5 = [1, bkg, overlay, changeColor, rectangle2];
-    var fns6 = [1, bkg, changeColor, rectangle3];
+    var fns4 = [0, bkg, rectangle1];
+    var fns5 = [0, bkg, overlay, changeColor, rectangle2];
+    var fns6 = [0, bkg, changeColor, rectangle3];
 
-    var fns7 = [1, bkg, changeColor, overlay, rectangleShad1];
-    var fns8 = [1, bkg, rectangleShad2];
-    var fns9 = [1, bkg, rectangleShad3, changeColor, ];
+    var fns7 = [0, bkg, changeColor, overlay, rectangleShad1];
+    var fns8 = [0, bkg, rectangleShad2];
+    var fns9 = [0, bkg, rectangleShad3, changeColor];
 
-    var fns10 = [1, bkg, gradient1, overlay, changeColor, ];
-    var fns11 = [1, bkg, changeColor, gradient2];
-    var fns12 = [1, bkg, gradient3];
+    var fns10 = [0, bkg, gradient1, overlay, changeColor];
+    var fns11 = [0, bkg, changeColor, gradient2];
+    var fns12 = [0, bkg, gradient3, changeColor];
 
     ////////////
 
-    var fnz1 = [1, layer1, rectangle1, changeColor, cutPaste, gradient1];
-    var fnz2 = [1, layer2, rectangle2, cutPasteOrig, gradient3];
-    var fnz3 = [1, layer3, changeColor, rectangle3, cutPaste, gradient2];
+    var fnz1 = [layer1, rectangle1, changeColor, cutPaste, gradient1];
+    var fnz2 = [layer2, rectangle2, cutPasteOrig, gradient3];
+    var fnz3 = [layer3, changeColor, rectangle3, cutPaste, gradient2];
 
-    var fnz4 = [1, layer1, overlay, changeColor, rectangleShad1, cutPasteOrig, gradient2];
-    var fnz5 = [1, layer2, changeColor, rectangleShad3, cutPaste, gradient1];
-    var fnz6 = [1, layer3, changeColor, overlay, rectangleShad2, overlay, cutPasteOrig, gradient3];
+    var fnz4 = [layer1, overlay, changeColor, rectangleShad1, cutPasteOrig, gradient2];
+    var fnz5 = [layer2, changeColor, rectangleShad3, cutPaste, gradient1];
+    var fnz6 = [layer3, changeColor, overlay, rectangleShad2, overlay, cutPasteOrig, gradient3];
 
-    var fnz7 = [1, rectangleShad1, gradient3, layer3, cutPasteOrig];
-    var fnz8 = [1, rectangleShad3, gradient2, layer2, cutPaste];
-    var fnz9 = [1, rectangleShad2, overlay, gradient1, layer1, cutPaste];
+    var fnz7 = [rectangleShad1, gradient3, layer3, cutPasteOrig];
+    var fnz8 = [rectangleShad3, gradient2, layer2, cutPaste];
+    var fnz9 = [rectangleShad2, overlay, gradient1, layer1, cutPaste];
 
-    var fnz10 = [1, gradient2, layer2, rectangle1, changeColor, cutPasteOrig];
-    var fnz11 = [1, gradient3, overlay, layer3, rectangle2, changeColor, cutPaste];
-    var fnz12 = [1, gradient1, changeColor, layer1, rectangle3, cutPasteOrig];
+    var fnz10 = [gradient2, layer2, rectangle1, changeColor, cutPasteOrig];
+    var fnz11 = [gradient3, overlay, layer3, rectangle2, changeColor, cutPaste];
+    var fnz12 = [gradient1, changeColor, layer1, rectangle3, cutPasteOrig];
 
     ///////////
 
-    var funz1 = [1, gridz1, strokeRect2, changeColor, overlay, cutPaste, gradient1];
-    var funz2 = [1, gridz2, strokeRect1, overlay, changeColor, cutPasteOrig, gradient3];
-    var funz3 = [1, gridz3, overlay, strokeRect3, changeColor, cutPaste, gradient2];
+    var funz1 = [gridz1, strokeRect2, changeColor, overlay, cutPaste, gradient1];
+    var funz2 = [gridz2, strokeRect1, overlay, changeColor, cutPasteOrig, gradient3];
+    var funz3 = [gridz3, overlay, strokeRect3, changeColor, cutPaste, gradient2];
 
-    var funz4 = [1, clearRect, layer1, gridz1, cutPasteOrig, strokeRect1];
-    var funz5 = [1, clearRect, layer2, gridz3, cutPaste, strokeRect2];
-    var funz6 = [1, clearRect, layer3, gridz2, overlay, cutPasteOrig, strokeRect3];
+    var funz4 = [clearRect, layer1, gridz1, cutPasteOrig, strokeRect1];
+    var funz5 = [clearRect, layer2, gridz3, cutPaste, strokeRect2];
+    var funz6 = [clearRect, layer3, gridz2, overlay, cutPasteOrig, strokeRect3];
 
-    var funz7 = [1, rectangleShad1, overlay, changeColor, gradient3, gridz2, cutPasteOrig];
-    var funz8 = [1, rectangleShad3, gradient2, overlay, changeColor, gridz1, cutPaste];
-    var funz9 = [1, rectangleShad2, gradient1, gridz3, changeColor, cutPaste];
+    var funz7 = [rectangleShad1, overlay, changeColor, gradient3, gridz2, cutPasteOrig];
+    var funz8 = [rectangleShad3, gradient2, overlay, changeColor, gridz1, cutPaste];
+    var funz9 = [rectangleShad2, gradient1, gridz3, changeColor, cutPaste];
 
-    var funz10 = [1, gradient2, clearRect, rectangle1, changeColor, gridz3];
-    var funz11 = [1, gradient3, changeColor, clearRect, overlay, rectangle2, gridz2];
-    var funz12 = [1, changeColor, gradient1, overlay, clearRect, rectangle3, gridz1];
+    var funz10 = [gradient2, clearRect, rectangle1, changeColor, gridz3];
+    var funz11 = [gradient3, changeColor, clearRect, overlay, rectangle2, gridz2];
+    var funz12 = [changeColor, gradient1, overlay, clearRect, rectangle3, gridz1];
 
     //////////
     
@@ -724,41 +735,93 @@ $(document).ready(function() {
 
     // function funct1(array) {
     //   caller(nextSteps[nameVarz[17] % nextSteps.length]);
-    //   array[++array[0]](array);
+    //   caller(array);
     // }
 
     // function funct2(array) {
     //   caller(steps[nameVarz[2] % steps.length]);
-    //   array[++array[0]](array);
+    //   caller(array);
     // }
 
     // function funct3(array) {
     //   caller(steps[nameVarz[1] % steps.length]);
-    //   array[++array[0]](array);
+    //   caller(array);
     // }
 
     // var finalFunct1 = [funct1, funct2, funct3];
-    // var finalFunct2 = [funct1, funct2, funct3];
+    // var finalFunct2 = [funct1, funct3, funct2];
 
     // var ending = [finalFunct1, finalFunct2];
 
 /////////////////////////////////////////////////////////////////
 
+    var flash;
+    function opaChange() {
+      flash = setInterval(oFlash, 650);
+    }
+
+    function oFlash() {
+      var opaElem = document.getElementById('load-text');
+      opaElem.style.opacity = opaElem.style.opacity === "0" ? "1" : "0";
+    }
+
     function saveImage() {
       var picData = c.toDataURL("image/jpeg", 1.0);
       var dataUrl = name.replace(/\s+/g, '') + picData;
+      var newData = dataUrl.indexOf('data');
+      var newerData = dataUrl.substring(newData);
+      // window.console.log(newerData + 'im new');
+      window.console.log(dataUrl);
       // window.console.log(dataUrl);
       $.post("http://localhost:3000/save", dataUrl);
+      // $.post("http://localhost:3000/data-save", dataUrl);
+      $.post("http://localhost:3000/data-save", newerData);
+      // $.post("http://localhost:3000/data-save", nameVarz);
+
+      
+      $('.loading').css('opacity', '0');
+      setTimeout(function() {
+        $('.img-wrapper').css('display', 'block');
+        setTimeout(function() {
+          $('.img-canvas').css('opacity', '1');
+          setTimeout(function() {
+            $('.reload').css('opacity', '1');
+            $('.successful').css('opacity', '1');
+          }, 500);
+        }, 200);
+      }, 600);
+      
+      // 
     }
 
+
+
+    // function showImage () {
+    //   $('.img-wrapper').css('display', 'block');
+    // }
+
   $('.submit').click(function() {
-    event.preventDefault();
+    // event.preventDefault();
     // $('#new-img').css('opacity', '1');
     // $('#new-img').css('display', 'block');
+    if ($("#fullname").val().length < 2) {
+        window.alert('Please enter a valid name longer than 1 letter');
+        return false;
+    }
+
     $('.form_body').css('opacity', '0');
-    $('.form_body').css('opacity', '0');
+    
+    $('.loading-div').css('display', 'block');
+    setTimeout(function() {
+      $('.loading').css('opacity', '1');
+      opaChange();
+      $('.form_body').css('display', 'none');
+    }, 500);
+    
+    
     pseudoRandom(saveImage);
-    setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
+    
+    // setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
   });
 
   

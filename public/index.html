@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="main-page">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,14 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script type="text/javascript" src="javascripts/min/yay-min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.reload').click(function() {
+        location.reload();
+      });
+      
+    }); 
+  </script>
 </head>
 <body> 
   <div class="main">
@@ -19,13 +27,21 @@
           <p class="name-title">ENTER YOUR NAME TO GENERATE A PSEUDORANDOM LANDSCAPE</p>
           <input class="name" id="fullname" maxlength="35"></input>
         </div>
-        <a href="#" class="submit" type="submit"><p>SUBMIT&rarr;</p></a>
+        <p class="submit">SUBMIT&rarr;</p>
       </div>
+      
+      
     </form>
-    <div class="img-wrapper">
-      <canvas id="img-generation" width="960" height="540">
-      </canvas>
+    <div class="loading-div">
+      <p class="loading" id="load-text">YOUR IMAGE IS BEING GENERATED</p>
     </div>
+    <div class="img-wrapper">
+      <canvas class="img-canvas" id="img-generation" width="960" height="540">
+      </canvas>
+      <p class="successful">YOUR IMAGE HAS BEEN ADDED TO THE PROJECT</p>
+      <p class="reload">&larr;BACK</p>
+    </div>
+
   </div>
 </body>
 </html>

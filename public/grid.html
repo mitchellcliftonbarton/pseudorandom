@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="grid-view">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,40 +9,100 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/carousel.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      //window.setInterval(reloadAllImages, 300000);
+      function reloadAllImages() {
+
+        $.get('http://localhost:3000/images', function(images) {
+          // var imageListPre = [];
+          // imageListPre = images.split(',');
+          var imageList = [];
+
+          // // delete everything in .carousel
+          $('.grid').empty();
+
+          for (var i = 1; i < images.length; i++) {
+
+            // var source = images[i].replace(/"/g, '');
+            var nSource = 'new-images/' + images[i];
+            // window.console.log(nSource);
+            imageList.push(nSource);
+          }
+
+          var waitBeforeScroll = 5000;
+          var scrollDuration = 1500*imageList.length;
+
+          var contain = document.getElementById('grid-container');
+
+          for(image in imageList) {
+            // window.console.log(images[image]);
+
+            var newImgDiv = document.createElement('div');
+            contain.appendChild(newImgDiv).className = "col-lg-3";
+
+            var newImg = document.createElement('img');
+            newImg.src = imageList[image];
+            newImgDiv.appendChild(newImg);
+
+            // images[image] is the next image
+            // Create all image divs here for each item in images
+          }
+
+          // window.scrollBy(0, window.innerHeight);
+          
+          //debugger
+          $('body').css('letter-spacing', '0px');
+          $( "body" ).scrollTop(0);
+          
+
+          window.setTimeout( function() {
+            $('body').animate(
+              { 
+                letterSpacing: $(document).height() - $(window).height()
+              }, 
+              {
+
+                step: function( now, fx ) {
+                  $( "body" ).scrollTop(now);
+                }, 
+                duration: scrollDuration,
+                easing: 'linear',
+                complete: function() {
+                  window.setTimeout(
+                    reloadAllImages,
+                    waitBeforeScroll
+                  )
+                }
+              }
+            );
+          },waitBeforeScroll);
+
+            // var newImg = document.createElement('img');
+            // newImg.src = imageList[image];
+            // newImgDiv.appendChild(newImg).className = "imagess";
+
+            // images[image] is the next image
+            // Create all image divs here for each item in images
+          
+
+        })
+
+      }
+      reloadAllImages();
+
+
+    })
+
+
+
+  </script>
 </head>
-<body class="grid-view"> 
-  <div class="grid">
-    <div class="row">
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-    </div>
-    <div class="row">
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-    </div>
-    <div class="row">
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-    </div>
-    <div class="row">
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-    </div>
-    <div class="row">
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-      <div class="img-contain"><img src="images/pic1.jpg"></div>
-    </div>
-  </div>
+<body class=""> 
+  <div class="grid col-lg-12" id="grid-container">
     
+  </div>
 </body>
 </html>
