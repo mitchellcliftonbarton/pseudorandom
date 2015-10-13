@@ -798,7 +798,7 @@ $(document).ready(function() {
     //   $('.img-wrapper').css('display', 'block');
     // }
 
-  $('.submit').click(function() {
+  function runit () {
     // event.preventDefault();
     // $('#new-img').css('opacity', '1');
     // $('#new-img').css('display', 'block');
@@ -820,7 +820,17 @@ $(document).ready(function() {
     pseudoRandom(saveImage);
     
     // setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
+  }
+
+  $('.submit').click(function() {
+    runit();
   });
+
+  // $('.submit').keypress(function(e) {
+  //   if (e.keyCode === 13) {
+  //     runit();
+  //   }
+  // });
 
   
   
