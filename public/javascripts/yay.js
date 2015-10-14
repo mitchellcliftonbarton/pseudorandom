@@ -7,6 +7,9 @@ $(document).ready(function() {
   
   // 4. problems with displaying data on data-view page
   // done! 5. animation on loading p
+  // alert if there are integers
+  // alert if first letters are not capital
+  // alert if only a first name is submitted
 
   
   var nameVarz = [];
@@ -15,6 +18,8 @@ $(document).ready(function() {
   var positionX = [];
   var positionY = [];
   var negPos = [];
+  var negPosX = [];
+  var negPosY = [];
   var nameInt = [];
   var incr = [];
   var name;
@@ -88,6 +93,7 @@ $(document).ready(function() {
                   "images/stump-2.jpg",
                   "images/stump-3.jpg", 
                   "images/cement.jpg",
+                  "images/concrete.jpg",
                   "images/concrete-2.jpg",
                   "images/concrete-3.jpg",
                   "images/costarica-1.jpg",
@@ -104,11 +110,26 @@ $(document).ready(function() {
                   "images/timp-5.jpg",
                   "images/timp-6.jpg"];
 
-  var grids = ["images/grid-lg.png",
-               "images/grid-md.png",
-               "images/grid-sm.png",
-               "images/grid-xl.png",
-               "images/grid-xxl.png"];
+  var grids = ["images/grids/grid-lg.png",
+               "images/grids/grid-lg-white.png",
+               "images/grids/grid-lg-blue.png",
+               "images/grids/grid-lg-green.png",
+               "images/grids/grid-md.png",
+               "images/grids/grid-md-white.png",
+               "images/grids/grid-md-blue.png",
+               "images/grids/grid-md-green.png",
+               "images/grids/grid-sm.png",
+               "images/grids/grid-sm-white.png",
+               "images/grids/grid-sm-blue.png",
+               "images/grids/grid-sm-green.png",
+               "images/grids/grid-xl.png",
+               "images/grids/grid-xl-blue.png",
+               "images/grids/grid-xl-white.png",
+               "images/grids/grid-xl-green.png",
+               "images/grids/grid-xxl.png",
+               "images/grids/grid-xxl-blue.png",
+               "images/grids/grid-xxl-green.png",
+               "images/grids/grid-xxl-white.png",];
 
   var composite = ["source-over",
                    "lighter",
@@ -237,7 +258,8 @@ $(document).ready(function() {
       positionY.push(ypos1, ypos2, ylss1, ylss2, ymr1, ymr2);
       position.push(xpos1, ypos1, xpos2, ypos2, xlss1, ylss1, xlss2, ylss2, xmr1, ymr1, xmr2, ymr2);
       negPos.push(xpos1 * -1, xpos1, ypos1 * -1, ypos1, xpos2 * -1, xpos2, ypos2 * -1, ypos2, xlss1 * -1, xlss1, ylss1 * -1, ylss1, xlss2 * -1, xlss2, ylss2 * -1, ylss2, xmr1 * -1, xmr1, ymr1 * -1, ymr1, xmr2 * -1, xmr2, ymr2 * -1, ymr2);
-
+      negPosX.push(xpos1 * -1, xpos1, xpos2 * -1, xpos2, xlss1 * -1, xlss1, xlss2 * -1, xlss2, xmr1 * -1, xmr1, xmr2 * -1, xmr2);
+      negPosY.push(ypos1 * -1, ypos1, ypos2 * -1, ypos2, ylss1 * -1, ylss1, ylss2 * -1, ylss2, ymr1 * -1, ymr1, ymr2 * -1, ymr2);
       var incr1 = nameVarz[0] * 0.01;
       var incr2 = nameVarz[0] * 0.1;
       var incr3 = nameVarz[0];
@@ -286,7 +308,6 @@ $(document).ready(function() {
       if(array[0] === array.length-1) {
         return;
       }
-        
 
       array[++array[0]](array);
     }
@@ -301,17 +322,19 @@ $(document).ready(function() {
 
       ///////find img choice
 
-      if (nameVarz[17] >= 1050 && nameVarz[0] >= 13) {
-        imgChoice = randomImages[nameVarz[0] % randomImages.length];
-      } else if (nameVarz[17] <= 1049 && nameVarz[0] <= 12){
-        imgChoice = extraImg[nameVarz[0] % extraImg.length];
-      } else if (nameVarz[17] <= 1049 && nameVarz[0] >= 13){
-        imgChoice = randomImages[nameVarz[1] % randomImages.length];
-      } else if (nameVarz[17] >= 1050 && nameVarz[0] <= 12){
-        imgChoice = extraImg[nameVarz[1] % extraImg.length];
-      } else {
-        imgChoice = extraImg[nameVarz[3] % extraImg.length];
-      }
+      // if (nameVarz[17] >= 1050 && nameVarz[0] >= 13) {
+      //   imgChoice = randomImages[nameVarz[0] % randomImages.length];
+      // } else if (nameVarz[17] <= 1049 && nameVarz[0] <= 12){
+      //   imgChoice = extraImg[nameVarz[0] % extraImg.length];
+      // } else if (nameVarz[17] <= 1049 && nameVarz[0] >= 13){
+      //   imgChoice = randomImages[nameVarz[1] % randomImages.length];
+      // } else if (nameVarz[17] >= 1050 && nameVarz[0] <= 12){
+      //   imgChoice = extraImg[nameVarz[1] % extraImg.length];
+      // } else {
+      //   imgChoice = extraImg[nameVarz[3] % extraImg.length];
+      // }
+
+      imgChoice = randomImages[nameVarz[0] % randomImages.length];
 
       pic1.onload = function() {
         ctx.drawImage(pic1, 0, 0);
@@ -388,12 +411,12 @@ $(document).ready(function() {
       pic3.onload = function() {
         var blend = composite[nameInt[p1] % composite.length];
         comp = blend;
-        ctx.drawImage(pic3, positionX[nameVarz[p2] % positionX.length], positionY[nameVarz[p3] % positionY.length]);
+        ctx.drawImage(pic3, negPosX[nameVarz[p2] % negPosX.length], negPosY[nameVarz[p3] % negPosY.length]);
         caller(array);
         
       };
 
-      pic3.src = grids[nameVarz[6] % grids.length];
+      pic3.src = grids[nameVarz[17] % grids.length];
     }
 
     function gridz1(array) {
@@ -415,7 +438,7 @@ $(document).ready(function() {
     function rectangle (array, p1, p2, p3, p4, p5, p6) {
       var blend = composite[nameVarz[p1] % composite.length];
       comp = blend;
-      window.console.log(blend);
+      // window.console.log(blend);
       ctx.fillStyle = color[p2];
       ctx.fillRect(position[nameInt[p3] % position.length], position[nameInt[p4] % position.length], position[nameInt[p5] % position.length], position[nameInt[p6] % position.length]);
       caller(array);
@@ -802,10 +825,20 @@ $(document).ready(function() {
     // event.preventDefault();
     // $('#new-img').css('opacity', '1');
     // $('#new-img').css('display', 'block');
-    if ($("#fullname").val().length < 2) {
-        window.alert('Please enter a valid name longer than 1 letter');
+    if ($("#fullname").val().length < 3) {
+        window.alert('Please enter a valid full name longer than 1 letter');
         return false;
     }
+
+    // if ($("#fullname").val()) {
+    //     window.alert('Please enter a valid full name longer than 1 letter');
+    //     return false;
+    // }
+
+    // if (nameVarz[0] > 96 || nameVarz[1] > 96) {
+    //   window.alert('Please use capital letters to start your name');
+    //   return false;
+    // }
 
     $('.form_body').css('opacity', '0');
     
@@ -826,11 +859,13 @@ $(document).ready(function() {
     runit();
   });
 
-  // $('.submit').keypress(function(e) {
-  //   if (e.keyCode === 13) {
-  //     runit();
-  //   }
-  // });
+  $('.name').keypress(function(e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      runit();
+      // window.console.log('heyaydsf');
+    }
+  });
 
   
   
