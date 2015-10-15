@@ -9,7 +9,7 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Hello again distributed logs');
 
 app.use(express.static('public'));
-app.use(express.bodyParser({limit: '50mb'}));
+// app.use(express.bodyParser({limit: '50mb'}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
