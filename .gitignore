@@ -1,0 +1,5 @@
+/node_modules
+/public/new-images/*
+
+.DS_Store
+*.log
