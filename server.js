@@ -3,7 +3,7 @@ var app = express();
 var path = require('path');
 var fs = require('fs');
 var winston = require('winston');
-var parser = require('body-parser');
+// var parser = require('body-parser');
 
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Hello again distributed logs');
