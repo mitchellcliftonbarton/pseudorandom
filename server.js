@@ -9,8 +9,8 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Hello again distributed logs');
 
 app.use(express.static('public'));
-app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({limit: '150mb'}));
+app.use(bodyParser.urlencoded({limit: '150mb', extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
