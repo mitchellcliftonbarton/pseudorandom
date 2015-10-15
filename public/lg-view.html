@@ -16,7 +16,7 @@
 
       window.setInterval(reloadAllImages, 300000);
       function reloadAllImages() {
-        $.get('http://localhost:3000/images', function(images) {
+        $.get('/images', function(images) {
           // var imageListPre = [];
           // imageListPre = images.split(',');
           var imageList = [];
@@ -63,16 +63,16 @@
 
   </script>
 </head>
-<body> 
-    
+<body>
+
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox" id="carousel-div">
-        
+
       </div>
 
-      
+
     </div>
 </body>
 </html>

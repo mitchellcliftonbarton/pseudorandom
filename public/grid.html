@@ -16,7 +16,7 @@
       //window.setInterval(reloadAllImages, 300000);
       function reloadAllImages() {
 
-        $.get('http://localhost:3000/images', function(images) {
+        $.get('/images', function(images) {
           // var imageListPre = [];
           // imageListPre = images.split(',');
           var imageList = [];
@@ -52,22 +52,22 @@
           }
 
           // window.scrollBy(0, window.innerHeight);
-          
+
           //debugger
           $('body').css('letter-spacing', '0px');
           $( "body" ).scrollTop(0);
-          
+
 
           window.setTimeout( function() {
             $('body').animate(
-              { 
+              {
                 letterSpacing: $(document).height() - $(window).height()
-              }, 
+              },
               {
 
                 step: function( now, fx ) {
                   $( "body" ).scrollTop(now);
-                }, 
+                },
                 duration: scrollDuration,
                 easing: 'linear',
                 complete: function() {
@@ -86,7 +86,7 @@
 
             // images[image] is the next image
             // Create all image divs here for each item in images
-          
+
 
         })
 
@@ -100,9 +100,9 @@
 
   </script>
 </head>
-<body class=""> 
+<body class="">
   <div class="grid col-lg-12" id="grid-container">
-    
+
   </div>
 </body>
 </html>
