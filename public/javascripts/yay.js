@@ -794,7 +794,7 @@ $(document).ready(function() {
       var varzStr = nameVarz.toString();
       window.console.log(varzStr);
       // window.console.log(dataUrl);
-      $.post("/save", dataUrl);
+      $.post("../../save", dataUrl);
       // $.post("http://localhost:3000/data-save", dataUrl);
       $.post("/data-save", varzStr);
       // $.post("http://localhost:3000/data-save", nameVarz);
