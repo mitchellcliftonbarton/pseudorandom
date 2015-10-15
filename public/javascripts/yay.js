@@ -1,17 +1,17 @@
 $(document).ready(function() {
 
   // CREATE CANVAS ELEMENTS
-  ///Questions 
+  ///Questions
   // done! 1. array system/ timing of caller functions on click
   // done! 2. timing of saving the images/displaying the image once the data has been sent to the server
-  
+
   // 4. problems with displaying data on data-view page
   // done! 5. animation on loading p
   // alert if there are integers
   // alert if first letters are not capital
   // alert if only a first name is submitted
 
-  
+
   var nameVarz = [];
   var oColor = [];
   var position = [];
@@ -60,38 +60,38 @@ $(document).ready(function() {
   var pic2 = new Image();
   var pic3 = new Image();
   // var pic4 = new Image();
-  var randomImages = ["images/pic1.jpg", 
+  var randomImages = ["images/pic1.jpg",
                       "images/pic2.jpg",
                       "images/pic3.jpg",
                       "images/pic4.jpg",
-                      "images/pic5.jpg", 
+                      "images/pic5.jpg",
                       "images/pic6.jpg",
                       "images/pic7.jpg",
                       "images/pic8.jpg",
-                      "images/pic9.jpg", 
+                      "images/pic9.jpg",
                       "images/pic10.jpg",
                       "images/pic11.jpg",
                       "images/pic12.jpg",
-                      "images/pic13.jpg", 
+                      "images/pic13.jpg",
                       "images/pic14.jpg",
                       "images/pic15.jpg",
                       "images/pic16.jpg",
-                      "images/pic17.jpg", 
+                      "images/pic17.jpg",
                       "images/pic18.jpg",
                       "images/pic19.jpg",
                       "images/pic20.jpg",
-                      "images/pic21.jpg", 
+                      "images/pic21.jpg",
                       "images/pic22.jpg",
                       "images/pic23.jpg",
                       "images/pic24.jpg",
-                      "images/pic25.jpg", 
+                      "images/pic25.jpg",
                       "images/pic26.jpg"];
 
   var extraImg = ["images/red-stump.jpg",
                   "images/red-stump-2.jpg",
                   "images/weeds.jpg",
                   "images/stump-2.jpg",
-                  "images/stump-3.jpg", 
+                  "images/stump-3.jpg",
                   "images/cement.jpg",
                   "images/concrete.jpg",
                   "images/concrete-2.jpg",
@@ -147,7 +147,7 @@ $(document).ready(function() {
 
       // PRELIMINARY STEPS
 
-      // GET VALUES OF NAME 
+      // GET VALUES OF NAME
       name = document.getElementById('fullname').value;
 
       // ALERT IF NOTHING IS ENTERED
@@ -155,9 +155,9 @@ $(document).ready(function() {
       // CREATE EMPTY ARRAY WITH CONVERTED LETTERS
       var nl = name.length;
       var total = 0;
-      
+
       // FOR LOOP
-      for (var i = 0; i < nl; i++) { 
+      for (var i = 0; i < nl; i++) {
         nameInt.push(name.charCodeAt(i));
         total += nameInt[i];
       }
@@ -194,7 +194,7 @@ $(document).ready(function() {
       var xmr2 = xpos2 * 1.25;
       var ymr1 = ypos1 * 1.25;
       var ymr2 = ypos2 * 1.25;
-      
+
 
     ////////////////////////////////////////////////////////
 
@@ -274,7 +274,7 @@ $(document).ready(function() {
         var index2 = parseInt( nameVarz[1] % nextSteps.length );
         var index3 = parseInt( nameVarz[0] % nextSteps2.length );
         var allFns = steps[index1].concat(nextSteps[index2]).concat(nextSteps2[index3]);
-        
+
         caller(allFns);
         // caller(nextSteps[nameVarz[2] % nextSteps.length]);
         // caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
@@ -295,11 +295,11 @@ $(document).ready(function() {
       }, 6000);
 
 
-    
+
   }
 
 //////////////////////////////////////////////////////////////
-    
+
   // FUNCTIONS
     var imgChoice;
 
@@ -413,7 +413,7 @@ $(document).ready(function() {
         comp = blend;
         ctx.drawImage(pic3, negPosX[nameVarz[p2] % negPosX.length], negPosY[nameVarz[p3] % negPosY.length]);
         caller(array);
-        
+
       };
 
       pic3.src = grids[nameVarz[17] % grids.length];
@@ -443,19 +443,19 @@ $(document).ready(function() {
       ctx.fillRect(position[nameInt[p3] % position.length], position[nameInt[p4] % position.length], position[nameInt[p5] % position.length], position[nameInt[p6] % position.length]);
       caller(array);
 
-    } 
+    }
 
     function rectangle1(array) {
       rectangle(array, 1, nameVarz[0] % color.length, 0, 1, 2, 3);
-    } 
+    }
 
     function rectangle2(array) {
       rectangle(array, 2, nameInt[space + 2], 1, 2, 3, 2);
-    } 
+    }
 
     function rectangle3(array) {
       rectangle(array, 3, nameInt[space - 2], 2, 1, 2, 4);
-    } 
+    }
 
     ////////// Clear Rectangle Function
 
@@ -493,11 +493,11 @@ $(document).ready(function() {
 
     function changeColor(array) {
 
-      
+
       function scheme(p1, p2, p3, p4, p5, p6) {
         var imgData = ctx.getImageData(p1, p2, p3, p4);
         var data = imgData.data;
-        
+
         function invert() {
           for (var i = 0; i < data.length; i += 4) {
             data[i]     = 255 - data[i];     // red
@@ -523,7 +523,7 @@ $(document).ready(function() {
       }
     }
 
-    ////////// Draw a rectangle with a shadow 
+    ////////// Draw a rectangle with a shadow
 
     function rectangleShad (array, p1, p2, p3, p4, p5, p6, p7) {
         var blend = composite[nameVarz[p1] % composite.length];
@@ -534,7 +534,7 @@ $(document).ready(function() {
         ctx.fillRect(position[nameVarz[p4] % position.length], position[nameVarz[p5] % position.length], position[nameVarz[p6] % position.length], position[nameVarz[p7] % position.length]);
 
         caller(array);
-    } 
+    }
 
     function rectangleShad1(array) {
       rectangleShad(array, 17, 3, 3, 2, 0, 2, 1);
@@ -571,7 +571,7 @@ $(document).ready(function() {
 
       function paste (p1, p2, p3, p4, p5, p6) {
         var i;
-        var coord = [position[nameVarz[3] % position.length], 
+        var coord = [position[nameVarz[3] % position.length],
                      position[nameVarz[4] % position.length],
                      position[nameVarz[3] % position.length] * 2,
                      position[nameVarz[4] % position.length] * 2,
@@ -594,7 +594,7 @@ $(document).ready(function() {
           for (i = 2; i < nameVarz[5]; i++) {
             ctx.drawImage(pic3, p1, p2, p3, p4, (i * xcor * incr[1]), (i * ycor * incr[1]), p5, p6);
           }
-          
+
           caller(array);
         };
       }
@@ -609,7 +609,7 @@ $(document).ready(function() {
     function cutPasteOrig(array) {
       function paste (p1, p2, p3, p4, p5, p6) {
         var i;
-        var coord = [position[nameVarz[4] % position.length], 
+        var coord = [position[nameVarz[4] % position.length],
                      position[nameVarz[5] % position.length],
                      position[nameVarz[4] % position.length] * 2,
                      position[nameVarz[5] % position.length] * 2,
@@ -630,7 +630,7 @@ $(document).ready(function() {
         for (i = 2; i < nameVarz[5]; i++) {
           ctx.drawImage(ctx.canvas, p1, p2, p3, p4, (i * xcor * incr[1]), (i * ycor * incr[1]), p5, p6);
         }
-        
+
         caller(array);
       }
 
@@ -660,7 +660,7 @@ $(document).ready(function() {
 
       ctx.fillStyle=grd;
       ctx.fillRect(position[nameVarz[p12] % position.length], position[nameVarz[p13] % position.length], negPos[nameVarz[p14] % negPos.length], negPos[nameVarz[p15] % negPos.length]);
-      
+
       caller(array);
 
     }
@@ -751,7 +751,7 @@ $(document).ready(function() {
     var funz12 = [changeColor, gradient1, overlay, clearRect, rectangle3, gridz1];
 
     //////////
-    
+
     var steps = [fns1, fns2, fns3, fns4, fns5, fns6, fns7, fns8, fns9, fns10, fns11, fns12];
     var nextSteps = [fnz1, fnz2, fnz3, fnz4, fnz5, fnz6, fnz7, fnz8, fnz9, fnz10, fnz11, fnz12];
     var nextSteps2 = [funz1, funz2, funz3, funz4, funz5, funz6, funz7, funz8, funz9, funz10, funz11, funz12];
@@ -794,12 +794,12 @@ $(document).ready(function() {
       var varzStr = nameVarz.toString();
       window.console.log(varzStr);
       // window.console.log(dataUrl);
-      $.post("http://localhost:3000/save", dataUrl);
+      $.post("/save", dataUrl);
       // $.post("http://localhost:3000/data-save", dataUrl);
-      $.post("http://localhost:3000/data-save", varzStr);
+      $.post("/data-save", varzStr);
       // $.post("http://localhost:3000/data-save", nameVarz);
 
-      
+
       $('.loading').css('opacity', '0');
       setTimeout(function() {
         $('.img-wrapper').css('display', 'block');
@@ -811,8 +811,8 @@ $(document).ready(function() {
           }, 500);
         }, 200);
       }, 600);
-      
-      // 
+
+      //
     }
 
 
@@ -841,17 +841,17 @@ $(document).ready(function() {
     // }
 
     $('.form_body').css('opacity', '0');
-    
+
     $('.loading-div').css('display', 'block');
     setTimeout(function() {
       $('.loading').css('opacity', '1');
       opaChange();
       $('.form_body').css('display', 'none');
     }, 500);
-    
-    
+
+
     pseudoRandom(saveImage);
-    
+
     // setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
   }
 
@@ -867,9 +867,6 @@ $(document).ready(function() {
     }
   });
 
-  
-  
+
+
 });
-
-
-
