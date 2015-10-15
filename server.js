@@ -3,14 +3,14 @@ var app = express();
 var path = require('path');
 var fs = require('fs');
 var winston = require('winston');
-var parser = require('body-parser');
+var bodyParser = require('body-parser');
 
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Hello again distributed logs');
 
 app.use(express.static('public'));
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb', extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
