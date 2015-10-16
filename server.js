@@ -6,7 +6,7 @@ var fs = require('fs');
 var winston = require('winston');
 
 winston.add(winston.transports.File, { filename: 'winston.log' });
-winston.info('Hello again distributed logs');
+winston.info('Logging');
 
 app.use(express.static('public'));
 app.use(bodyParser.raw({limit: '10mb'}))
@@ -39,10 +39,16 @@ app.get('/images', function(req, res, next) {
 
 app.post('/save', function(req, res, next) {
   winston.info('POST - /save');
+  winston.info('starting save');
+
+  // app.use(bodyParser.json({limit: '150mb'}));
+  // app.use(bodyParser.urlencoded({limit: '150mb', extended: true}));
+
   var body = "";
 
   req.on('data', function(data) {
     body += data;
+    // winston.info('your body = ' + body);
   });
 
   req.on('end', function (){
@@ -50,7 +56,7 @@ app.post('/save', function(req, res, next) {
     var imgName = body.slice(0, split);
     var dataStart = body.toString().indexOf(',') + 1;
     var decodedImage = new Buffer(body.substring(dataStart), 'base64');
-    winston.info('Attempting to write: ' + imgName);
+    winston.info('Writing: ' + imgName);
     fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
       else winston.info('Success: Saved ' + imgName);

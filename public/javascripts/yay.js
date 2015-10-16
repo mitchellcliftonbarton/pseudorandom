@@ -46,14 +46,6 @@ $(document).ready(function() {
   var cw = c.width;
   var ch = c.height;
   var comp = ctx.globalCompositeOperation;
-  // var width1 = cw * 0.4;
-  // var width2 = cw / 2;
-  // var width3 = cw * 0.75;
-  // var height1 = ch * 0.4;
-  // var height2 = ch / 2;
-  // var height3 = ch * 0.75;
-
-
 
   //random images array
   var pic1 = new Image();
@@ -273,7 +265,10 @@ $(document).ready(function() {
         var index1 = parseInt( nameVarz[17] % steps.length );
         var index2 = parseInt( nameVarz[1] % nextSteps.length );
         var index3 = parseInt( nameVarz[0] % nextSteps2.length );
-        var allFns = steps[index1].concat(nextSteps[index2]).concat(nextSteps2[index3]);
+        var index4 = parseInt( nameVarz[0] % nextSteps.length );
+        var index5 = parseInt( nameVarz[1] % nextSteps2.length );
+        
+        var allFns = steps[index1].concat(nextSteps[index2]).concat(nextSteps2[index3]).concat(nextSteps[index4]).concat(nextSteps2[index5]);
 
         caller(allFns);
         // caller(nextSteps[nameVarz[2] % nextSteps.length]);
@@ -791,12 +786,12 @@ $(document).ready(function() {
     function saveImage() {
       var picData = c.toDataURL("image/jpeg", 1.0);
       var dataUrl = name.replace(/\s+/g, '') + picData;
-      var varzStr = nameVarz.toString();
-      window.console.log(varzStr);
+      // var varzStr = nameVarz.toString();
+      // window.console.log(varzStr);
       // window.console.log(dataUrl);
-      $.post("/save", dataUrl);
+      $.post("../../save", dataUrl);
       // $.post("http://localhost:3000/data-save", dataUrl);
-      $.post("/data-save", varzStr);
+      // $.post("/data-save", varzStr);
       // $.post("http://localhost:3000/data-save", nameVarz);
 
 
@@ -811,33 +806,30 @@ $(document).ready(function() {
           }, 500);
         }, 200);
       }, 600);
-
-      //
     }
 
-
-
-    // function showImage () {
-    //   $('.img-wrapper').css('display', 'block');
-    // }
-
   function runit () {
-    // event.preventDefault();
-    // $('#new-img').css('opacity', '1');
-    // $('#new-img').css('display', 'block');
-    if ($("#fullname").val().length < 3) {
-        window.alert('Please enter a valid full name longer than 1 letter');
+    var enteredName = $('#fullname').val();
+    var lstNm = enteredName.indexOf(' ') + 1;
+
+    if (enteredName.length <= 3) {
+        window.alert('Please enter a valid full name longer than 3 letters');
         return false;
     }
 
-    // if ($("#fullname").val()) {
-    //     window.alert('Please enter a valid full name longer than 1 letter');
-    //     return false;
-    // }
+    if (enteredName.indexOf(' ') === -1) {
+        window.alert('Please enter your first & last name');
+        return false;
+    }
 
-    // if (nameVarz[0] > 96 || nameVarz[1] > 96) {
-    //   window.alert('Please use capital letters to start your name');
-    //   return false;
+    if (enteredName.charCodeAt(0) >= 97 || enteredName.charCodeAt(lstNm) >= 97) {
+        window.alert('Please capitalize the first letters of your first and last name');
+        return false;
+    }
+
+    // if (isNaN(enteredName)) {
+    //     window.alert('there are numbers!');
+    //     return false;
     // }
 
     $('.form_body').css('opacity', '0');
@@ -849,10 +841,8 @@ $(document).ready(function() {
       $('.form_body').css('display', 'none');
     }, 500);
 
-
     pseudoRandom(saveImage);
 
-    // setTimeout(function() {$('.img-wrapper').css('display', 'block'); }, 1000);
   }
 
   $('.submit').click(function() {
@@ -863,9 +853,24 @@ $(document).ready(function() {
     if (e.keyCode === 13) {
       e.preventDefault();
       runit();
-      // window.console.log('heyaydsf');
     }
   });
+
+//   var timer = setInterval(function() {
+//                 window.console.log('i love waffles and bacon');
+//                 location.reload();
+//               }, 5000);
+
+//   function stop() {
+//     clearInterval(timer);
+//     timer();
+//     window.console.log('stopped');
+//   }
+
+// $(document).bind("keypress click")
+
+
+
 
 
 
