@@ -46,14 +46,6 @@ $(document).ready(function() {
   var cw = c.width;
   var ch = c.height;
   var comp = ctx.globalCompositeOperation;
-  // var width1 = cw * 0.4;
-  // var width2 = cw / 2;
-  // var width3 = cw * 0.75;
-  // var height1 = ch * 0.4;
-  // var height2 = ch / 2;
-  // var height3 = ch * 0.75;
-
-
 
   //random images array
   var pic1 = new Image();
@@ -791,12 +783,12 @@ $(document).ready(function() {
     function saveImage() {
       var picData = c.toDataURL("image/jpeg", 1.0);
       var dataUrl = name.replace(/\s+/g, '') + picData;
-      var varzStr = nameVarz.toString();
-      window.console.log(varzStr);
+      // var varzStr = nameVarz.toString();
+      // window.console.log(varzStr);
       // window.console.log(dataUrl);
       $.post("../../save", dataUrl);
       // $.post("http://localhost:3000/data-save", dataUrl);
-      $.post("/data-save", varzStr);
+      // $.post("/data-save", varzStr);
       // $.post("http://localhost:3000/data-save", nameVarz);
 
 
