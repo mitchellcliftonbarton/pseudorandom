@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 var fs = require('fs');
@@ -8,6 +9,7 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Hello again distributed logs');
 
 app.use(express.static('public'));
+app.use(bodyParser.raw({limit: '10mb'}))
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -51,6 +53,7 @@ app.post('/save', function(req, res, next) {
     winston.info('Attempting to write: ' + imgName);
     fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
+      else winston.info('Success: Saved ' + imgName);
     });
   });
 
