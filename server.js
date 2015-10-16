@@ -11,11 +11,9 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-// app.use(express.bodyParser({limit: '50mb'}));
-// app.use(express.bodyParser({limit: '150mb'}));
 app.use(bodyParser.json({limit: '150mb'}));
-app.use(bodyParser.raw({limit: '150mb'}));
-app.use(bodyParser.text({limit: '150mb'}));
+// app.use(bodyParser.raw({limit: '150mb'}));
+// app.use(bodyParser.text({limit: '150mb'}));
 app.use(bodyParser.urlencoded({limit: '150mb', extended: true}));
 
 app.get('/', function (req, res) {
