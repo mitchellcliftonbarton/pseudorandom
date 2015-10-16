@@ -1,5 +1,7 @@
+// var connect = require('connect')
 var express = require('express');
 var app = express();
+// var app = connect();
 var path = require('path');
 var fs = require('fs');
 var winston = require('winston');
@@ -9,7 +11,9 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-// app.use(express.bodyParser({limit: '150mb'}));
+// app.use(express.bodyParser({limit: '50mb'}));
+app.use(bodyParser.json({limit: '150mb'}));
+app.use(bodyParser.urlencoded({limit: '150mb', extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
