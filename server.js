@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 var fs = require('fs');
@@ -9,7 +9,7 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({limit: '10mb'}));
+// app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -25,6 +25,7 @@ app.get('/loop', function(req, res, next) {
   res.sendFile('lg-view.html', { root: path.join(__dirname, 'public') });
   winston.info('GET - /loop');
 });
+
 app.get('/images', function(req, res, next) {
   winston.info('GET - /images');
   fs.readdir('public/new-images', function(err, files) {
@@ -40,9 +41,6 @@ app.get('/images', function(req, res, next) {
 app.post('/save', function(req, res, next) {
   winston.info('POST - /save');
   winston.info('starting save');
-
-  // app.use(bodyParser.json({limit: '150mb'}));
-  // app.use(bodyParser.urlencoded({limit: '150mb', extended: true}));
 
   var body = "";
 

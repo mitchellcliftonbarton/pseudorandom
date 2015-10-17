@@ -195,14 +195,6 @@ html {
         box-shadow: 0px 14px 38px rgba(0, 0, 0, .18), 0 0 80px 15px rgba(0, 0, 0, .18);
         @include transition (opacity 1s);
       }
-
-      #img-generation {
-        
-        // background: url("/images/pic1.jpg");
-        // background-position: 0% 0%;
-        // background-repeat: no-repeat;
-        // background-size: 50% 50%;
-      }
     }
 
     #new-img {
