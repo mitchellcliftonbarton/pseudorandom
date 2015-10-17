@@ -1,17 +1,5 @@
 $(document).ready(function() {
 
-  // CREATE CANVAS ELEMENTS
-  ///Questions
-  // done! 1. array system/ timing of caller functions on click
-  // done! 2. timing of saving the images/displaying the image once the data has been sent to the server
-
-  // 4. problems with displaying data on data-view page
-  // done! 5. animation on loading p
-  // alert if there are integers
-  // alert if first letters are not capital
-  // alert if only a first name is submitted
-
-
   var nameVarz = [];
   var oColor = [];
   var position = [];
@@ -51,7 +39,6 @@ $(document).ready(function() {
   var pic1 = new Image();
   var pic2 = new Image();
   var pic3 = new Image();
-  // var pic4 = new Image();
   var randomImages = ["images/pic1.jpg",
                       "images/pic2.jpg",
                       "images/pic3.jpg",
@@ -229,20 +216,6 @@ $(document).ready(function() {
 
       oColor.push(colors[0], colors[1], colors[2], colors[3], colors[4], colors[5], colors[6], colors[7], colors[8], colors[9], colors[10], colors[11], colors[12]);
 
-      // Check to see if there are duplicates
-
-      (function() {
-        var counts = [];
-        for(var i = 0; i <= nameInt.length; i++) {
-            if(counts[nameInt[i]] === undefined) {
-                counts[nameInt[i]] = 1;
-            } else {
-                dupe = false;
-            }
-        }
-        dupe = true;
-      }());
-
       // variable array
 
       nameVarz.push(flnum, slnum, firstLett, secondLett, nl, firstLeng, secLeng, flhund, slhund, halfFlhund, halfSlhund, altFl1, altSl1, altFl2, altSl2, opacity, avg, total, dupe, sum);
@@ -258,7 +231,7 @@ $(document).ready(function() {
       var incr4 = nameVarz[0] * 10;
       var incr5 = nameVarz[0] * 100;
       incr.push(incr1, incr2, incr3, incr4, incr5);
-      // window.console.log(incr);
+
     ///////////////////////////////////////////////////////
 
       (function() {
@@ -271,19 +244,7 @@ $(document).ready(function() {
         var allFns = steps[index1].concat(nextSteps[index2]).concat(nextSteps2[index3]).concat(nextSteps[index4]).concat(nextSteps2[index5]);
 
         caller(allFns);
-        // caller(nextSteps[nameVarz[2] % nextSteps.length]);
-        // caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
-        // setTimeout(function() {
-        //   caller(nextSteps[nameVarz[2] % nextSteps.length]);
-        // }, 1000);
-
-        // setTimeout(function() {
-        //   caller(nextSteps2[nameVarz[3] % nextSteps2.length]);
-        // }, 1200);
       }());
-
-      window.console.log(nameVarz);
-      window.console.log(nameInt);
 
       setTimeout(function() {
         callback();
@@ -307,27 +268,9 @@ $(document).ready(function() {
       array[++array[0]](array);
     }
 
-    // function caller2(array) {
-    //   array[1] (array);
-    // }
-
     //////// Background Function
 
     function bkg (array) {
-
-      ///////find img choice
-
-      // if (nameVarz[17] >= 1050 && nameVarz[0] >= 13) {
-      //   imgChoice = randomImages[nameVarz[0] % randomImages.length];
-      // } else if (nameVarz[17] <= 1049 && nameVarz[0] <= 12){
-      //   imgChoice = extraImg[nameVarz[0] % extraImg.length];
-      // } else if (nameVarz[17] <= 1049 && nameVarz[0] >= 13){
-      //   imgChoice = randomImages[nameVarz[1] % randomImages.length];
-      // } else if (nameVarz[17] >= 1050 && nameVarz[0] <= 12){
-      //   imgChoice = extraImg[nameVarz[1] % extraImg.length];
-      // } else {
-      //   imgChoice = extraImg[nameVarz[3] % extraImg.length];
-      // }
 
       imgChoice = randomImages[nameVarz[0] % randomImages.length];
 
@@ -382,7 +325,7 @@ $(document).ready(function() {
       } else if (nameVarz[5] <= 8 && nameVarz[6] >= 8) {
         picture(positionX[nameVarz[r5] % positionX.length], positionY[nameVarz[r5] % positionY.length] * -1);
       } else {
-        //// ADD SOMETHING DIFFERENT HERE
+        
         rectangle();
         window.alert('i didnt work!!');
       }
@@ -433,7 +376,6 @@ $(document).ready(function() {
     function rectangle (array, p1, p2, p3, p4, p5, p6) {
       var blend = composite[nameVarz[p1] % composite.length];
       comp = blend;
-      // window.console.log(blend);
       ctx.fillStyle = color[p2];
       ctx.fillRect(position[nameInt[p3] % position.length], position[nameInt[p4] % position.length], position[nameInt[p5] % position.length], position[nameInt[p6] % position.length]);
       caller(array);
@@ -751,26 +693,6 @@ $(document).ready(function() {
     var nextSteps = [fnz1, fnz2, fnz3, fnz4, fnz5, fnz6, fnz7, fnz8, fnz9, fnz10, fnz11, fnz12];
     var nextSteps2 = [funz1, funz2, funz3, funz4, funz5, funz6, funz7, funz8, funz9, funz10, funz11, funz12];
 
-    // function funct1(array) {
-    //   caller(nextSteps[nameVarz[17] % nextSteps.length]);
-    //   caller(array);
-    // }
-
-    // function funct2(array) {
-    //   caller(steps[nameVarz[2] % steps.length]);
-    //   caller(array);
-    // }
-
-    // function funct3(array) {
-    //   caller(steps[nameVarz[1] % steps.length]);
-    //   caller(array);
-    // }
-
-    // var finalFunct1 = [funct1, funct2, funct3];
-    // var finalFunct2 = [funct1, funct3, funct2];
-
-    // var ending = [finalFunct1, finalFunct2];
-
 /////////////////////////////////////////////////////////////////
 
     var flash;
@@ -786,14 +708,8 @@ $(document).ready(function() {
     function saveImage() {
       var picData = c.toDataURL("image/jpeg", 1.0);
       var dataUrl = name.replace(/\s+/g, '') + picData;
-      // var varzStr = nameVarz.toString();
-      // window.console.log(varzStr);
-      // window.console.log(dataUrl);
+      
       $.post("../../save", dataUrl);
-      // $.post("http://localhost:3000/data-save", dataUrl);
-      // $.post("/data-save", varzStr);
-      // $.post("http://localhost:3000/data-save", nameVarz);
-
 
       $('.loading').css('opacity', '0');
       setTimeout(function() {
@@ -806,6 +722,7 @@ $(document).ready(function() {
           }, 500);
         }, 200);
       }, 600);
+      // window.console.log('saving your image');
     }
 
   function runit () {
@@ -826,11 +743,6 @@ $(document).ready(function() {
         window.alert('Please capitalize the first letters of your first and last name');
         return false;
     }
-
-    // if (isNaN(enteredName)) {
-    //     window.alert('there are numbers!');
-    //     return false;
-    // }
 
     $('.form_body').css('opacity', '0');
 
@@ -855,23 +767,4 @@ $(document).ready(function() {
       runit();
     }
   });
-
-//   var timer = setInterval(function() {
-//                 window.console.log('i love waffles and bacon');
-//                 location.reload();
-//               }, 5000);
-
-//   function stop() {
-//     clearInterval(timer);
-//     timer();
-//     window.console.log('stopped');
-//   }
-
-// $(document).bind("keypress click")
-
-
-
-
-
-
 });

@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>P S E U D O R A N D O M</title>
-  <meta name="description" content="">
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
@@ -15,6 +14,25 @@
       $('.reload').click(function() {
         location.reload();
       });
+
+        var timer;
+
+        function yup() {
+
+          timer = setInterval(function() {
+                    // window.console.log('i love waffles and bacon');
+                    location.reload();
+                  }, 90000);
+          // window.console.log('start timer');
+        }
+
+        yup();
+
+        $(document).bind('click keypress mousemove', function() {
+          clearInterval(timer);
+          // window.console.log('stop and restart timer');
+          yup();
+        });
       
     }); 
   </script>
