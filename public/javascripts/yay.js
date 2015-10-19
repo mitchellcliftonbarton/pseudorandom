@@ -244,6 +244,7 @@ $(document).ready(function() {
         var allFns = steps[index1].concat(nextSteps[index2]).concat(nextSteps2[index3]).concat(nextSteps[index4]).concat(nextSteps2[index5]);
 
         caller(allFns);
+        window.console.log('i worked');
       }());
 
       setTimeout(function() {
