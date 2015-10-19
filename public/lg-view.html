@@ -14,7 +14,7 @@
   <script>
     $(document).ready(function() {
 
-      window.setInterval(reloadAllImages, 300000);
+      // window.setInterval(reloadAllImages, 300000);
       function reloadAllImages() {
         $.get('/images', function(images) {
           var imageList = [];
@@ -48,6 +48,10 @@
 
       }
       reloadAllImages();
+
+      if ($('.item:last-child').hasClass('active')) {
+        window.console.log('eleanor');
+      }
     })
 
   </script>
