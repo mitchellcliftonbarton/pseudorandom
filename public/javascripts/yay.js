@@ -146,8 +146,17 @@ $(document).ready(function() {
       space = nameInt.indexOf(32);
       firstLett = nameInt[0];
       secondLett = nameInt[space + 1];
-      var flnum = firstLett - 65;
-      var slnum = secondLett - 65;
+      var flnum;
+      var slnum;
+
+      if (nameInt[0] === 65) {
+        flnum = firstLett - 64;
+        slnum = secondLett - 64;
+      } else {
+        flnum = firstLett - 65;
+        slnum = secondLett - 65;
+      }
+
       var firstLeng = space;
       var secLeng = (nl - space) - 1;
       var flhund = firstLeng * 100;
@@ -272,8 +281,13 @@ $(document).ready(function() {
     //////// Background Function
 
     function bkg (array) {
-
-      imgChoice = randomImages[nameVarz[0] % randomImages.length];
+      if (nameInt[0] === 65) {
+        imgChoice = randomImages[nameVarz[0] % randomImages.length - 1];
+        window.console.log('the letter A worked');
+      } else {
+        imgChoice = randomImages[nameVarz[0] % randomImages.length];
+        window.console.log('other letters worked');
+      }
 
       pic1.onload = function() {
         ctx.drawImage(pic1, 0, 0);
@@ -766,6 +780,8 @@ $(document).ready(function() {
     if (e.keyCode === 13) {
       e.preventDefault();
       runit();
+      window.console.log(nameVarz);
+      window.console.log(nameInt);
     }
   });
 });
