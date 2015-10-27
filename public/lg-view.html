@@ -14,7 +14,7 @@
   <script>
     $(document).ready(function() {
 
-      // window.setInterval(reloadAllImages, 300000);
+      // window.setInterval(reloadAllImages, 600000);
       function reloadAllImages() {
         $.get('/images', function(images) {
           var imageList = [];
@@ -40,7 +40,7 @@
           $('.item:first').addClass('active');
 
           $('.carousel').carousel({
-            interval: 1200,
+            interval: 2200,
             pause: false
           });
 
@@ -49,16 +49,21 @@
       }
       reloadAllImages();
 
-      if ($('.item:last-child').hasClass('active')) {
-        window.console.log('eleanor');
-      }
+      $('.carousel').on('slide.bs.carousel', function () {
+        if ($('.item:last-child').hasClass('active')) {
+          reloadAllImages();
+          window.console.log('eleanor');
+        }
+      });
+
+        
     })
 
   </script>
 </head>
 <body>
 
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide">
 
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox" id="carousel-div">
