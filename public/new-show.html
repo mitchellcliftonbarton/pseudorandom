@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="loop-view">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P S E U D O R A N D O M</title>
+  <meta name="description" content="">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/carousel.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      // window.setInterval(reloadAllImages, 600000);
+      // function reloadAllImages() {
+      //   $.get('/images', function(images) {
+      //     var imageList = [];
+      //     $('.carousel-inner').empty();
+
+      //     for (var i = 2; i < images.length; i++) {
+      //       var nSource = 'new-images/' + images[i];
+      //       imageList.push(nSource);
+      //     }
+
+      //     var contain = document.getElementById('carousel-div');
+
+      //     for(image in imageList) {
+
+      //       var newImgDiv = document.createElement('div');
+      //       contain.appendChild(newImgDiv).className = "item";
+
+      //       var newImg = document.createElement('img');
+      //       newImg.src = imageList[image];
+      //       newImgDiv.appendChild(newImg).className = "imagess";
+      //     }
+
+      //     $('.item:first').addClass('active');
+
+      //     $('.carousel').carousel({
+      //       interval: 2500,
+      //       pause: false
+      //     });
+
+      //   })
+
+      // }
+      // reloadAllImages();
+
+      $('.carousel').on('slide.bs.carousel', function () {
+        // if ($('.item:last-child').hasClass('active')) {
+        //   reloadAllImages();
+        //   window.console.log('eleanor');
+        // }
+      });
+
+      $('.carousel').carousel({
+        interval: 2500,
+        pause: false
+      });
+
+        
+    });
+
+  </script>
+</head>
+<body>
+
+    <div id="carousel-example-generic" class="carousel slide">
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox" id="carousel-div">
+        <div class="item">
+          <img class="imagess" src="new-images/CalebHodson.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/CameronPowers.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/ChelsiHong.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/Daniele Vickers.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/DugenheiserHogandouser.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/KarimBenzema.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/KenzieSucks.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/PorterLong.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/QuicksilverSmith.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/VictoriaChen.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/YauYau.jpg">
+        </div>
+        <div class="item">
+          <img class="imagess" src="new-images/ZoeHart.jpg">
+        </div>
+      </div>
+
+
+    </div>
+</body>
+</html>
