@@ -26,7 +26,7 @@ app.get('/loop', function(req, res, next) {
   winston.info('GET - /loop');
 });
 
-app.get('/show-2', function(req, res, next) {
+app.get('/show', function(req, res, next) {
   res.sendFile('new-show.html', { root: path.join(__dirname, 'public') });
   winston.info('GET - /show-2');
 });
