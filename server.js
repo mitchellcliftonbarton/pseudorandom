@@ -21,7 +21,7 @@ app.get('/grid', function(req, res, next) {
   winston.info('GET - /grid');
 });
 
-app.get('/poop', function(req, res, next) {
+app.get('/loop', function(req, res, next) {
   res.sendFile('lg-view.html', { root: path.join(__dirname, 'public') });
   winston.info('GET - /loop');
 });
