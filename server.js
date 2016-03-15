@@ -36,6 +36,11 @@ app.get('/group', function(req, res, next) {
   winston.info('GET - /group');
 });
 
+app.get('/info', function(req, res, next) {
+  res.sendFile('info.html', { root: path.join(__dirname, 'public') });
+  winston.info('GET - /info');
+});
+
 app.get('/images', function(req, res, next) {
   winston.info('GET - /images');
   fs.readdir('public/new-images', function(err, files) {
