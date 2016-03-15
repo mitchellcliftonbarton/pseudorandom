@@ -5199,6 +5199,16 @@ html {
     position: absolute;
     top: calc(50% - 30px); }
 
+.info-view .explanation {
+  color: #555;
+  font-size: 35px;
+  line-height: 47px;
+  letter-spacing: 3px;
+  padding: 80px;
+  margin-top: 50px; }
+  .info-view .explanation a {
+    color: #afafaf; }
+
 body {
   min-height: 100%;
   height: 100%;
