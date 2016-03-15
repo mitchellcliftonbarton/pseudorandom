@@ -12,9 +12,17 @@
   position: relative;
   top: calc(50% - 412px);
 
-  .data-display {
-    
+  p {
+    margin-top: 130px;
+    color: #c2c2c2;
+    font-weight: lighter;
+    font-size: 13px;
+    letter-spacing: 2px;
   }
+}
+
+.group-view .item {
+  top: calc(50% - 179px);
 }
 
 .active {
@@ -27,4 +35,26 @@
 
 .carousel-inner {
   height: 100%;
+}
+
+.group-view .carousel .imagess{
+  width: 610px;
+  -webkit-box-shadow: 0px 14px 38px rgba(0, 0, 0, .18), 0 0 80px 15px rgba(0, 0, 0, .18); 
+  -moz-box-shadow: 0px 14px 38px rgba(0, 0, 0, .18), 0 0 80px 15px rgba(0, 0, 0, .18);
+  box-shadow: 0px 14px 38px rgba(0, 0, 0, .18), 0 0 80px 15px rgba(0, 0, 0, .18);
+  margin: 0 auto;
+}
+
+.group-view {
+  .carousel-control {
+    background-image: none;
+    background-repeat: none;
+    span {
+      color: #c2c2c2;
+      text-shadow: none;
+      font-size: 30px;
+      position: absolute;
+      top: calc(50% - 30px);
+    }
+  }
 }
