@@ -87,13 +87,13 @@ app.post('/save', function(req, res, next) {
 
 app.post('/sand', function(req, res, next) {
 
-  var body = "";
+  // var body = "";
 
-  req.on('data', function(data) {
-    body += data;
-    // winston.info('your body = ' + body);
-    console.log(body + ' ' + data)
-  });
+  // req.on('data', function(data) {
+  //   body += data;
+  //   // winston.info('your body = ' + body);
+  //   console.log(body + ' ' + data)
+  // });
 
   // req.on('end', function (){
   //   var split = body.indexOf('data');
@@ -111,7 +111,7 @@ app.post('/sand', function(req, res, next) {
   //   if(err) console.log('broken');
   //   else console.log("yay")
   // }
-
+  console.log(req.body);
   res.send("received - " + req.body);
 
 });
