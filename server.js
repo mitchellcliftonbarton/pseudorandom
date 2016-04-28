@@ -111,7 +111,8 @@ app.post('/sand', function(req, res, next) {
   //   if(err) console.log('broken');
   //   else console.log("yay")
   // }
-  console.log(req.body);
+  // console.log(req.body);
+  winston.info(req.body);
   res.send("received - " + req.body);
 
 });
