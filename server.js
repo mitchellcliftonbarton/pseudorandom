@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 var fs = require('fs');
@@ -9,7 +9,7 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -112,8 +112,8 @@ app.post('/sand', function(req, res, next) {
   //   else console.log("yay")
   // }
   // console.log(req.body);
-  console.dir(req.body);
-  winston.info(req.body);
+  console.dir('the body is ' + req.body);
+  winston.info('the body is ' + req.body);
   res.send("received - " + req.body);
 
 });
