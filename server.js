@@ -114,7 +114,7 @@ app.post('/sand', function(req, res, next) {
   // console.log(req.body);
   console.dir(req.body);
   winston.info(req.body);
-  res.send("received - " + body);
+  res.send("received - " + req.body);
 
 });
 
