@@ -114,7 +114,7 @@ app.post('/sand', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done" + body);
+  res.send("Done" + imgName);
 
 });
 
