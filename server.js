@@ -9,7 +9,7 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -88,7 +88,7 @@ app.post('/save', function(req, res, next) {
 app.post('/sand', function(req, res, next) {
 
   // var body = "";
-
+  var body = req.body;
   // req.on('data', function(data) {
   //   body += data;
   //   // winston.info('your body = ' + body);
@@ -112,8 +112,9 @@ app.post('/sand', function(req, res, next) {
   //   else console.log("yay")
   // }
   // console.log(req.body);
-  winston.info(req.body);
-  res.send("received - " + req.body);
+  console.dir(req.body);
+  winston.info(body);
+  res.send("received - " + body);
 
 });
 
