@@ -9,7 +9,7 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-// app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -112,7 +112,7 @@ app.post('/sand', function(req, res, next) {
   //   else console.log("yay")
   // }
 
-  res.send("received all your stinkin data, here it is - " + req.body);
+  res.send("received - " + req.body);
 
 });
 
