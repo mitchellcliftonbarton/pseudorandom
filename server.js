@@ -114,7 +114,7 @@ app.post('/sand', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done");
+  res.send("Done" + body);
 
 });
 
