@@ -9,8 +9,8 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
-
+// app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+app.use(require('connect').bodyParser({limit: '10mb', extended: true}));
 app.get('/', function (req, res) {
   res.sendFile('index.html');
   winston.info('GET - /');
