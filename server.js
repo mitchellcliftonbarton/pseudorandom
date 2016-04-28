@@ -87,12 +87,12 @@ app.post('/save', function(req, res, next) {
 
 app.post('/sand', function(req, res, next) {
 
-  // var body = "";
+  var body = "";
 
-  // req.on('data', function(data) {
-  //   body += data;
-  //   // winston.info('your body = ' + body);
-  // });
+  req.on('data', function(data) {
+    body += data;
+    // winston.info('your body = ' + body);
+  });
 
   // req.on('end', function (){
   //   var split = body.indexOf('data');
