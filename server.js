@@ -92,6 +92,7 @@ app.post('/sand', function(req, res, next) {
   req.on('data', function(data) {
     body += data;
     // winston.info('your body = ' + body);
+    console.log(body + ' ' + data)
   });
 
   // req.on('end', function (){
