@@ -66,11 +66,14 @@ app.post('/save', function(req, res, next) {
     winston.info('your body = ' + body);
   });
 
+  var dataStart;
+  var decodedImage;
+
   req.on('end', function (){
     var split = body.indexOf('data');
     var imgName = body.slice(0, split);
-    var dataStart = body.toString().indexOf(',') + 1;
-    var decodedImage = new Buffer(body.substring(dataStart), 'base64');
+    dataStart = body.toString().indexOf(',') + 1;
+    decodedImage = new Buffer(body.substring(dataStart), 'base64');
     winston.info('Writing: ' + imgName);
     fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
@@ -83,7 +86,7 @@ app.post('/save', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done - " + data);
+  res.send("Done - " + dataStart);
 
 });
 
