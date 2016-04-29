@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var app = express();
 var path = require('path');
 var fs = require('fs');
@@ -10,6 +11,7 @@ winston.info('Logging');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+// app.use(cors());
 // app.use(require('connect').bodyParser({limit: '10mb', extended: true}));
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -85,7 +87,7 @@ app.post('/save', function(req, res, next) {
 
 });
 
-app.post('/sand', function(req, res, next) {
+app.post('/sand', cors(), function(req, res, next) {
 
   winston.info('POST - /save');
   winston.info('starting save');
@@ -107,6 +109,7 @@ app.post('/sand', function(req, res, next) {
       if (err) winston.info('Error: ' + err);
       else winston.info('Success: Saved ' + imgName);
     });
+    res.send("Done" + imgName);
   });
 
   function callback(err) {
@@ -114,7 +117,7 @@ app.post('/sand', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done" + imgName);
+  // res.send("Done" + imgName);
 
 });
 
