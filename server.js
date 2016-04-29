@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var cors = require('cors');
+// var cors = require('cors');
 var app = express();
 var path = require('path');
 var fs = require('fs');
@@ -87,7 +87,7 @@ app.post('/save', function(req, res, next) {
 
 });
 
-app.post('/sand', cors(), function(req, res, next) {
+app.post('/sand', function(req, res, next) {
 
   // winston.info('POST - /save');
   // winston.info('starting save');
