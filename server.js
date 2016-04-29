@@ -97,11 +97,11 @@ app.post('/sand', function(req, res, next) {
   });
 
   req.on('end', function (){
-    var split = body.indexOf('data');
+    var split = body.indexOf('image');
     var imgName = body.slice(0, split);
     var dataStart = body.toString().indexOf(',') + 1;
     var decodedImage = new Buffer(body.substring(dataStart), 'base64');
-    winston.info('Writing: ' + imgName);
+    // winston.info('Writing: ' + imgName);
     fs.writeFile('public/gray-sand/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
       else winston.info('Success: Saved ' + imgName);
