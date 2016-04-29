@@ -83,7 +83,7 @@ app.post('/save', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done");
+  res.send("Done - " + req.body);
 
 });
 
