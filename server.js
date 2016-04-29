@@ -89,35 +89,35 @@ app.post('/save', function(req, res, next) {
 
 app.post('/sand', cors(), function(req, res, next) {
 
-  winston.info('POST - /save');
-  winston.info('starting save');
+  // winston.info('POST - /save');
+  // winston.info('starting save');
 
-  var body = "";
+  // var body = "";
 
-  req.on('data', function(data) {
-    body += data;
-    // winston.info('your body = ' + body);
-  });
+  // req.on('data', function(data) {
+  //   body += data;
+  //   // winston.info('your body = ' + body);
+  // });
 
-  req.on('end', function (){
-    var split = body.indexOf('data');
-    var imgName = body.slice(0, split);
-    var dataStart = body.toString().indexOf(',') + 1;
-    var decodedImage = new Buffer(body.substring(dataStart), 'base64');
-    winston.info('Writing: ' + imgName);
-    fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
-      if (err) winston.info('Error: ' + err);
-      else winston.info('Success: Saved ' + imgName);
-    });
-    res.send("Done" + imgName);
-  });
+  // req.on('end', function (){
+  //   var split = body.indexOf('data');
+  //   var imgName = body.slice(0, split);
+  //   var dataStart = body.toString().indexOf(',') + 1;
+  //   var decodedImage = new Buffer(body.substring(dataStart), 'base64');
+  //   winston.info('Writing: ' + imgName);
+  //   fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
+  //     if (err) winston.info('Error: ' + err);
+  //     else winston.info('Success: Saved ' + imgName);
+  //   });
 
-  function callback(err) {
-    if(err) console.log('broken');
-    else console.log("yay")
-  }
+  // });
 
-  // res.send("Done" + imgName);
+  // function callback(err) {
+  //   if(err) console.log('broken');
+  //   else console.log("yay")
+  // }
+
+  res.send("Done - " + req.body);
 
 });
 
