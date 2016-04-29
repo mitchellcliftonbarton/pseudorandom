@@ -1,6 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-// var cors = require('cors');
+// var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 var fs = require('fs');
@@ -10,9 +9,8 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
-// app.use(cors());
-// app.use(require('connect').bodyParser({limit: '10mb', extended: true}));
+// app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+
 app.get('/', function (req, res) {
   res.sendFile('index.html');
   winston.info('GET - /');
@@ -63,17 +61,14 @@ app.post('/save', function(req, res, next) {
 
   req.on('data', function(data) {
     body += data;
-    winston.info('your body = ' + body);
+    // winston.info('your body = ' + body);
   });
-
-  var dataStart;
-  var decodedImage;
 
   req.on('end', function (){
     var split = body.indexOf('data');
     var imgName = body.slice(0, split);
-    dataStart = body.toString().indexOf(',') + 1;
-    decodedImage = new Buffer(body.substring(dataStart), 'base64');
+    var dataStart = body.toString().indexOf(',') + 1;
+    var decodedImage = new Buffer(body.substring(dataStart), 'base64');
     winston.info('Writing: ' + imgName);
     fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
@@ -86,7 +81,7 @@ app.post('/save', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done - " + dataStart);
+  res.send("Done");
 
 });
 
@@ -98,19 +93,16 @@ app.post('/sand', function(req, res, next) {
 
   req.on('data', function(data) {
     body += data;
-    winston.info('your body = ' + body);
+    // winston.info('your body = ' + body);
   });
-
-  var dataStart;
-  var decodedImage;
 
   req.on('end', function (){
     var split = body.indexOf('data');
     var imgName = body.slice(0, split);
-    dataStart = body.toString().indexOf(',') + 1;
-    decodedImage = new Buffer(body.substring(dataStart), 'base64');
+    var dataStart = body.toString().indexOf(',') + 1;
+    var decodedImage = new Buffer(body.substring(dataStart), 'base64');
     winston.info('Writing: ' + imgName);
-    fs.writeFile('public/gray-sand/' + imgName + '.jpg', decodedImage, function(err) {
+    fs.writeFile('public/new-images/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
       else winston.info('Success: Saved ' + imgName);
     });
@@ -121,8 +113,7 @@ app.post('/sand', function(req, res, next) {
     else console.log("yay")
   }
 
-  res.send("Done - " + dataStart);
-  
+  res.send("Done");
 
 });
 
