@@ -63,7 +63,7 @@ app.post('/save', function(req, res, next) {
 
   req.on('data', function(data) {
     body += data;
-    // winston.info('your body = ' + body);
+    winston.info('your body = ' + body);
   });
 
   req.on('end', function (){
