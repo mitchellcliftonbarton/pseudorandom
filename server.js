@@ -124,6 +124,12 @@ app.post('/sand', function(req, res, next) {
 
 });
 
+app.get('/shapes', function(req, res, next) {
+  // res.sendFile('info.html', { root: path.join(__dirname, 'public') });
+  // winston.info('GET - /info');
+  res.send('you got me!');
+});
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
