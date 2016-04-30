@@ -104,6 +104,7 @@ app.post('/sand', function(req, res, next) {
     var times = t.toUTCString();
     times = times.replace(/\s+/g, '-');
     imgName = times + '-' + imgName;
+    img.replace(',', '');
 
     var dataStart = body.toString().indexOf(',') + 1;
     var decodedImage = new Buffer(body.substring(dataStart), 'base64');
