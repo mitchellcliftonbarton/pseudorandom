@@ -99,7 +99,12 @@ app.post('/sand', function(req, res, next) {
   req.on('end', function (){
     var split = body.indexOf('-');
     var imgName = body.slice(0, split);
-    
+
+    var t = new Date();
+    var times = t.toUTCString();
+    times = times.replace(/\s+/g, '-');
+    imgName = times + '-' + imgName;
+
     var dataStart = body.toString().indexOf(',') + 1;
     var decodedImage = new Buffer(body.substring(dataStart), 'base64');
     // winston.info('Writing: ' + imgName);
