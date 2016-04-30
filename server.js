@@ -127,7 +127,7 @@ app.post('/sand', function(req, res, next) {
 app.post('/shapes', function(req, res, next) {
   // res.sendFile('info.html', { root: path.join(__dirname, 'public') });
   // winston.info('GET - /info');
-  res.send('you got me!');
+  res.send('you are so smelly');
 });
 
 var server = app.listen(3000, function () {
