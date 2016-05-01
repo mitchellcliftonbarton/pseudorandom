@@ -133,8 +133,8 @@ function getDurl(img) {
 }
 
 app.post('/shapes', function(req, res, next) {
-  getDurl('public/shapes/line.png');
-  res.send(data);
+  // getDurl('public/shapes/line.png');
+  res.send('hello');
 });
 
 var server = app.listen(3000, function () {
