@@ -86,14 +86,11 @@ app.post('/save', function(req, res, next) {
 });
 
 app.post('/sand', function(req, res, next) {
-  // winston.info('POST - /save');
-  // winston.info('starting save');
 
   var body = "";
 
   req.on('data', function(data) {
     body += data;
-    // winston.info('your body = ' + body);
   });
 
   req.on('end', function (){
@@ -108,7 +105,6 @@ app.post('/sand', function(req, res, next) {
 
     var dataStart = body.toString().indexOf(',') + 1;
     var decodedImage = new Buffer(body.substring(dataStart), 'base64');
-    // winston.info('Writing: ' + imgName);
     fs.writeFile('public/gray-sand/' + imgName + '.jpg', decodedImage, function(err) {
       if (err) winston.info('Error: ' + err);
       else winston.info('Success: Saved ' + imgName);
@@ -124,10 +120,21 @@ app.post('/sand', function(req, res, next) {
 
 });
 
+function getDurl(img) {
+
+  image.onload = function() {
+    var canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    canvas.getContext('2d').drawImage(img, 0, 0);
+    var data = canvas.toDataURL('image/png');
+    return data;
+  }
+}
+
 app.post('/shapes', function(req, res, next) {
-  // res.sendFile('info.html', { root: path.join(__dirname, 'public') });
-  // winston.info('GET - /info');
-  res.send('you are so smelly');
+  getDurl('public/shapes/line.png');
+  res.send(data);
 });
 
 var server = app.listen(3000, function () {
