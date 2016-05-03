@@ -725,7 +725,6 @@ $(document).ready(function() {
       var dataUrl = name.replace(/\s+/g, '') + picData;
       
       $.post("../../save", dataUrl);
-      $.post("../../sand", dataUrl);
 
       $('.loading').css('opacity', '0');
       setTimeout(function() {
