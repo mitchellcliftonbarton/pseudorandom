@@ -120,21 +120,21 @@ app.post('/sand', function(req, res, next) {
 
 });
 
-function getDurl(img) {
+// function getDurl(img) {
 
-  image.onload = function() {
-    var canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.getContext('2d').drawImage(img, 0, 0);
-    var data = canvas.toDataURL('image/png');
-    return data;
-  }
-}
+//   image.onload = function() {
+//     var canvas = document.createElement('canvas');
+//     canvas.width = img.width;
+//     canvas.height = img.height;
+//     canvas.getContext('2d').drawImage(img, 0, 0);
+//     var data = canvas.toDataURL('image/png');
+//     return data;
+//   }
+// }
 
 app.post('/shapes', function(req, res, next) {
   // getDurl('public/shapes/line.png');
-  res.send('hello');
+  res.sendFile('public/shapes/line.png');
 });
 
 var server = app.listen(3000, function () {
