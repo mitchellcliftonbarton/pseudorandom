@@ -135,8 +135,8 @@ app.post('/sand', function(req, res, next) {
 app.post('/shapes', function(req, res, next) {
   // res.set('content-type', 'image/png');
   fs.readFile('/shapes/line.png', function(err, data) {
-    var base = new Buffer(data).toString('base64');
-    res.send(base);
+    // var base = new Buffer(data).toString('base64');
+    res.send(data);
   });
   // res.sendFile('/shapes/line.png', { root: path.join(__dirname, 'public') });
 });
