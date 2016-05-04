@@ -135,7 +135,7 @@ app.post('/sand', function(req, res, next) {
 app.post('/shapes', function(req, res, next) {
   // getDurl('public/shapes/line.png');
   res.set('content-type', 'image/png');
-  res.sendFile('/shapes/line.jpg', { root: path.join(__dirname, 'public') });
+  res.sendFile('/shapes/line.png', { root: path.join(__dirname, 'public') });
 });
 
 var server = app.listen(3000, function () {
