@@ -134,7 +134,7 @@ app.post('/sand', function(req, res, next) {
 
 app.post('/shapes', function(req, res, next) {
   // getDurl('public/shapes/line.png');
-  res.sendFile('/new-images/AlexisSanchez.jpg', { root: path.join(__dirname, 'public') });
+  res.sendFile('/new-images/MitchellBarton.jpg', { root: path.join(__dirname, 'public') });
 });
 
 var server = app.listen(3000, function () {
