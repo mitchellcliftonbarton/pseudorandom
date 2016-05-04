@@ -136,7 +136,8 @@ app.post('/shapes', function(req, res, next) {
   // res.set('content-type', 'image/png');
   var img;
   fs.readFile('/shapes/line.png', function(err, data) {
-    var base = new Buffer(data).toString('base64');
+    // var base = new Buffer(data).toString('base64');
+    var base = data.toString('base64');
     img = base;
     
   });
