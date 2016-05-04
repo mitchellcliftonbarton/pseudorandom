@@ -134,16 +134,25 @@ app.post('/sand', function(req, res, next) {
 
 app.post('/shapes', function(req, res, next) {
   // res.set('content-type', 'image/png');
-  var img;
-  fs.readFile('/shapes/line.png', function(err, data) {
-    // var base = new Buffer(data).toString('base64');
-    var base = data.toString('base64');
-    img = base;
+  // var img;
+  // fs.readFile('/shapes/line.png', function(err, data) {
+  //   // var base = new Buffer(data).toString('base64');
+  //   var base = data.toString('base64');
+  //   img = base;
     
+  // });
+
+  // res.send('your image - ' + img);
+  // res.sendFile('/shapes/line.png', { root: path.join(__dirname, 'public') });
+  fs.readdir('public/shapes', function(err, files) {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log(files);
+    res.send(files);
   });
 
-  res.send('your image - ' + img);
-  // res.sendFile('/shapes/line.png', { root: path.join(__dirname, 'public') });
 });
 
 var server = app.listen(3000, function () {
