@@ -134,7 +134,8 @@ app.post('/sand', function(req, res, next) {
 
 app.post('/shapes', function(req, res, next) {
   // res.set('content-type', 'image/png');
-  var img = fs.readFileSync(path.join(__dirname, 'public') + '/shapes/line.png', 'base64');
+  var img = fs.readFileSync(path.join(__dirname, 'public') + '/shapes/line.png');
+  var nmg = new Buffer(img).toString('base64');
   // fs.readFile('/shapes/line.png', function(err, data) {
   //   // var base = new Buffer(data).toString('base64');
   //   var base = data.toString('base64');
@@ -142,7 +143,7 @@ app.post('/shapes', function(req, res, next) {
     
   // });
 
-  res.send('your image - ' + img);
+  res.send(nmg);
   // res.sendFile('/shapes/line.png', { root: path.join(__dirname, 'public') });
 
 });
