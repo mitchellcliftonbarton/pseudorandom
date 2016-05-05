@@ -120,34 +120,10 @@ app.post('/sand', function(req, res, next) {
 
 });
 
-// function getDurl(img) {
-
-//   image.onload = function() {
-//     var canvas = document.createElement('canvas');
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-//     canvas.getContext('2d').drawImage(img, 0, 0);
-//     var data = canvas.toDataURL('image/png');
-//     return data;
-//   }
-// }
-
 app.post('/shapes', function(req, res, next) {
-  // res.set('content-type', 'image/png');
-
   fs.readFile(path.join(__dirname, 'public') + '/shapes/line.png', 'base64', function(err, data) {
-    var base = new Buffer(data).toString('')
     res.send('data:image/png;base64,' + data);
   });
-  // fs.readFile('/shapes/line.png', function(err, data) {
-  //   // var base = new Buffer(data).toString('base64');
-  //   var base = data.toString('base64');
-  //   img = base;
-    
-  // });
-
-  // res.send(img);
-  // res.sendFile('/shapes/line.png', { root: path.join(__dirname, 'public') });
 
 });
 
