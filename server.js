@@ -122,19 +122,19 @@ app.post('/sand', function(req, res, next) {
 
 app.post('/shapes', function(req, res, next) {
 
-  var images = ['line.png',
-                'line-2.png'];
+  var images = [];
 
-  // fs.readdir('public/shapes', function(err, files) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
+  fs.readdir('public/shapes', function(err, files) {
+    if (err) {
+      console.log(err);
+    }
     
-  //   images.push(files);
-  // });
+    images.push(files);
+  });
 
   fs.readFile(path.join(__dirname, 'public') + '/shapes/' + images[0], 'base64', function(err, data) {
-    res.send('data:image/png;base64,' + data);
+    // res.send('data:image/png;base64,' + data);
+    res.send(images);
   });
 
 });
