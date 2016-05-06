@@ -123,6 +123,7 @@ app.post('/sand', function(req, res, next) {
 app.post('/shapes', function(req, res, next) {
 
   // var images = [];
+  var random = Math.floor((Math.random() * 50) + 1);
 
   fs.readdir('public/shapes', function(err, files) {
     if (err) {
@@ -130,7 +131,7 @@ app.post('/shapes', function(req, res, next) {
     }
     
     // images.push(files);
-    fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[0], 'base64', function(err, data) {
+    fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[random % files.length], 'base64', function(err, data) {
       res.send('data:image/png;base64,' + data);
       // res.send(images[0]);
     });
