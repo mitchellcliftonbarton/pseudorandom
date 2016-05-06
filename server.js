@@ -128,13 +128,12 @@ app.post('/shapes', function(req, res, next) {
     if (err) {
       console.log(err);
     }
-    res.send(files);
     
     // images.push(files);
-    // fs.readFile(path.join(__dirname, 'public') + '/shapes/' + images[0], 'base64', function(err, data) {
-    //   // res.send('data:image/png;base64,' + data);
-    //   res.send(images[0]);
-    // });
+    fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[0], 'base64', function(err, data) {
+      res.send('data:image/png;base64,' + data);
+      // res.send(images[0]);
+    });
   });
 
 
