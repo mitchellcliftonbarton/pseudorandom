@@ -123,12 +123,12 @@ app.post('/sand', function(req, res, next) {
 app.post('/shapes', function(req, res, next) {
   //get a random number
   var random = Math.floor((Math.random() * 50) + 1);
-  var body = "";
+  // var body = "";
 
-  req.on('data', function(data) {
-    body += data;
-  });
-
+  // req.on('data', function(data) {
+  //   body += data;
+  // });
+  var dh = req.body * 1;
   //get all files in shapes folder
   fs.readdir('public/shapes', function(err, files) {
     if (err) {
@@ -140,7 +140,7 @@ app.post('/shapes', function(req, res, next) {
         res.send('data:image/png;base64,' + data);
       });
     } else {
-      res.send('it didnt work ' + body);
+      res.send('it didnt work ' + dh + );
     }
     //get a random file from shapes array and send it as base64 png
     
