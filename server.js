@@ -130,7 +130,7 @@ app.post('/shapes', function(req, res, next) {
       console.log(err);
     }
     
-    if (dh > 2000) {
+    if (dh < 2000) {
       fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[random % files.length], 'base64', function(err, data) {
         res.send('data:image/png;base64,' + data);
       });
