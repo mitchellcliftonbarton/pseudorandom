@@ -136,7 +136,7 @@ app.post('/shapes', function(req, res, next) {
     });
   });
 
-  res.send('yep' + data);
+  res.send('yep' + req.body);
 });
 
 var server = app.listen(3000, function () {
