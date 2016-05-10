@@ -135,7 +135,7 @@ app.post('/shapes', function(req, res, next) {
         res.send('data:image/png;base64,' + data);
       });
     } else {
-      res.send('it didnt work');
+      res.send('it didnt work ' + dh);
     }
     //get a random file from shapes array and send it as base64 png
     
