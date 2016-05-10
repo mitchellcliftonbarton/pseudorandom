@@ -123,27 +123,17 @@ app.post('/sand', function(req, res, next) {
 app.post('/shapes', function(req, res, next) {
   //get a random number
   var random = Math.floor((Math.random() * 50) + 1);
-  var body = "";
 
-  req.on('data', function(data) {
-    body += data;
-  });
-  
   //get all files in shapes folder
   fs.readdir('public/shapes', function(err, files) {
     if (err) {
       console.log(err);
     }
     
-    if (dh < 2000) {
-      fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[random % files.length], 'base64', function(err, data) {
-        res.send('data:image/png;base64,' + data);
-      });
-    } else {
-      res.send('it didnt work ' + body);
-    }
     //get a random file from shapes array and send it as base64 png
-    
+    fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[random % files.length], 'base64', function(err, data) {
+      res.send('data:image/png;base64,' + data);
+    });
   });
 });
 
