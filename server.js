@@ -137,6 +137,10 @@ app.post('/shapes', function(req, res, next) {
   });
 });
 
+app.post('/web-performance', function(req, res, next) {
+  
+});
+
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
