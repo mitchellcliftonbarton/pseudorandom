@@ -139,46 +139,14 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
-  chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
-    function(response) {
-      if (!response.success)
-        handleError(url);
-  });
-
-  // var postData = querystring.stringify({
-  //   'msg': 'performanced'
+  // var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
+  // chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
+  //   function(response) {
+  //     if (!response.success)
+  //       handleError(url);
   // });
-
-  // var options = {
-  //   hostname: 'chrome-extension://jmnlphecjmkmdnilaijdlekceifniclb',
-  //   port: 80,
-  //   path: '/background.js',
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'Content-Length': postData.length
-  //   }
-  // };
-
-  // var poster = http.request(options, (res) => {
-  //   console.log(`STATUS: ${res.statusCode}`);
-  //   console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-  //   res.setEncoding('utf8');
-  //   res.on('data', (chunk) => {
-  //     console.log(`BODY: ${chunk}`);
-  //   });
-  //   res.on('end', () => {
-  //     console.log('No more data in response.')
-  //   })
-  // });
-
-  // req.on('error', (e) => {
-  //   console.log(`problem with request: ${e.message}`);
-  // });
-
-  // poster.write(postData);
-  // poster.end();
+  res.send('i got it github');
+  
 
 });
 
