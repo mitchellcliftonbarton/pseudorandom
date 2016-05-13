@@ -139,12 +139,12 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  // var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
-  // chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
-  //   function(response) {
-  //     if (!response.success)
-  //       handleError(url);
-  // });
+  var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
+  chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
+    function(response) {
+      if (!response.success)
+        handleError(url);
+  });
   res.send('i got it github');
   
 
