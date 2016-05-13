@@ -729,6 +729,7 @@ $(document).ready(function() {
       var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
       chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
         function(response) {
+          console.log('chromed');
           if (!response.success)
             handleError(url);
       });
