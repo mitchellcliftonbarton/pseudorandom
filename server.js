@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
 var fs = require('fs');
-var http = require('http');
+// var http = require('http');
 var winston = require('winston');
 
 winston.add(winston.transports.File, { filename: 'winston.log' });
