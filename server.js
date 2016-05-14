@@ -13,10 +13,6 @@ winston.info('Logging');
 
 server.listen(3000);
 
-io.on('connection', function(socket) {
-  winston.info('socketz');
-});
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
