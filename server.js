@@ -21,6 +21,7 @@ server.listen(3000, function() {
 });
 
 app.use(express.static('public'));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.get('/', function (req, res) {
