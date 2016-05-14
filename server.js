@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var path = require('path');
 var fs = require('fs');
 // var http = require('http');
@@ -11,18 +12,10 @@ winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
 server.listen(3000);
-// var server = app.listen(3000, function () {
-//   var host = server.address().address;
-//   var port = server.address().port;
 
-//   console.log('Example app listening at http://%s:%s', host, port);
-// });
-
-// var io = require('socket.io')(server);
-
-// io.on('connection', function(socket) {
-//   winston.info('socketz');
-// });
+io.on('connection', function(socket) {
+  winston.info('socketz');
+});
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
