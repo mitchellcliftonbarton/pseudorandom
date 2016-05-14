@@ -155,9 +155,13 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  io.emit('posted', {message: 'smelly cats'});
+  // var hub;
+  // var name = 
+  // fs.readFile('file', 'utf8', function(err, data) {
+  //   hub = JSON.parse(data);
+  // });
 
-  res.send('i got it github');
+  res.send('i got it github ' + req.body);
   
 
 });
