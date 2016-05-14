@@ -16,11 +16,11 @@ winston.info('Logging');
 //   console.log('socketed');
 // });
 
-app.listen(3000);
-
 app.use(express.static('public'));
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+
+app.listen(3000);
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
@@ -154,7 +154,7 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  var msg = req.body.indexOf('message');
+  // var msg = req.body.indexOf('message');
   
-  res.send('i got it github ' + msg);
+  res.send('i got it github ' + req.body);
 });
