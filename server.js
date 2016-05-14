@@ -18,9 +18,9 @@ var server = app.listen(3000, function () {
 
 var io = require('socket.io').listen(server);
 
-io.on('connection', function(socket) {
-  console.log('socket connected');
-});
+// io.on('connection', function(socket) {
+//   console.log('socket connected');
+// });
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
