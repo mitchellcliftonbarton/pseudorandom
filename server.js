@@ -9,17 +9,17 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+// var server = app.listen(3000, function () {
+//   var host = server.address().address;
+//   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+//   console.log('Example app listening at http://%s:%s', host, port);
+// });
 
-// var io = require('socket.io').listen(server);
+// var io = require('socket.io')(server);
 
 // io.on('connection', function(socket) {
-//   console.log('socket connected');
+//   winston.info('socketz');
 // });
 
 app.use(express.static('public'));
