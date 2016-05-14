@@ -9,12 +9,13 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+app.listen(3000);
+// var server = app.listen(3000, function () {
+//   var host = server.address().address;
+//   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+//   console.log('Example app listening at http://%s:%s', host, port);
+// });
 
 // var io = require('socket.io')(server);
 
