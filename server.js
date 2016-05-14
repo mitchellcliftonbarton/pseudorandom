@@ -11,11 +11,11 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
-server.listen(3000);
-
 io.on('connection', function(socket) {
   winston.info('socketz');
 });
+
+server.listen(3000);
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
