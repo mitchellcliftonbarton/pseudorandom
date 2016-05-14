@@ -1,8 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+// var server = require('http').createServer(app);
+// var io = require('socket.io')(server);
 var path = require('path');
 var fs = require('fs');
 // var http = require('http');
@@ -16,12 +16,10 @@ winston.info('Logging');
 //   console.log('socketed');
 // });
 
-server.listen(3000, function() {
-  // console.log('listening on poop');
-});
+app.listen(3000);
 
 app.use(express.static('public'));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
 app.get('/', function (req, res) {
@@ -156,11 +154,6 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  // var hub;
-  // var name = 
-  // fs.readFile('file', 'utf8', function(err, data) {
-  //   hub = JSON.parse(data);
-  // });
 
   var body = "";
 
