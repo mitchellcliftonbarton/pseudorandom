@@ -154,7 +154,7 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  var msg = req.body.stringify();
+  // var msg = req.body.stringify();
   
-  res.send('i got it github ' + msg);
+  res.send('i got it github ' + data);
 });
