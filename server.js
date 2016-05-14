@@ -16,11 +16,11 @@ var server = app.listen(3000, function () {
   console.log('Example app listening at http://%s:%s', host, port);
 });
 
-var io = require('socket.io')(server);
+// var io = require('socket.io')(server);
 
-io.on('connection', function(socket) {
-  console.log('socket connected');
-});
+// io.on('connection', function(socket) {
+//   console.log('socket connected');
+// });
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
