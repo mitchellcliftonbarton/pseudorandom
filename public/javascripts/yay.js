@@ -726,13 +726,6 @@ $(document).ready(function() {
       
       $.post("../../save", dataUrl);
       $.post("../../shapes", dataUrl);
-      var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
-      chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
-        function(response) {
-          console.log('chromed');
-          if (!response.success)
-            handleError(url);
-      });
 
       $('.loading').css('opacity', '0');
       setTimeout(function() {
