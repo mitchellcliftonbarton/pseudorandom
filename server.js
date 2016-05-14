@@ -18,8 +18,8 @@ winston.info('Logging');
 
 app.use(express.static('public'));
 // app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
-
+// app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
+app.use(bodyParser.raw({limit: '10mb'}));
 app.listen(3000);
 
 app.get('/', function (req, res) {
