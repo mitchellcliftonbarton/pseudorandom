@@ -11,13 +11,13 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
-var nsp = io.of('/web-performance');
-nsp.on('connection', function(socket) {
-  console.log('socketed');
-});
+// var nsp = io.of('/web-performance');
+// nsp.on('connection', function(socket) {
+//   console.log('socketed');
+// });
 
 server.listen(3000, function() {
-  console.log('listening on poop');
+  // console.log('listening on poop');
 });
 
 app.use(express.static('public'));
@@ -162,7 +162,7 @@ app.post('/web-performance', function(req, res, next) {
   //   hub = JSON.parse(data);
   // });
 
-  res.send('i got it github ' + req.body);
+  res.json('i got it github ' + req.body);
   
 
 });
