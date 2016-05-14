@@ -11,11 +11,14 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
-io.on('connection', function(socket) {
-  winston.info('socketz');
+var nsp = io.of('/web-performance');
+nsp.on('connection', function(socket) {
+  console.log('socketed');
 });
 
-server.listen(3000);
+server.listen(3000, function() {
+  console.log('listening on poop');
+});
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
@@ -23,6 +26,11 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 app.get('/', function (req, res) {
   res.sendFile('index.html');
   winston.info('GET - /');
+});
+
+app.get('/web-performance', function (req, res) {
+  res.sendFile('performance.html', { root: path.join(__dirname, 'public') });
+  winston.info('GET - /web-performance');
 });
 
 app.get('/grid', function(req, res, next) {
@@ -147,7 +155,7 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-
+  io.emit('posted', {message: 'smelly cats'});
 
   res.send('i got it github');
   

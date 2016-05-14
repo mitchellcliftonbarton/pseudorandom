@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-  
+    var socket = io('/web-performance');
     var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
 
     chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
