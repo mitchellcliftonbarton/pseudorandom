@@ -162,7 +162,13 @@ app.post('/web-performance', function(req, res, next) {
   //   hub = JSON.parse(data);
   // });
 
-  res.json('i got it github ' + req.body);
+  var body = "";
+
+  req.on('data', function(data) {
+    body += data;
+  });
+
+  res.send('i got it github ' + body);
   
 
 });
