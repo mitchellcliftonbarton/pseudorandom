@@ -9,6 +9,19 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Example app listening at http://%s:%s', host, port);
+});
+
+var io = require('socket.io')(server);
+
+io.on('connection', function(socket) {
+  console.log('socket connected');
+});
+
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true}));
 
@@ -139,20 +152,9 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-  var extId = "jmnlphecjmkmdnilaijdlekceifniclb";
-  chrome.runtime.sendMessage(extId, {"message": "i sent performance"},
-    function(response) {
-      if (!response.success)
-        handleError(url);
-  });
+
+
   res.send('i got it github');
   
 
-});
-
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
 });
