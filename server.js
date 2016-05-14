@@ -154,17 +154,7 @@ app.post('/shapes', function(req, res, next) {
 });
 
 app.post('/web-performance', function(req, res, next) {
-
-  var body = "";
-  req.on('data', function(data) {
-    body += data;
-  });
-
-  req.on('end', function (){
-    var split = body.indexOf('message');
-    var msg = body.slice(0, split);
-    res.send('i got it github ' + msg);
-  });
+  var msg = req.body.indexOf('message');
   
-
+  res.send('i got it github ' + msg);
 });
