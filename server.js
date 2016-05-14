@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var server = require('http').createServer(app);
 var path = require('path');
 var fs = require('fs');
 // var http = require('http');
@@ -9,7 +10,7 @@ var winston = require('winston');
 winston.add(winston.transports.File, { filename: 'winston.log' });
 winston.info('Logging');
 
-app.listen(3000);
+server.listen(3000);
 // var server = app.listen(3000, function () {
 //   var host = server.address().address;
 //   var port = server.address().port;
