@@ -3,3 +3,4 @@
 
 .DS_Store
 *.log
+/public/pseudorandom-book-web.pdf
