@@ -2,5 +2,4 @@
 /public/new-images/*
 
 .DS_Store
-*.log
-/public/pseudorandom-book-web.pdf
+*.loggit
