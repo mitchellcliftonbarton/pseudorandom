@@ -138,7 +138,7 @@ app.post('/sand', function(req, res, next) {
 
 app.post('/shapes', function(req, res, next) {
   //get a random number
-  var random = Math.floor((Math.random() * 50) + 1);
+  var random = Math.floor((Math.random() * 100) + 1);
 
   //get all files in shapes folder
   fs.readdir('public/shapes', function(err, files) {
