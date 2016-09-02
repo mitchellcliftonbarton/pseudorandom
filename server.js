@@ -69,6 +69,18 @@ app.get('/images', function(req, res, next) {
   });
 });
 
+app.get('/less-images', function(req, res, next) {
+  winston.info('GET - /images');
+  fs.readdir('public/less-new-images', function(err, files) {
+    if (err) {
+      console.log(err);
+    }
+
+    console.log(files);
+    res.send(files);
+  });
+});
+
 app.get('/new-loop', function(req, res, next) {
   res.sendFile('new-loop.html', { root: path.join(__dirname, 'public') });
   winston.info('GET - /group');
