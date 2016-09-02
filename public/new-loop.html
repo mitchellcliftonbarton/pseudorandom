@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="loop-view">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P S E U D O R A N D O M</title>
+  <meta name="description" content="">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/carousel.js"></script>
+
+  <script>
+    $(document).ready(function() {
+
+      // window.setInterval(reloadAllImages, 600000);
+      function reloadAllImages() {
+        $.get('/images', function(images) {
+          var imageList = [];
+          $('.carousel-inner').empty();
+
+          for (var i = 2; i < images.length; i++) {
+            var nSource = 'new-images/' + images[i];
+            imageList.push(nSource);
+          }
+
+          var contain = document.getElementById('carousel-div');
+
+          for(image in imageList) {
+
+            var newImgDiv = document.createElement('div');
+            contain.appendChild(newImgDiv).className = "item";
+
+            var newImg = document.createElement('img');
+            newImg.src = imageList[image];
+            newImgDiv.appendChild(newImg).className = "imagess";
+          }
+
+          $('.item:first').addClass('active');
+
+          $('.carousel').carousel({
+            interval: 3500,
+            pause: false
+          });
+
+        })
+
+      }
+      reloadAllImages();
+
+      $('.carousel').on('slide.bs.carousel', function () {
+        if ($('.item:last-child').hasClass('active')) {
+          reloadAllImages();
+          window.console.log('eleanor');
+        }
+      });
+
+
+    })
+
+  </script>
+</head>
+<body>
+  <!-- <ul class="nav">
+    <li><a href="/">HOME</a></li>
+    <li><a href="/grid">GRID</a></li>
+    <li><a class="current" href="/loop">LOOP</a></li>
+    <li><a href="/group">GROUP</a></li>
+    <li><a href="/info">INFO</a></li>
+  </ul> -->
+
+    <div id="carousel-example-generic" class="carousel slide">
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox" id="carousel-div">
+
+      </div>
+
+
+    </div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61480746-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>

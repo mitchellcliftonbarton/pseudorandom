@@ -69,6 +69,16 @@ app.get('/images', function(req, res, next) {
   });
 });
 
+app.get('/new-loop', function(req, res, next) {
+  res.sendFile('new-loop.html', { root: path.join(__dirname, 'public') });
+  winston.info('GET - /group');
+});
+
+app.get('/new-grid', function(req, res, next) {
+  res.sendFile('new-grid.html', { root: path.join(__dirname, 'public') });
+  winston.info('GET - /group');
+});
+
 app.post('/save', function(req, res, next) {
   winston.info('POST - /save');
   winston.info('starting save');
@@ -129,7 +139,7 @@ app.post('/sand', function(req, res, next) {
 
   function callback(err) {
     if(err) console.log('broken');
-    else console.log("yay")
+    else console.log("yay");
   }
 
   res.send("Done");
@@ -145,7 +155,7 @@ app.post('/shapes', function(req, res, next) {
     if (err) {
       console.log(err);
     }
-    
+
     //get a random file from shapes array and send it as base64 png
     fs.readFile(path.join(__dirname, 'public') + '/shapes/' + files[random % files.length], 'base64', function(err, data) {
       res.send('data:image/png;base64,' + data);
@@ -155,6 +165,6 @@ app.post('/shapes', function(req, res, next) {
 
 app.post('/web-performance', function(req, res, next) {
   // var msg = req.body.stringify();
-  
+
   res.send('i got it github ' + data);
 });

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="grid-view">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P S E U D O R A N D O M</title>
+  <meta name="description" content="">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/css/application.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/carousel.js"></script>
+  <script>
+    $(document).ready(function() {
+
+      //window.setInterval(reloadAllImages, 300000);
+      function reloadAllImages() {
+
+        $.get('/images', function(images) {
+          // var imageListPre = [];
+          // imageListPre = images.split(',');
+          var imageList = [];
+
+          // // delete everything in .carousel
+          $('.grid').empty();
+
+          for (var i = 2; i < images.length; i++) {
+
+            // var source = images[i].replace(/"/g, '');
+            var nSource = 'new-images/' + images[i];
+            // window.console.log(nSource);
+            imageList.push(nSource);
+          }
+
+          var waitBeforeScroll = 5000;
+          var scrollDuration = 1500 * imageList.length;
+
+          var contain = document.getElementById('grid-container');
+
+          for(image in imageList) {
+            // window.console.log(images[image]);
+
+            var newImgDiv = document.createElement('div');
+            contain.appendChild(newImgDiv).className = "col-lg-3";
+
+            var newImg = document.createElement('img');
+            newImg.src = imageList[image];
+            newImgDiv.appendChild(newImg);
+
+            // images[image] is the next image
+            // Create all image divs here for each item in images
+          }
+
+          // window.scrollBy(0, window.innerHeight);
+
+          //debugger
+          $('body').css('letter-spacing', '0px');
+          $( "body" ).scrollTop(0);
+
+
+          window.setTimeout( function() {
+            $('body').animate(
+              {
+                letterSpacing: $(document).height() - $(window).height()
+              },
+              {
+
+                step: function( now, fx ) {
+                  $( "body" ).scrollTop(now);
+                },
+                duration: scrollDuration,
+                easing: 'linear',
+                complete: function() {
+                  window.setTimeout(
+                    reloadAllImages,
+                    waitBeforeScroll
+                  )
+                }
+              }
+            );
+          },waitBeforeScroll);
+
+            // var newImg = document.createElement('img');
+            // newImg.src = imageList[image];
+            // newImgDiv.appendChild(newImg).className = "imagess";
+
+            // images[image] is the next image
+            // Create all image divs here for each item in images
+
+
+        })
+
+      }
+      reloadAllImages();
+
+
+    })
+
+
+
+  </script>
+</head>
+<body class="">
+  <!-- <ul class="nav">
+    <li><a href="/">HOME</a></li>
+    <li><a class="current" href="/grid">GRID</a></li>
+    <li><a href="/loop">LOOP</a></li>
+    <li><a href="/group">GROUP</a></li>
+    <li><a href="/info">INFO</a></li>
+  </ul> -->
+  <div class="grid col-lg-12" id="grid-container">
+
+  </div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61480746-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>
