@@ -180,3 +180,8 @@ app.post('/web-performance', function(req, res, next) {
 
   res.send('i got it github ' + data);
 });
+
+app.get('/queue', function(req, res, next) {
+  res.sendFile('group.html', { root: path.join(__dirname, 'public') });
+  winston.info('GET - /group');
+});
