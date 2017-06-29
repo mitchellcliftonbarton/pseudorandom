@@ -181,6 +181,6 @@ app.post('/web-performance', function(req, res, next) {
   res.send('i got it github ' + data);
 });
 
-app.get('/api/basic-pages/:id', function(req, res, next) {
+app.get('/api/basic-pages/philosophy', function(req, res, next) {
   res.send('hi');
 });
